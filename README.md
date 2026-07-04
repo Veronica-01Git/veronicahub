@@ -1,5 +1,3 @@
-(https://github.com/user-attachments/files/29660209/index_v2.1.html)
-<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
