@@ -471,6 +471,20 @@ img{display:block;max-width:100%}
 .t-sep{height:1px;background:rgba(0,255,178,0.06);margin:6px 0}
 @media(max-width:960px){.about-grid{grid-template-columns:1fr;gap:40px}}
 
+/* ═══ WHATSAPP FLOAT ═══ */
+.wa-float{position:fixed;right:24px;bottom:24px;z-index:150;width:56px;height:56px;border-radius:50%;
+  background:linear-gradient(135deg,#00e587 0%,#00a86b 100%);display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 24px rgba(0,229,135,0.4),0 0 0 1px rgba(255,255,255,0.08) inset;
+  transition:all 0.25s;animation:wapulse 2.6s ease-in-out infinite}
+.wa-float svg{width:26px;height:26px;fill:#02120b}
+.wa-float:hover{transform:scale(1.08);box-shadow:0 8px 32px rgba(0,229,135,0.55)}
+@keyframes wapulse{0%,100%{box-shadow:0 6px 24px rgba(0,229,135,0.4),0 0 0 0 rgba(0,229,135,0.35)}50%{box-shadow:0 6px 24px rgba(0,229,135,0.4),0 0 0 10px rgba(0,229,135,0)}}
+.wa-float-tip{position:absolute;right:66px;top:50%;transform:translateY(-50%);white-space:nowrap;
+  background:rgba(5,8,15,0.95);border:1px solid var(--border2);color:var(--text);font-size:12.5px;font-weight:600;
+  padding:8px 14px;border-radius:8px;opacity:0;pointer-events:none;transition:opacity 0.2s}
+.wa-float:hover .wa-float-tip{opacity:1}
+@media(max-width:640px){.wa-float{right:16px;bottom:16px;width:50px;height:50px}.wa-float svg{width:23px;height:23px}.wa-float-tip{display:none}}
+
 /* ═══ FOOTER ═══ */
 .footer{border-top:1px solid rgba(0,255,178,0.08);position:relative;z-index:2;background:rgba(2,4,8,0.98)}
 .footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;
@@ -538,10 +552,9 @@ img{display:block;max-width:100%}
   </div>
   <div class="nav-right">
     <div class="nav-social">
-      <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg></a>
-      <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2 .25 2.5.42.6.24 1 .5 1.5 1 .5.5.75.9 1 1.5.17.5.36 1.3.42 2.5.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 2-.42 2.5-.24.6-.5 1-1 1.5-.5.5-.9.75-1.5 1-.5.17-1.3.36-2.5.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-2-.25-2.5-.42-.6-.24-1-.5-1.5-1-.5-.5-.75-.9-1-1.5-.17-.5-.36-1.3-.42-2.5C2.21 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.25-2 .42-2.5.24-.6.5-1 1-1.5.5-.5.9-.75 1.5-1 .5-.17 1.3-.36 2.5-.42C8.4 2.21 8.8 2.2 12 2.2zm0 4.5a5.3 5.3 0 1 0 0 10.6 5.3 5.3 0 0 0 0-10.6zm0 1.8a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7zm5.5-2a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/></svg></a>
-      <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.5 2h-3.2v13.6a2.8 2.8 0 1 1-2-2.7v-3.3a6.1 6.1 0 1 0 5.2 6V8.8a7.6 7.6 0 0 0 4.5 1.5V7.1c-2.4 0-4.5-1.9-4.5-4.4V2z"/></svg></a>
-      <a href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.2 2h3.4L13.8 10 23 22h-7L10.2 14 3.5 22H.1l8.4-9.6L0 2h7.2l5.4 7.1L18.2 2zm-1.2 18h1.9L7.1 4H5.1l11.9 16z"/></svg></a>
+      <a href="https://youtube.com/@veronica-hub" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg></a>
+      <a href="https://instagram.com/veronicahub_" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2 .25 2.5.42.6.24 1 .5 1.5 1 .5.5.75.9 1 1.5.17.5.36 1.3.42 2.5.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 2-.42 2.5-.24.6-.5 1-1 1.5-.5.5-.9.75-1.5 1-.5.17-1.3.36-2.5.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-2-.25-2.5-.42-.6-.24-1-.5-1.5-1-.5-.5-.75-.9-1-1.5-.17-.5-.36-1.3-.42-2.5C2.21 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.25-2 .42-2.5.24-.6.5-1 1-1.5.5-.5.9-.75 1.5-1 .5-.17 1.3-.36 2.5-.42C8.4 2.21 8.8 2.2 12 2.2zm0 4.5a5.3 5.3 0 1 0 0 10.6 5.3 5.3 0 0 0 0-10.6zm0 1.8a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7zm5.5-2a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/></svg></a>
+      <a href="https://wa.me/5547996057436?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Veronica%20Video%20AI" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3 .78.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.25-.13-1.47-.72-1.7-.8-.23-.09-.4-.13-.56.13-.17.25-.65.8-.8.97-.14.17-.3.19-.55.06-.25-.13-1.05-.39-2-1.23-.74-.66-1.24-1.48-1.38-1.73-.14-.25-.02-.38.11-.5.11-.11.25-.3.37-.44.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.08 0 1.23.9 2.42 1.02 2.58.13.17 1.77 2.7 4.29 3.79.6.26 1.07.42 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.2-.58.2-1.08.14-1.18-.06-.1-.23-.16-.48-.29z"/></svg></a>
     </div>
     <button class="btn-nav" onclick="switchTab('signup');document.getElementById('acesso').scrollIntoView({behavior:'smooth'})">Criar conta grátis</button>
   </div>
@@ -1122,10 +1135,9 @@ img{display:block;max-width:100%}
       <div class="footer-logo"><div class="logo-pulse"></div>Veronica Video<b>·AI</b></div>
       <p>Um braço da Veronica Hub para geração de vídeo por IA — ultra-realista, multi-engine e pronto para os melhores motores do mercado global.</p>
       <div class="footer-social">
-        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg></a>
-        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2 .25 2.5.42.6.24 1 .5 1.5 1 .5.5.75.9 1 1.5.17.5.36 1.3.42 2.5.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 2-.42 2.5-.24.6-.5 1-1 1.5-.5.5-.9.75-1.5 1-.5.17-1.3.36-2.5.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-2-.25-2.5-.42-.6-.24-1-.5-1.5-1-.5-.5-.75-.9-1-1.5-.17-.5-.36-1.3-.42-2.5C2.21 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.25-2 .42-2.5.24-.6.5-1 1-1.5.5-.5.9-.75 1.5-1 .5-.17 1.3-.36 2.5-.42C8.4 2.21 8.8 2.2 12 2.2zm0 4.5a5.3 5.3 0 1 0 0 10.6 5.3 5.3 0 0 0 0-10.6zm0 1.8a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7zm5.5-2a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/></svg></a>
-        <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.5 2h-3.2v13.6a2.8 2.8 0 1 1-2-2.7v-3.3a6.1 6.1 0 1 0 5.2 6V8.8a7.6 7.6 0 0 0 4.5 1.5V7.1c-2.4 0-4.5-1.9-4.5-4.4V2z"/></svg></a>
-        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.4 20.4h-3.6v-5.6c0-1.3 0-3-1.8-3-1.9 0-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1c.5-.9 1.6-1.8 3.3-1.8 3.5 0 4.2 2.3 4.2 5.4v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.4H3.5V9h3.6v11.4zM22.2 0H1.8A1.8 1.8 0 0 0 0 1.8v20.4A1.8 1.8 0 0 0 1.8 24h20.4A1.8 1.8 0 0 0 24 22.2V1.8A1.8 1.8 0 0 0 22.2 0z"/></svg></a>
+        <a href="https://youtube.com/@veronica-hub" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg></a>
+        <a href="https://instagram.com/veronicahub_" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2 .25 2.5.42.6.24 1 .5 1.5 1 .5.5.75.9 1 1.5.17.5.36 1.3.42 2.5.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 2-.42 2.5-.24.6-.5 1-1 1.5-.5.5-.9.75-1.5 1-.5.17-1.3.36-2.5.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-2-.25-2.5-.42-.6-.24-1-.5-1.5-1-.5-.5-.75-.9-1-1.5-.17-.5-.36-1.3-.42-2.5C2.21 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.25-2 .42-2.5.24-.6.5-1 1-1.5.5-.5.9-.75 1.5-1 .5-.17 1.3-.36 2.5-.42C8.4 2.21 8.8 2.2 12 2.2zm0 4.5a5.3 5.3 0 1 0 0 10.6 5.3 5.3 0 0 0 0-10.6zm0 1.8a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7zm5.5-2a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/></svg></a>
+        <a href="https://wa.me/5547996057436?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Veronica%20Video%20AI" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3 .78.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.25-.13-1.47-.72-1.7-.8-.23-.09-.4-.13-.56.13-.17.25-.65.8-.8.97-.14.17-.3.19-.55.06-.25-.13-1.05-.39-2-1.23-.74-.66-1.24-1.48-1.38-1.73-.14-.25-.02-.38.11-.5.11-.11.25-.3.37-.44.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.08 0 1.23.9 2.42 1.02 2.58.13.17 1.77 2.7 4.29 3.79.6.26 1.07.42 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.2-.58.2-1.08.14-1.18-.06-.1-.23-.16-.48-.29z"/></svg></a>
         <a href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.2 2h3.4L13.8 10 23 22h-7L10.2 14 3.5 22H.1l8.4-9.6L0 2h7.2l5.4 7.1L18.2 2zm-1.2 18h1.9L7.1 4H5.1l11.9 16z"/></svg></a>
       </div>
     </div>
@@ -1138,7 +1150,8 @@ img{display:block;max-width:100%}
       <li><a href="#">Comunidade</a></li><li><a href="#">Afiliados</a></li>
     </ul></div>
     <div class="footer-col"><h4>Suporte</h4><ul>
-      <li><a href="#">FAQ</a></li><li><a href="#">Contato</a></li>
+      <li><a href="#">FAQ</a></li><li><a href="mailto:yo-tech01@outlook.com">Contato</a></li>
+      <li><a href="https://wa.me/5547996057436" target="_blank" rel="noopener">WhatsApp Vendas</a></li>
       <li><a href="#">Privacidade</a></li><li><a href="#">Termos</a></li>
     </ul></div>
   </div>
@@ -1147,6 +1160,12 @@ img{display:block;max-width:100%}
     <div class="footer-mono">video·ai · v1.0 · build 2026</div>
   </div>
 </footer>
+
+<!-- WHATSAPP FLOAT -->
+<a class="wa-float" href="https://wa.me/5547996057436?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Veronica%20Video%20AI" target="_blank" rel="noopener" aria-label="Falar no WhatsApp com o time de vendas">
+  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3 .78.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.25-.13-1.47-.72-1.7-.8-.23-.09-.4-.13-.56.13-.17.25-.65.8-.8.97-.14.17-.3.19-.55.06-.25-.13-1.05-.39-2-1.23-.74-.66-1.24-1.48-1.38-1.73-.14-.25-.02-.38.11-.5.11-.11.25-.3.37-.44.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.08 0 1.23.9 2.42 1.02 2.58.13.17 1.77 2.7 4.29 3.79.6.26 1.07.42 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.2-.58.2-1.08.14-1.18-.06-.1-.23-.16-.48-.29z"/></svg>
+  <span class="wa-float-tip">Fala com a gente</span>
+</a>
 
 <script>
 // Particles
