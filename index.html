@@ -1,0 +1,1072 @@
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veronica Video AI — Geração de Vídeo por IA | Veronica Hub</title>
+<meta name="description" content="Veronica Video AI — gere vídeos ultra-realistas com múltiplos motores de IA. Extensão oficial da Veronica Hub. 2 vídeos grátis em 1080p.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#020408;
+  --bg1:#05080f;
+  --bg2:#070b14;
+  --bg3:#0a0f1c;
+  --surface:#0e1525;
+  --border:rgba(255,255,255,0.05);
+  --border2:rgba(255,255,255,0.09);
+  --accent:#00FFB2;
+  --accent2:#00D4FF;
+  --purple:#8B7CF8;
+  --text:#F0F4FF;
+  --text2:#7A8BA8;
+  --text3:#2E3E5A;
+  --red:#FF4B6E;
+  --yellow:#FFD166;
+  --r:10px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+button,input{font-family:'Inter',sans-serif}
+button{cursor:pointer}
+img{display:block;max-width:100%}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:rgba(0,255,178,0.3);border-radius:2px}
+
+#particleCanvas{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0.35}
+.amb{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.amb-blob{position:absolute;border-radius:50%;filter:blur(80px)}
+.a1{width:900px;height:900px;top:-300px;left:-200px;background:radial-gradient(circle,rgba(0,255,178,0.12) 0%,transparent 60%)}
+.a2{width:700px;height:700px;top:5%;right:-150px;background:radial-gradient(circle,rgba(139,124,248,0.18) 0%,transparent 60%)}
+.a3{width:600px;height:400px;bottom:5%;left:25%;background:radial-gradient(circle,rgba(0,212,255,0.1) 0%,transparent 60%)}
+.grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(rgba(0,255,178,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,178,0.03) 1px,transparent 1px);
+  background-size:50px 50px}
+
+/* ═══ NAV ═══ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;height:64px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 48px;background:rgba(2,4,8,0.4);backdrop-filter:blur(32px) saturate(2);
+  border-bottom:1px solid rgba(0,255,178,0.08);transition:all 0.3s}
+.nav::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(0,255,178,0.5),rgba(0,212,255,0.3),transparent)}
+.nav.scrolled{background:rgba(2,4,8,0.9);border-color:rgba(0,255,178,0.12)}
+.nav-left{display:flex;align-items:center;gap:28px;min-width:0}
+.hub-back{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--text3);letter-spacing:0.04em;
+  padding-right:20px;border-right:1px solid var(--border2);transition:color 0.2s;white-space:nowrap;flex-shrink:0}
+.hub-back:hover{color:var(--accent)}
+.hub-back svg{width:12px;height:12px;flex-shrink:0}
+.logo{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--text);display:flex;align-items:center;gap:10px}
+.logo b{color:var(--accent)}
+.logo-pulse{width:7px;height:7px;border-radius:50%;background:var(--accent);
+  box-shadow:0 0 12px var(--accent),0 0 24px rgba(0,255,178,0.5);animation:pulse 2.4s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.2;transform:scale(0.5)}}
+.nav-links{display:flex;gap:32px;margin-left:8px}
+.nav-links a{font-size:13px;font-weight:500;color:var(--text3);letter-spacing:0.02em;transition:color 0.2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1px;background:var(--accent);transform:scaleX(0);transition:transform 0.2s}
+.nav-links a:hover{color:var(--text)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-right{display:flex;align-items:center;gap:14px}
+.nav-social{display:flex;gap:8px}
+.nav-social a{width:32px;height:32px;border-radius:var(--r);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;color:var(--text3);transition:all 0.22s}
+.nav-social a:hover{border-color:rgba(0,255,178,0.5);color:var(--accent);box-shadow:0 0 16px rgba(0,255,178,0.15),inset 0 0 16px rgba(0,255,178,0.05)}
+.nav-social svg{width:13px;height:13px;fill:currentColor}
+.btn-nav{height:36px;padding:0 20px;background:transparent;border:1px solid rgba(0,255,178,0.4);border-radius:var(--r);
+  color:var(--accent);font-size:12px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;
+  box-shadow:0 0 20px rgba(0,255,178,0.1),inset 0 0 20px rgba(0,255,178,0.03);transition:all 0.2s}
+.btn-nav:hover{border-color:var(--accent);box-shadow:0 0 30px rgba(0,255,178,0.3),inset 0 0 30px rgba(0,255,178,0.08)}
+@media(max-width:1180px){.nav-links{display:none}}
+@media(max-width:560px){.nav-social{display:none}}
+@media(max-width:420px){.hub-back span{display:none}.hub-back{padding-right:12px}.nav-left{gap:16px}.btn-nav{padding:0 14px;font-size:10.5px}}
+
+/* ═══ HERO ═══ */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:120px 48px 60px;overflow:hidden;z-index:2}
+.hero-overlay-bg{position:absolute;inset:0;z-index:0;
+  background:radial-gradient(ellipse 70% 60% at 78% 40%,rgba(139,124,248,0.16) 0%,transparent 55%),
+             radial-gradient(ellipse 55% 55% at 10% 80%,rgba(0,255,178,0.1) 0%,transparent 55%),
+             linear-gradient(160deg,#020408 0%,#06091a 55%,#020408 100%)}
+.hero-scanlines{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.05) 2px,rgba(0,0,0,0.05) 4px)}
+.hc{position:absolute;z-index:3;width:70px;height:70px;pointer-events:none}
+.hc.tl{top:76px;left:36px;border-top:1.5px solid rgba(0,255,178,0.3);border-left:1.5px solid rgba(0,255,178,0.3)}
+.hc.br{bottom:36px;right:36px;border-bottom:1.5px solid rgba(0,255,178,0.15);border-right:1.5px solid rgba(0,255,178,0.15)}
+
+.hero-inner{max-width:1360px;margin:0 auto;width:100%;position:relative;z-index:4;
+  display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+
+.hero-copy{max-width:520px}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;margin-bottom:28px;
+  border:1px solid rgba(0,255,178,0.25);background:rgba(0,255,178,0.05);border-radius:100px;padding:7px 18px 7px 8px;
+  font-size:10.5px;font-weight:600;letter-spacing:0.1em;color:var(--accent);text-transform:uppercase;
+  backdrop-filter:blur(12px);box-shadow:0 0 30px rgba(0,255,178,0.1),inset 0 1px 0 rgba(0,255,178,0.15)}
+.badge-dot{width:22px;height:22px;border-radius:50%;background:rgba(0,255,178,0.1);border:1px solid rgba(0,255,178,0.4);
+  display:flex;align-items:center;justify-content:center}
+.badge-dot::after{content:'';width:8px;height:8px;border-radius:50%;background:var(--accent);
+  box-shadow:0 0 10px var(--accent),0 0 20px rgba(0,255,178,0.5)}
+
+.hero-h1{font-size:clamp(42px,4.6vw,68px);font-weight:900;line-height:0.98;letter-spacing:-0.04em;margin-bottom:22px}
+.hero-h1 .w1{display:block;background:linear-gradient(135deg,#ffffff 20%,rgba(255,255,255,0.55) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-h1 .w2{display:block;background:linear-gradient(90deg,#00FFB2 0%,#00D4FF 50%,#8B7CF8 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 0 40px rgba(0,255,178,0.4))}
+
+.hero-sub{font-size:16.5px;font-weight:400;line-height:1.75;color:var(--text2);margin-bottom:32px}
+.hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:36px}
+.hero-tag{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:0.06em;
+  color:var(--text2);border:1px solid var(--border2);border-radius:100px;padding:6px 13px;display:flex;align-items:center;gap:6px}
+.hero-tag svg{width:11px;height:11px;fill:var(--accent)}
+
+.hero-stats{display:flex;gap:10px;flex-wrap:wrap}
+.hero-stat{padding:15px 22px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);
+  border-radius:12px;backdrop-filter:blur(20px);transition:all 0.3s}
+.hero-stat:hover{border-color:rgba(0,255,178,0.2);background:rgba(0,255,178,0.03);box-shadow:0 0 30px rgba(0,255,178,0.08)}
+.stat-n{font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:var(--text);line-height:1;margin-bottom:5px}
+.stat-n em{color:var(--accent);font-style:normal;font-size:15px}
+.stat-l{font-size:9.5px;font-weight:600;color:var(--text3);letter-spacing:0.09em;text-transform:uppercase}
+
+/* ═══ HOLOGRAPHIC SKULL CAPSULE ═══ */
+.holo-side{position:relative;height:620px;display:flex;align-items:center;justify-content:center}
+.holo-stage{position:relative;width:100%;max-width:440px;height:100%;perspective:1400px}
+
+.holo-base-glow{position:absolute;left:50%;bottom:38px;width:280px;height:60px;transform:translateX(-50%);
+  background:radial-gradient(ellipse,rgba(0,255,178,0.35) 0%,rgba(0,212,255,0.12) 45%,transparent 75%);
+  filter:blur(6px);border-radius:50%}
+.holo-base-ring{position:absolute;left:50%;bottom:44px;width:220px;height:40px;transform:translateX(-50%) rotateX(72deg);
+  border-radius:50%;border:1.5px solid rgba(0,255,178,0.5);box-shadow:0 0 30px rgba(0,255,178,0.4),inset 0 0 20px rgba(0,255,178,0.2);
+  animation:ringspin 7s linear infinite}
+.holo-base-ring::before{content:'';position:absolute;inset:8px;border-radius:50%;border:1px dashed rgba(0,212,255,0.4)}
+@keyframes ringspin{from{transform:translateX(-50%) rotateX(72deg) rotateZ(0)}to{transform:translateX(-50%) rotateX(72deg) rotateZ(360deg)}}
+
+.capsule{position:absolute;left:50%;top:26px;bottom:70px;width:230px;transform:translateX(-50%);
+  border-radius:115px/50px;overflow:hidden;
+  background:linear-gradient(100deg,rgba(255,255,255,0.10) 0%,rgba(0,255,178,0.05) 14%,rgba(255,255,255,0.02) 28%,transparent 46%,rgba(0,212,255,0.07) 68%,rgba(255,255,255,0.12) 100%);
+  border:1px solid rgba(255,255,255,0.16);
+  box-shadow:0 0 60px rgba(0,255,178,0.12),0 0 140px rgba(139,124,248,0.1),inset 0 0 60px rgba(0,0,0,0.5),inset 0 0 2px rgba(255,255,255,0.3)}
+.capsule::before{content:'';position:absolute;top:0;left:14%;width:12%;height:100%;
+  background:linear-gradient(rgba(255,255,255,0.35),rgba(255,255,255,0.02));filter:blur(3px);transform:skewX(-6deg)}
+.capsule::after{content:'';position:absolute;top:0;right:20%;width:6%;height:100%;
+  background:linear-gradient(rgba(255,255,255,0.18),transparent);filter:blur(2px);transform:skewX(-6deg)}
+.capsule-cap{position:absolute;left:50%;width:190px;height:26px;transform:translateX(-50%);border-radius:50%;z-index:6;
+  background:linear-gradient(180deg,#1a2233 0%,#070b14 100%);border:1px solid rgba(0,255,178,0.25);
+  box-shadow:0 0 20px rgba(0,255,178,0.15)}
+.capsule-cap.top{top:-13px}
+.capsule-cap.bottom{bottom:-13px}
+
+.skull-wrap{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:3;
+  animation:skullfloat 5s ease-in-out infinite}
+@keyframes skullfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.skull-3d{width:78%;transform-style:preserve-3d;animation:skullspin 13s linear infinite}
+@keyframes skullspin{from{transform:rotateY(0deg)}to{transform:rotateY(360deg)}}
+.skull-svg{width:100%;height:auto;overflow:visible;filter:drop-shadow(0 0 14px rgba(0,255,178,0.55)) drop-shadow(0 0 34px rgba(0,212,255,0.35))}
+.skull-outline{fill:rgba(0,255,178,0.045);stroke:url(#skullGrad);stroke-width:1.6;animation:flicker 3.6s ease-in-out infinite}
+.skull-feature{fill:none;stroke:url(#skullGrad);stroke-width:1.2;opacity:0.9}
+.skull-eye{fill:rgba(0,20,15,0.75);stroke:var(--accent2);stroke-width:1.3}
+.skull-wire{fill:none;stroke:var(--accent2);stroke-width:0.6;opacity:0.35}
+.skull-teeth{stroke:rgba(0,255,178,0.55);stroke-width:1}
+@keyframes flicker{0%,100%{opacity:1}42%{opacity:1}44%{opacity:0.55}46%{opacity:1}72%{opacity:1}73%{opacity:0.6}75%{opacity:1}}
+
+.skull-scan{position:absolute;left:6%;right:6%;height:3px;z-index:4;pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(0,255,178,0.9),transparent);
+  box-shadow:0 0 14px rgba(0,255,178,0.7);animation:scanmove 3.2s ease-in-out infinite}
+@keyframes scanmove{0%,100%{top:14%}50%{top:82%}}
+
+.mote{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--accent);z-index:4;
+  box-shadow:0 0 6px var(--accent);animation:moterise linear infinite}
+@keyframes moterise{from{transform:translateY(0);opacity:0}10%{opacity:1}90%{opacity:1}to{transform:translateY(-320px);opacity:0}}
+
+.hud{position:absolute;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.08em;color:var(--text3);
+  text-transform:uppercase;display:flex;flex-direction:column;gap:2px;z-index:5}
+.hud span{color:var(--accent);font-weight:700}
+.hud .hud-ok{color:var(--accent2)}
+.hud-tl{top:0;left:0}
+.hud-tr{top:0;right:0;text-align:right}
+.hud-bl{bottom:40px;left:0}
+.hud-br{bottom:40px;right:0;text-align:right}
+.hud-line{width:26px;height:1px;background:rgba(0,255,178,0.4);margin:3px 0}
+.hud-tr .hud-line,.hud-br .hud-line{margin-left:auto}
+
+@media(max-width:1180px){
+  .hero-inner{grid-template-columns:1fr}
+  .holo-side{height:420px;order:-1}
+  .hero-copy{max-width:none}
+}
+@media(max-width:640px){
+  .holo-side{height:340px}
+  .capsule{width:170px}
+}
+
+/* ═══ MARQUEE ═══ */
+.marquee-wrap{border-top:1px solid rgba(0,255,178,0.08);border-bottom:1px solid rgba(0,255,178,0.08);
+  overflow:hidden;background:rgba(5,8,15,0.95);position:relative;z-index:2}
+.marquee-wrap::before,.marquee-wrap::after{content:'';position:absolute;top:0;bottom:0;width:140px;z-index:2;pointer-events:none}
+.marquee-wrap::before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
+.marquee-wrap::after{right:0;background:linear-gradient(-90deg,var(--bg),transparent)}
+.marquee-track{display:flex;width:max-content;animation:marquee 34s linear infinite;padding:13px 0}
+.marquee-track:hover{animation-play-state:paused}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee-item{display:flex;align-items:center;gap:10px;padding:0 30px;
+  font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--text3);white-space:nowrap;border-right:1px solid var(--border)}
+.mi-dot{color:var(--accent);font-size:15px}
+
+/* ═══ SECTION ═══ */
+.wrap{max-width:1280px;margin:0 auto;padding:0 48px}
+.section{padding:96px 0;position:relative;z-index:2}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity 0.6s cubic-bezier(0.16,1,0.3,1),transform 0.6s cubic-bezier(0.16,1,0.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:0.1s}.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}.reveal-delay-4{transition-delay:0.4s}
+.section-label{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.section-label::before{content:'';width:28px;height:1px;background:linear-gradient(90deg,var(--accent),transparent)}
+.section-label.p::before{background:linear-gradient(90deg,var(--purple),transparent)}
+.section-label.p{color:var(--purple)}
+.section-h2{font-size:clamp(30px,4vw,50px);font-weight:800;letter-spacing:-0.03em;line-height:1.08;margin-bottom:14px}
+.section-sub{font-size:15.5px;color:var(--text2);line-height:1.7;max-width:560px;margin-bottom:48px}
+.glow-divider{position:relative;z-index:2;height:1px;margin:0;
+  background:linear-gradient(90deg,transparent 5%,rgba(0,255,178,0.2) 50%,transparent 95%);box-shadow:0 0 20px rgba(0,255,178,0.1)}
+
+/* ═══ TRUST ═══ */
+.trust-section{padding:0;position:relative;z-index:2}
+.trust-inner{background:rgba(5,8,15,0.6);border-top:1px solid rgba(0,255,178,0.08);border-bottom:1px solid rgba(0,255,178,0.08);
+  padding:56px 48px;backdrop-filter:blur(24px)}
+.trust-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.trust-item{background:rgba(5,8,15,0.8);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:24px;
+  transition:all 0.35s;position:relative;overflow:hidden}
+.trust-item:hover{border-color:rgba(0,255,178,0.2);transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,0.5),0 0 50px rgba(0,255,178,0.06)}
+.trust-icon{width:40px;height:40px;border-radius:11px;background:rgba(0,255,178,0.05);border:1px solid rgba(0,255,178,0.2);
+  display:flex;align-items:center;justify-content:center;margin-bottom:14px;box-shadow:0 0 24px rgba(0,255,178,0.08)}
+.trust-icon svg{width:18px;height:18px;fill:var(--accent)}
+.trust-title{font-size:14.5px;font-weight:700;margin-bottom:7px;letter-spacing:-0.01em}
+.trust-desc{font-size:12.5px;color:var(--text2);line-height:1.6}
+@media(max-width:960px){.trust-grid{grid-template-columns:1fr 1fr}.trust-inner{padding:36px 20px}}
+
+/* ═══ AUTH CARD ═══ */
+.auth-section{position:relative;z-index:2}
+.auth-shell{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.auth-card{background:rgba(5,8,15,0.85);border:1px solid rgba(0,255,178,0.15);border-radius:20px;
+  padding:38px 38px 32px;position:relative;overflow:hidden;max-width:440px;
+  box-shadow:0 0 0 1px rgba(0,255,178,0.05),0 30px 90px rgba(0,0,0,0.7),0 0 120px rgba(0,255,178,0.06)}
+.auth-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent 5%,rgba(0,255,178,0.7) 50%,transparent 95%);box-shadow:0 0 16px rgba(0,255,178,0.4)}
+.auth-tabs{display:flex;gap:4px;background:rgba(255,255,255,0.03);border:1px solid var(--border2);border-radius:12px;padding:4px;margin-bottom:28px}
+.auth-tab{flex:1;height:38px;border-radius:9px;background:transparent;border:none;color:var(--text3);
+  font-size:12.5px;font-weight:700;letter-spacing:0.04em;transition:all 0.25s}
+.auth-tab.active{background:rgba(0,255,178,0.1);color:var(--accent);box-shadow:0 0 20px rgba(0,255,178,0.1),inset 0 0 0 1px rgba(0,255,178,0.3)}
+.auth-panel{display:none}
+.auth-panel.active{display:block;animation:fadeIn 0.25s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:11px;font-weight:600;letter-spacing:0.05em;color:var(--text3);text-transform:uppercase;margin-bottom:7px}
+.field-input{position:relative}
+.field-input input{width:100%;height:46px;background:rgba(255,255,255,0.02);border:1px solid var(--border2);border-radius:10px;
+  padding:0 44px 0 16px;color:var(--text);font-size:14px;transition:all 0.2s;outline:none}
+.field-input input:focus{border-color:rgba(0,255,178,0.5);box-shadow:0 0 0 3px rgba(0,255,178,0.08)}
+.field-input svg.f-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:15px;height:15px;fill:var(--text3);pointer-events:none}
+.field-input.has-icon input{padding-left:42px}
+.field-toggle{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--text3);
+  width:24px;height:24px;display:flex;align-items:center;justify-content:center}
+.field-toggle:hover{color:var(--accent)}
+.field-toggle svg{width:16px;height:16px;fill:currentColor}
+.field-row{display:flex;justify-content:space-between;align-items:center;margin:-4px 0 20px}
+.field-check{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text2)}
+.field-check input{accent-color:var(--accent)}
+.field-link{font-size:12px;color:var(--accent);font-weight:600}
+.field-link:hover{text-decoration:underline}
+.btn-auth{width:100%;height:50px;background:linear-gradient(135deg,rgba(0,255,178,0.18) 0%,rgba(0,212,255,0.1) 100%);
+  color:var(--accent);border:1px solid rgba(0,255,178,0.5);border-radius:10px;
+  font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;
+  box-shadow:0 0 30px rgba(0,255,178,0.15),inset 0 1px 0 rgba(0,255,178,0.2);transition:all 0.25s;
+  display:flex;align-items:center;justify-content:center;gap:8px}
+.btn-auth:hover{box-shadow:0 0 46px rgba(0,255,178,0.3),inset 0 1px 0 rgba(0,255,178,0.3);border-color:rgba(0,255,178,0.8);transform:translateY(-1px)}
+.auth-divider{display:flex;align-items:center;gap:14px;margin:22px 0;color:var(--text3);font-size:11px;letter-spacing:0.05em;text-transform:uppercase}
+.auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:var(--border2)}
+.auth-oauth{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
+.btn-oauth{height:46px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid var(--border2);
+  color:var(--text2);font-size:12.5px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px;transition:all 0.22s}
+.btn-oauth:hover{border-color:rgba(255,255,255,0.2);color:var(--text);background:rgba(255,255,255,0.05)}
+.btn-oauth svg{width:15px;height:15px}
+.auth-free{display:flex;align-items:center;gap:10px;background:rgba(0,255,178,0.05);border:1px solid rgba(0,255,178,0.2);
+  border-radius:10px;padding:12px 14px;font-size:12px;color:var(--text2);line-height:1.5}
+.auth-free svg{width:20px;height:20px;fill:var(--accent);flex-shrink:0}
+.auth-free b{color:var(--accent)}
+.auth-toast{display:none;align-items:center;gap:10px;background:rgba(0,255,178,0.08);border:1px solid rgba(0,255,178,0.35);
+  border-radius:10px;padding:13px 15px;font-size:12.5px;color:var(--text);margin-top:16px;line-height:1.5}
+.auth-toast.show{display:flex;animation:fadeIn 0.3s ease}
+.auth-toast svg{width:18px;height:18px;fill:var(--accent);flex-shrink:0}
+.auth-copy h3{font-size:clamp(24px,2.6vw,34px);font-weight:800;letter-spacing:-0.02em;line-height:1.15;margin-bottom:16px}
+.auth-copy p{font-size:14.5px;color:var(--text2);line-height:1.8;margin-bottom:14px;max-width:440px}
+.auth-list{display:flex;flex-direction:column;gap:12px;margin-top:22px}
+.auth-list-item{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--text2)}
+.auth-list-item svg{width:16px;height:16px;fill:var(--accent);flex-shrink:0}
+@media(max-width:1024px){.auth-shell{grid-template-columns:1fr}.auth-card{max-width:none;margin:0 auto;width:100%}.auth-copy{order:-1;text-align:center}.auth-copy p{margin-left:auto;margin-right:auto}.auth-list{align-items:center}}
+
+/* ═══ CONFIG / CALCULATOR ═══ */
+.config-panel{background:rgba(5,8,15,0.8);border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:36px;
+  position:relative;overflow:hidden}
+.config-panel::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent 5%,rgba(139,124,248,0.6) 50%,transparent 95%)}
+.config-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.config-group{margin-bottom:26px}
+.config-label{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--text3);margin-bottom:12px;display:flex;align-items:center;justify-content:space-between}
+.config-label b{color:var(--purple);font-weight:700}
+.pill-row{display:flex;gap:8px;flex-wrap:wrap}
+.pill{padding:10px 16px;border-radius:100px;border:1px solid var(--border2);background:rgba(255,255,255,0.02);
+  color:var(--text2);font-size:12.5px;font-weight:600;transition:all 0.2s;display:flex;flex-direction:column;align-items:center;gap:1px}
+.pill small{font-size:9.5px;color:var(--text3);font-weight:500}
+.pill.active{background:rgba(0,255,178,0.1);border-color:rgba(0,255,178,0.5);color:var(--accent);box-shadow:0 0 20px rgba(0,255,178,0.12)}
+.pill.active small{color:var(--accent);opacity:0.75}
+.ratio-row{display:flex;gap:10px;flex-wrap:wrap}
+.ratio-pill{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 8px;width:76px;
+  border-radius:12px;border:1px solid var(--border2);background:rgba(255,255,255,0.02);transition:all 0.2s;color:var(--text2)}
+.ratio-pill.active{border-color:rgba(0,212,255,0.5);color:var(--accent2);background:rgba(0,212,255,0.08);box-shadow:0 0 20px rgba(0,212,255,0.12)}
+.ratio-box{border:1.5px solid currentColor;border-radius:3px}
+.ratio-label{font-size:10px;font-weight:700}
+.config-result{background:rgba(0,255,178,0.04);border:1px solid rgba(0,255,178,0.2);border-radius:14px;
+  padding:22px 26px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-top:8px}
+.result-label{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3);margin-bottom:6px}
+.result-val{font-family:'JetBrains Mono',monospace;font-size:32px;font-weight:700;color:var(--accent);text-shadow:0 0 24px rgba(0,255,178,0.4);line-height:1}
+.result-val span{font-size:14px;color:var(--text2);font-weight:500;margin-left:6px}
+.result-note{font-size:12px;color:var(--text3);max-width:280px;line-height:1.6}
+.result-cta{height:48px;padding:0 26px;background:rgba(0,255,178,0.1);color:var(--accent);border:1px solid rgba(0,255,178,0.5);
+  border-radius:10px;font-size:12.5px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;
+  box-shadow:0 0 24px rgba(0,255,178,0.15);transition:all 0.2s}
+.result-cta:hover{box-shadow:0 0 40px rgba(0,255,178,0.3);border-color:var(--accent)}
+@media(max-width:960px){.config-grid{grid-template-columns:1fr}}
+
+/* ═══ PRICING ═══ */
+.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.price-card{background:rgba(5,8,15,0.8);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:28px 24px;
+  display:flex;flex-direction:column;position:relative;transition:all 0.35s cubic-bezier(0.16,1,0.3,1)}
+.price-card:hover{transform:translateY(-6px);border-color:rgba(0,255,178,0.2);box-shadow:0 20px 60px rgba(0,0,0,0.6),0 0 60px rgba(0,255,178,0.06)}
+.price-card.feat{border-color:rgba(0,255,178,0.4);background:rgba(0,255,178,0.03);
+  box-shadow:0 0 0 1px rgba(0,255,178,0.15),0 0 60px rgba(0,255,178,0.1)}
+.price-badge{position:absolute;top:-11px;left:24px;background:var(--accent);color:#020408;font-size:10px;font-weight:800;
+  letter-spacing:0.06em;text-transform:uppercase;padding:5px 12px;border-radius:100px}
+.price-name{font-size:13px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--text2);margin-bottom:14px}
+.price-val{font-family:'JetBrains Mono',monospace;font-size:34px;font-weight:700;color:var(--text);margin-bottom:4px}
+.price-val span{font-size:13px;color:var(--text3);font-weight:500}
+.price-credits{font-size:12px;color:var(--accent);font-weight:600;margin-bottom:22px}
+.price-feats{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:26px;flex:1}
+.price-feats li{display:flex;align-items:flex-start;gap:9px;font-size:12.5px;color:var(--text2);line-height:1.5}
+.price-feats li svg{width:14px;height:14px;fill:var(--accent);flex-shrink:0;margin-top:2px}
+.btn-price{height:44px;border-radius:10px;background:rgba(255,255,255,0.03);border:1px solid var(--border2);
+  color:var(--text);font-size:12px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;transition:all 0.2s}
+.price-card.feat .btn-price{background:rgba(0,255,178,0.12);border-color:rgba(0,255,178,0.5);color:var(--accent)}
+.btn-price:hover{border-color:rgba(0,255,178,0.4);color:var(--accent)}
+@media(max-width:960px){.pricing-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.pricing-grid{grid-template-columns:1fr}}
+
+/* ═══ INTEGRATIONS ═══ */
+.integ-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.integ-card{background:rgba(5,8,15,0.8);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:20px;
+  display:flex;align-items:flex-start;gap:14px;transition:all 0.3s;position:relative}
+.integ-card:hover{border-color:rgba(139,124,248,0.3);transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,0.5),0 0 40px rgba(139,124,248,0.08)}
+.integ-card.rec{border-color:rgba(0,255,178,0.35);background:rgba(0,255,178,0.03)}
+.integ-mono{width:42px;height:42px;border-radius:11px;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  font-family:'JetBrains Mono',monospace;font-weight:800;font-size:13px;
+  background:rgba(139,124,248,0.1);border:1px solid rgba(139,124,248,0.3);color:var(--purple)}
+.integ-card.rec .integ-mono{background:rgba(0,255,178,0.1);border-color:rgba(0,255,178,0.35);color:var(--accent)}
+.integ-name{font-size:13.5px;font-weight:700;margin-bottom:3px;display:flex;align-items:center;gap:8px}
+.integ-name small{font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:0.06em;
+  padding:2px 7px;border-radius:100px;text-transform:uppercase}
+.integ-name .st-live{background:rgba(0,255,178,0.12);color:var(--accent);border:1px solid rgba(0,255,178,0.3)}
+.integ-name .st-soon{background:rgba(255,209,102,0.1);color:var(--yellow);border:1px solid rgba(255,209,102,0.3)}
+.integ-desc{font-size:11.5px;color:var(--text3);line-height:1.55}
+@media(max-width:960px){.integ-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.integ-grid{grid-template-columns:1fr}}
+
+/* ═══ TERMINAL ═══ */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.about-p{font-size:14.5px;color:var(--text2);line-height:1.8;margin-bottom:16px;max-width:460px}
+.about-terminal{background:rgba(2,4,8,0.95);border:1px solid rgba(0,255,178,0.15);border-radius:16px;overflow:hidden;
+  box-shadow:0 0 0 1px rgba(0,255,178,0.05),0 0 80px rgba(0,0,0,0.8),0 0 120px rgba(0,255,178,0.08);position:relative}
+.about-terminal::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;z-index:2;
+  background:linear-gradient(90deg,transparent 5%,rgba(0,255,178,0.7) 50%,transparent 95%);box-shadow:0 0 16px rgba(0,255,178,0.4)}
+.terminal-bar{background:rgba(8,12,24,0.95);padding:13px 20px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(0,255,178,0.08)}
+.t-dot{width:10px;height:10px;border-radius:50%}
+.t-dot.red{background:#FF5F56}.t-dot.yellow{background:#FFBD2E}.t-dot.green{background:#27C93F}
+.t-title{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3);letter-spacing:0.06em;margin-left:8px}
+.terminal-body{padding:26px}
+.t-line{font-family:'JetBrains Mono',monospace;font-size:12.5px;line-height:2.05;display:flex;gap:12px;flex-wrap:wrap}
+.t-prompt{color:var(--accent)}
+.t-cmd{color:var(--text)}
+.t-val{color:var(--purple)}
+.t-comment{color:var(--text3)}
+.t-sep{height:1px;background:rgba(0,255,178,0.06);margin:6px 0}
+@media(max-width:960px){.about-grid{grid-template-columns:1fr;gap:40px}}
+
+/* ═══ FOOTER ═══ */
+.footer{border-top:1px solid rgba(0,255,178,0.08);position:relative;z-index:2;background:rgba(2,4,8,0.98)}
+.footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent 5%,rgba(0,255,178,0.3) 50%,transparent 95%)}
+.footer-top{padding:60px 48px 44px;max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;border-bottom:1px solid var(--border)}
+.footer-brand .footer-logo{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;
+  letter-spacing:0.14em;color:var(--text);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.footer-brand .footer-logo b{color:var(--accent)}
+.footer-brand p{font-size:13px;color:var(--text3);line-height:1.7;max-width:270px;margin-bottom:20px}
+.footer-social{display:flex;gap:8px;flex-wrap:wrap}
+.footer-social a{width:34px;height:34px;border-radius:var(--r);border:1px solid var(--border2);
+  display:flex;align-items:center;justify-content:center;color:var(--text3);transition:all 0.22s}
+.footer-social a:hover{border-color:rgba(0,255,178,0.4);color:var(--accent);background:rgba(0,255,178,0.05);box-shadow:0 0 20px rgba(0,255,178,0.12)}
+.footer-social svg{width:14px;height:14px;fill:currentColor}
+.footer-col h4{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text3);margin-bottom:18px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col ul li a{font-size:13px;color:var(--text3);transition:color 0.2s}
+.footer-col ul li a:hover{color:var(--accent)}
+.footer-bottom{max-width:1280px;margin:0 auto;padding:22px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-copy{font-size:12px;color:var(--text3)}
+.footer-mono{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3);letter-spacing:0.06em}
+@media(max-width:960px){
+  .footer-top{grid-template-columns:1fr 1fr;gap:32px;padding:40px 20px}
+  .footer-bottom{padding:20px}
+  .nav{padding:0 20px}
+  .wrap{padding:0 20px}
+  .hero{padding:100px 20px 50px}
+  .trust-inner{padding:36px 20px}
+  .pricing-grid{gap:12px}
+}
+</style>
+</head>
+<body>
+
+<div class="amb">
+  <div class="amb-blob a1"></div>
+  <div class="amb-blob a2"></div>
+  <div class="amb-blob a3"></div>
+</div>
+<div class="grid-bg"></div>
+<canvas id="particleCanvas"></canvas>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-left">
+    <a href="/" class="hub-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span>Veronica Hub</span></a>
+    <div class="logo"><div class="logo-pulse"></div>VIDEO<b>·AI</b></div>
+    <div class="nav-links">
+      <a href="#config">Configurações</a><a href="#precos">Créditos</a><a href="#integracoes">Integrações</a>
+    </div>
+  </div>
+  <div class="nav-right">
+    <div class="nav-social">
+      <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg></a>
+      <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2 .25 2.5.42.6.24 1 .5 1.5 1 .5.5.75.9 1 1.5.17.5.36 1.3.42 2.5.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 2-.42 2.5-.24.6-.5 1-1 1.5-.5.5-.9.75-1.5 1-.5.17-1.3.36-2.5.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-2-.25-2.5-.42-.6-.24-1-.5-1.5-1-.5-.5-.75-.9-1-1.5-.17-.5-.36-1.3-.42-2.5C2.21 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.25-2 .42-2.5.24-.6.5-1 1-1.5.5-.5.9-.75 1.5-1 .5-.17 1.3-.36 2.5-.42C8.4 2.21 8.8 2.2 12 2.2zm0 4.5a5.3 5.3 0 1 0 0 10.6 5.3 5.3 0 0 0 0-10.6zm0 1.8a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7zm5.5-2a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/></svg></a>
+      <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.5 2h-3.2v13.6a2.8 2.8 0 1 1-2-2.7v-3.3a6.1 6.1 0 1 0 5.2 6V8.8a7.6 7.6 0 0 0 4.5 1.5V7.1c-2.4 0-4.5-1.9-4.5-4.4V2z"/></svg></a>
+      <a href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.2 2h3.4L13.8 10 23 22h-7L10.2 14 3.5 22H.1l8.4-9.6L0 2h7.2l5.4 7.1L18.2 2zm-1.2 18h1.9L7.1 4H5.1l11.9 16z"/></svg></a>
+    </div>
+    <button class="btn-nav" onclick="switchTab('signup');document.getElementById('acesso').scrollIntoView({behavior:'smooth'})">Criar conta grátis</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-overlay-bg"></div>
+  <div class="hero-scanlines"></div>
+  <div class="hc tl"></div><div class="hc br"></div>
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="hero-badge reveal">
+        <div class="badge-dot"></div>
+        Extensão Oficial · Veronica Hub · 2026
+      </div>
+      <h1 class="hero-h1">
+        <span class="w1 reveal reveal-delay-1">Sua ideia.</span>
+        <span class="w2 reveal reveal-delay-2">Vídeo em segundos.</span>
+      </h1>
+      <p class="hero-sub reveal reveal-delay-3">Motor de geração de vídeo por IA da Veronica Hub. Texto ou imagem viram vídeo ultra-realista até 4K, com os motores mais poderosos do mercado global rodando por trás.</p>
+      <div class="hero-tags reveal reveal-delay-4">
+        <div class="hero-tag"><svg viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7l-9-5zm-2 13l-3-3 1.41-1.41L10 12.17l5.59-5.58L17 8l-7 7z"/></svg>2 vídeos grátis em 1080p</div>
+        <div class="hero-tag"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>Até 4K Ultra</div>
+        <div class="hero-tag"><svg viewBox="0 0 24 24"><path d="M13 2.05V4.07C16.94 4.56 20 7.93 20 12s-3.06 7.44-7 7.93v2.02c4.95-.5 9-4.76 9-9.95 0-5.19-4.05-9.45-9-9.95zM11 2.05C6.05 2.55 2 6.81 2 12c0 5.19 4.05 9.45 9 9.95V19.93C7.06 19.44 4 16.07 4 12s3.06-7.44 7-7.93V2.05z"/></svg>Multi-engine</div>
+      </div>
+      <div class="hero-stats reveal">
+        <div class="hero-stat"><div class="stat-n">6<em>+</em></div><div class="stat-l">Motores de IA</div></div>
+        <div class="hero-stat"><div class="stat-n">4K<em>Ultra</em></div><div class="stat-l">Resolução máx.</div></div>
+        <div class="hero-stat"><div class="stat-n">2<em>grátis</em></div><div class="stat-l">Vídeos ao criar conta</div></div>
+      </div>
+    </div>
+    <div class="holo-side">
+      <div class="holo-stage">
+        <div class="holo-base-glow"></div>
+        <div class="holo-base-ring"></div>
+        <div class="capsule">
+          <div class="skull-wrap">
+            <div class="skull-3d">
+              <svg class="skull-svg" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="skullGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#00FFB2"/>
+                    <stop offset="55%" stop-color="#00D4FF"/>
+                    <stop offset="100%" stop-color="#8B7CF8"/>
+                  </linearGradient>
+                  <clipPath id="skullClip">
+                    <path d="M100,18 C60,18 34,55 34,95 C34,120 40,132 46,148 C40,150 36,158 36,168 C36,180 44,188 56,190 C58,200 64,214 72,222 C78,228 86,232 100,232 C114,232 122,228 128,222 C136,214 142,200 144,190 C156,188 164,180 164,168 C164,158 160,150 154,148 C160,132 166,120 166,95 C166,55 140,18 100,18 Z"/>
+                  </clipPath>
+                </defs>
+                <path class="skull-outline" d="M100,18 C60,18 34,55 34,95 C34,120 40,132 46,148 C40,150 36,158 36,168 C36,180 44,188 56,190 C58,200 64,214 72,222 C78,228 86,232 100,232 C114,232 122,228 128,222 C136,214 142,200 144,190 C156,188 164,180 164,168 C164,158 160,150 154,148 C160,132 166,120 166,95 C166,55 140,18 100,18 Z"/>
+                <g clip-path="url(#skullClip)">
+                  <ellipse class="skull-wire" cx="100" cy="40" rx="58" ry="10"/>
+                  <ellipse class="skull-wire" cx="100" cy="70" rx="64" ry="12"/>
+                  <ellipse class="skull-wire" cx="100" cy="105" rx="66" ry="14"/>
+                  <ellipse class="skull-wire" cx="100" cy="145" rx="60" ry="13"/>
+                  <ellipse class="skull-wire" cx="100" cy="180" rx="44" ry="11"/>
+                  <ellipse class="skull-wire" cx="100" cy="210" rx="28" ry="9"/>
+                  <path class="skull-wire" d="M60,20 C40,60 40,150 70,225"/>
+                  <path class="skull-wire" d="M140,20 C160,60 160,150 130,225"/>
+                </g>
+                <path class="skull-feature" d="M40,96 C46,90 60,84 78,88"/>
+                <path class="skull-feature" d="M160,96 C154,90 140,84 122,88"/>
+                <path class="skull-eye" d="M62,96 C62,88 69,83 78,83 C88,83 94,90 94,99 C94,110 87,121 78,123 C69,121 62,109 62,96 Z"/>
+                <path class="skull-eye" d="M138,96 C138,88 131,83 122,83 C112,83 106,90 106,99 C106,110 113,121 122,123 C131,121 138,109 138,96 Z"/>
+                <path class="skull-feature" d="M100,112 L109,140 L100,132 L91,140 Z"/>
+                <path class="skull-feature" d="M56,190 C64,188 72,188 80,190 C88,192 112,192 120,190 C128,188 136,188 144,190"/>
+                <g class="skull-teeth">
+                  <line x1="70" y1="192" x2="70" y2="200"/><line x1="78" y1="193" x2="78" y2="202"/>
+                  <line x1="86" y1="194" x2="86" y2="203"/><line x1="94" y1="194" x2="94" y2="203"/>
+                  <line x1="106" y1="194" x2="106" y2="203"/><line x1="114" y1="194" x2="114" y2="203"/>
+                  <line x1="122" y1="193" x2="122" y2="202"/><line x1="130" y1="192" x2="130" y2="200"/>
+                </g>
+                <path class="skull-feature" d="M46,148 C60,152 140,152 154,148"/>
+              </svg>
+            </div>
+          </div>
+          <div class="skull-scan"></div>
+          <div class="capsule-cap top"></div>
+          <div class="capsule-cap bottom"></div>
+        </div>
+        <div class="mote" style="left:35%;bottom:60px;animation-duration:4.2s;animation-delay:0s"></div>
+        <div class="mote" style="left:52%;bottom:80px;animation-duration:5.1s;animation-delay:1.1s"></div>
+        <div class="mote" style="left:63%;bottom:50px;animation-duration:3.8s;animation-delay:2s"></div>
+        <div class="mote" style="left:44%;bottom:100px;animation-duration:4.7s;animation-delay:0.6s"></div>
+        <div class="mote" style="left:58%;bottom:65px;animation-duration:4.3s;animation-delay:1.7s"></div>
+        <div class="hud hud-tl">SCAN.ID<span id="hudId">#VX-2941</span><div class="hud-line"></div></div>
+        <div class="hud hud-tr">NEURAL CORE<span class="hud-ok">● ONLINE</span><div class="hud-line"></div></div>
+        <div class="hud hud-bl"><div class="hud-line"></div>MOTOR ATIVO<span id="hudEngine">VEO 3</span></div>
+        <div class="hud hud-br"><div class="hud-line"></div>RENDER<span id="hudStatus">STANDBY</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track" id="marqueeTrack"></div>
+</div>
+
+<!-- TRUST -->
+<div class="trust-section">
+  <div class="trust-inner">
+    <div class="trust-grid reveal">
+      <div class="trust-item">
+        <div class="trust-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></div>
+        <div class="trust-title">Multi-Engine</div>
+        <div class="trust-desc">Roteamos seu prompt para o melhor motor de IA disponível conforme qualidade e custo.</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg></div>
+        <div class="trust-title">Até 4K Ultra</div>
+        <div class="trust-desc">Renderização em 1K, 2K ou 4K Ultra, com upscale nativo dos motores parceiros.</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon"><svg viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg></div>
+        <div class="trust-title">Controle Total</div>
+        <div class="trust-desc">Aspecto, duração, qualidade e resolução — mesmas opções avançadas de configuração de outras ferramentas líderes.</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg></div>
+        <div class="trust-title">Créditos Simples</div>
+        <div class="trust-desc">Consumo transparente por segundo, qualidade e resolução. Sem letras miúdas.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="glow-divider"></div>
+
+<!-- AUTH / ACESSO -->
+<section class="section auth-section" id="acesso">
+  <div class="wrap">
+    <div class="auth-shell">
+      <div class="auth-copy reveal">
+        <div class="section-label">Acesso</div>
+        <h3>Entre na sua conta<br>ou comece agora.</h3>
+        <p>Crie sua sessão Veronica Video AI usando o mesmo login da Veronica Hub ou um e-mail novo. Toda conta nova recebe créditos gratuitos automaticamente.</p>
+        <div class="auth-list">
+          <div class="auth-list-item"><svg viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7l-9-5zm-2 13l-3-3 1.41-1.41L10 12.17l5.59-5.58L17 8l-7 7z"/></svg>2 vídeos grátis em Full HD (1080p)</div>
+          <div class="auth-list-item"><svg viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7l-9-5zm-2 13l-3-3 1.41-1.41L10 12.17l5.59-5.58L17 8l-7 7z"/></svg>Sem cartão de crédito para testar</div>
+          <div class="auth-list-item"><svg viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7l-9-5zm-2 13l-3-3 1.41-1.41L10 12.17l5.59-5.58L17 8l-7 7z"/></svg>Acesso unificado com a Veronica Hub</div>
+        </div>
+      </div>
+
+      <div class="auth-card reveal reveal-delay-1">
+        <div class="auth-tabs">
+          <button class="auth-tab active" id="tabLogin" onclick="switchTab('login')">Entrar</button>
+          <button class="auth-tab" id="tabSignup" onclick="switchTab('signup')">Criar conta</button>
+        </div>
+
+        <form class="auth-panel active" id="panelLogin" onsubmit="return fakeSubmit(event,'login')">
+          <div class="field">
+            <label>E-mail</label>
+            <div class="field-input has-icon">
+              <svg class="f-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              <input type="email" required placeholder="voce@email.com">
+            </div>
+          </div>
+          <div class="field">
+            <label>Senha</label>
+            <div class="field-input">
+              <input type="password" id="pwLogin" required placeholder="••••••••">
+              <button type="button" class="field-toggle" onclick="togglePw('pwLogin',this)">
+                <svg viewBox="0 0 24 24"><path d="M12 5c-7 0-10 7-10 7s3 7 10 7 10-7 10-7-3-7-10-7zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-8a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="field-row">
+            <label class="field-check"><input type="checkbox">Lembrar de mim</label>
+            <a href="#" class="field-link">Esqueci a senha</a>
+          </div>
+          <button class="btn-auth" type="submit">
+            Entrar
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <div class="auth-divider">ou continue com</div>
+          <div class="auth-oauth">
+            <button type="button" class="btn-oauth" onclick="return fakeSubmit(event,'login')"><svg viewBox="0 0 488 512" fill="currentColor"><path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"/></svg>Google</button>
+            <button type="button" class="btn-oauth" onclick="return fakeSubmit(event,'login')"><svg viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141 8 184.8 8 273.5c0 26.2 4.8 53.3 14.4 81.2 12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-65.7-90-65.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>Apple</button>
+          </div>
+          <div class="auth-free">
+            <svg viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7l-9-5zm-2 13l-3-3 1.41-1.41L10 12.17l5.59-5.58L17 8l-7 7z"/></svg>
+            <div>Login único da <b>Veronica Hub</b>. Seus créditos de vídeo ficam salvos na mesma conta.</div>
+          </div>
+          <div class="auth-toast" id="toastLogin">
+            <svg viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7l-9-5zm-2 13l-3-3 1.41-1.41L10 12.17l5.59-5.58L17 8l-7 7z"/></svg>
+            <div>Sessão iniciada (demo). Redirecionando para o painel de geração de vídeo…</div>
+          </div>
+        </form>
+
+        <form class="auth-panel" id="panelSignup" onsubmit="return fakeSubmit(event,'signup')">
+          <div class="field">
+            <label>Nome</label>
+            <div class="field-input has-icon">
+              <svg class="f-icon" viewBox="0 0 24 24"><path d="M12 12c2.7 0 8 1.34 8 4v2H4v-2c0-2.66 5.3-4 8-4zm0-2a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/></svg>
+              <input type="text" required placeholder="Seu nome">
+            </div>
+          </div>
+          <div class="field">
+            <label>E-mail</label>
+            <div class="field-input has-icon">
+              <svg class="f-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              <input type="email" required placeholder="voce@email.com">
+            </div>
+          </div>
+          <div class="field">
+            <label>Senha</label>
+            <div class="field-input">
+              <input type="password" id="pwSignup" required placeholder="Mínimo 8 caracteres">
+              <button type="button" class="field-toggle" onclick="togglePw('pwSignup',this)">
+                <svg viewBox="0 0 24 24"><path d="M12 5c-7 0-10 7-10 7s3 7 10 7 10-7 10-7-3-7-10-7zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-8a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="field-row">
+            <label class="field-check"><input type="checkbox" required>Aceito os Termos e a Privacidade</label>
+          </div>
+          <button class="btn-auth" type="submit">
+            Criar conta grátis
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <div class="auth-divider">ou continue com</div>
+          <div class="auth-oauth">
+            <button type="button" class="btn-oauth" onclick="return fakeSubmit(event,'signup')"><svg viewBox="0 0 488 512" fill="currentColor"><path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"/></svg>Google</button>
+            <button type="button" class="btn-oauth" onclick="return fakeSubmit(event,'signup')"><svg viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141 8 184.8 8 273.5c0 26.2 4.8 53.3 14.4 81.2 12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-65.7-90-65.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>Apple</button>
+          </div>
+          <div class="auth-free">
+            <svg viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7l-9-5zm-2 13l-3-3 1.41-1.41L10 12.17l5.59-5.58L17 8l-7 7z"/></svg>
+            <div><b>2 vídeos grátis em 1080p</b> creditados automaticamente na criação da conta.</div>
+          </div>
+          <div class="auth-toast" id="toastSignup">
+            <svg viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7l-9-5zm-2 13l-3-3 1.41-1.41L10 12.17l5.59-5.58L17 8l-7 7z"/></svg>
+            <div>Conta criada (demo) — <b>2 créditos de vídeo 1080p</b> adicionados à sua conta.</div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- CONFIG / CALCULATOR -->
+<section class="section" id="config">
+  <div class="wrap">
+    <div class="section-label p reveal">Configuração de Geração</div>
+    <h2 class="section-h2 reveal">As mesmas opções<br>das ferramentas líderes.</h2>
+    <p class="section-sub reveal">Qualidade, duração, resolução e proporção de tela — controle total sobre cada take, com custo em créditos calculado em tempo real.</p>
+
+    <div class="config-panel reveal">
+      <div class="config-grid">
+        <div>
+          <div class="config-group">
+            <div class="config-label">Qualidade <b id="lblQuality">Médio</b></div>
+            <div class="pill-row" id="qualityRow">
+              <button class="pill" data-val="fast" data-mult="1">Fast<small>rápido</small></button>
+              <button class="pill active" data-val="medium" data-mult="1.8">Médio<small>equilibrado</small></button>
+              <button class="pill" data-val="quality" data-mult="3">Quality<small>máximo detalhe</small></button>
+            </div>
+          </div>
+          <div class="config-group">
+            <div class="config-label">Duração <b id="lblDuration">8s</b></div>
+            <div class="pill-row" id="durationRow">
+              <button class="pill" data-val="5" data-base="4">5s</button>
+              <button class="pill active" data-val="8" data-base="6">8s</button>
+              <button class="pill" data-val="10" data-base="8">10s</button>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="config-group">
+            <div class="config-label">Resolução <b id="lblRes">2K</b></div>
+            <div class="pill-row" id="resRow">
+              <button class="pill" data-val="1k" data-mult="1">1K<small>720p</small></button>
+              <button class="pill active" data-val="2k" data-mult="1.6">2K<small>1080p/1440p</small></button>
+              <button class="pill" data-val="4k" data-mult="2.5">4K<small>Ultra</small></button>
+            </div>
+          </div>
+          <div class="config-group">
+            <div class="config-label">Proporção de tela</div>
+            <div class="ratio-row" id="ratioRow">
+              <button class="ratio-pill active" data-val="16:9"><div class="ratio-box" style="width:26px;height:15px"></div><div class="ratio-label">16:9</div></button>
+              <button class="ratio-pill" data-val="9:16"><div class="ratio-box" style="width:15px;height:26px"></div><div class="ratio-label">9:16</div></button>
+              <button class="ratio-pill" data-val="1:1"><div class="ratio-box" style="width:20px;height:20px"></div><div class="ratio-label">1:1</div></button>
+              <button class="ratio-pill" data-val="4:3"><div class="ratio-box" style="width:24px;height:18px"></div><div class="ratio-label">4:3</div></button>
+              <button class="ratio-pill" data-val="21:9"><div class="ratio-box" style="width:28px;height:12px"></div><div class="ratio-label">21:9</div></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="config-result">
+        <div>
+          <div class="result-label">Custo estimado</div>
+          <div class="result-val" id="resultVal">11<span>créditos / vídeo</span></div>
+        </div>
+        <div class="result-note" id="resultNote">Coberto pelos seus 2 vídeos grátis em 1080p no plano Free.</div>
+        <button class="result-cta" onclick="switchTab('signup');document.getElementById('acesso').scrollIntoView({behavior:'smooth'})">Gerar este vídeo →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- PRICING -->
+<section class="section" id="precos">
+  <div class="wrap">
+    <div class="section-label reveal">Créditos &amp; Planos</div>
+    <h2 class="section-h2 reveal">Pague pelo que<br>renderizar.</h2>
+    <p class="section-sub reveal">Sem mensalidade escondida. O consumo de créditos varia com qualidade, resolução e duração — comece de graça e evolua quando precisar.</p>
+    <div class="pricing-grid reveal">
+      <div class="price-card">
+        <div class="price-name">Free</div>
+        <div class="price-val">R$0<span>/sempre</span></div>
+        <div class="price-credits">2 vídeos grátis · 1080p</div>
+        <ul class="price-feats">
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Qualidade Fast e Médio</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Resolução até 2K (1080p)</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Duração até 8s</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Marca d'água padrão</li>
+        </ul>
+        <button class="btn-price" onclick="switchTab('signup');document.getElementById('acesso').scrollIntoView({behavior:'smooth'})">Começar grátis</button>
+      </div>
+      <div class="price-card">
+        <div class="price-name">Creator</div>
+        <div class="price-val">R$49<span>/mês</span></div>
+        <div class="price-credits">300 créditos/mês</div>
+        <ul class="price-feats">
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Todas as qualidades</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Resolução até 4K Ultra</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Duração até 10s</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Sem marca d'água</li>
+        </ul>
+        <button class="btn-price" onclick="switchTab('signup');document.getElementById('acesso').scrollIntoView({behavior:'smooth'})">Assinar</button>
+      </div>
+      <div class="price-card feat">
+        <div class="price-badge">Mais popular</div>
+        <div class="price-name">Studio</div>
+        <div class="price-val">R$149<span>/mês</span></div>
+        <div class="price-credits">1.000 créditos/mês</div>
+        <ul class="price-feats">
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Fila de renderização prioritária</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Escolha manual de motor de IA</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Licença comercial</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Acesso antecipado a novos motores</li>
+        </ul>
+        <button class="btn-price" onclick="switchTab('signup');document.getElementById('acesso').scrollIntoView({behavior:'smooth'})">Assinar</button>
+      </div>
+      <div class="price-card">
+        <div class="price-name">Enterprise</div>
+        <div class="price-val">Sob consulta</div>
+        <div class="price-credits">Créditos ilimitados / API</div>
+        <ul class="price-feats">
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Acesso via API dedicada</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>SLA e suporte dedicado</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Infraestrutura multi-região</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Contrato e faturamento próprio</li>
+        </ul>
+        <button class="btn-price" onclick="alert('Nosso time comercial vai entrar em contato.')">Falar com vendas</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- INTEGRATIONS -->
+<section class="section" id="integracoes">
+  <div class="wrap">
+    <div class="section-label p reveal">Arquitetura Multi-Engine</div>
+    <h2 class="section-h2 reveal">Os motores mais<br>poderosos do mercado.</h2>
+    <p class="section-sub reveal">A Veronica Video AI foi construída para plugar os melhores motores de geração de vídeo do mundo. Por padrão, roteamos para o motor de melhor custo-benefício em qualidade, velocidade e viabilidade — hoje, o <b style="color:var(--accent)">Google Veo 3</b>.</p>
+    <div class="integ-grid reveal">
+      <div class="integ-card rec">
+        <div class="integ-mono">VO3</div>
+        <div>
+          <div class="integ-name">Google Veo 3 <small class="st-live">Motor Padrão</small></div>
+          <div class="integ-desc">Melhor equilíbrio global de realismo, física de movimento e áudio nativo sincronizado.</div>
+        </div>
+      </div>
+      <div class="integ-card">
+        <div class="integ-mono">SD</div>
+        <div>
+          <div class="integ-name">Seedance 1.0 <small class="st-live">Ativo</small></div>
+          <div class="integ-desc">Motor da ByteDance via Volcano Engine — altíssima velocidade e ótimo custo por render.</div>
+        </div>
+      </div>
+      <div class="integ-card">
+        <div class="integ-mono">KL</div>
+        <div>
+          <div class="integ-name">Kling AI 2.5 <small class="st-live">Ativo</small></div>
+          <div class="integ-desc">Forte em consistência de personagem e cenas longas de até 10s.</div>
+        </div>
+      </div>
+      <div class="integ-card">
+        <div class="integ-mono">RW</div>
+        <div>
+          <div class="integ-name">Runway Gen-4 <small class="st-soon">Em breve</small></div>
+          <div class="integ-desc">Referência em controle cinematográfico de câmera e VFX generativo.</div>
+        </div>
+      </div>
+      <div class="integ-card">
+        <div class="integ-mono">LM</div>
+        <div>
+          <div class="integ-name">Luma Ray3 <small class="st-soon">Em breve</small></div>
+          <div class="integ-desc">HDR nativo e iluminação fisicamente realista de última geração.</div>
+        </div>
+      </div>
+      <div class="integ-card">
+        <div class="integ-mono">PK</div>
+        <div>
+          <div class="integ-name">Pika 2.2 <small class="st-soon">Em breve</small></div>
+          <div class="integ-desc">Efeitos estilizados e transições criativas rápidas de produzir.</div>
+        </div>
+      </div>
+      <div class="integ-card">
+        <div class="integ-mono">11L</div>
+        <div>
+          <div class="integ-name">ElevenLabs <small class="st-live">Ativo</small></div>
+          <div class="integ-desc">Voz, narração e dublagem sincronizada automaticamente ao vídeo gerado.</div>
+        </div>
+      </div>
+      <div class="integ-card">
+        <div class="integ-mono">API</div>
+        <div>
+          <div class="integ-name">API Aberta <small class="st-soon">Em breve</small></div>
+          <div class="integ-desc">Webhook e SDK para integrar a geração de vídeo ao seu próprio produto.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- ABOUT / TERMINAL -->
+<section class="section" id="lab" style="padding-top:60px">
+  <div class="wrap">
+    <div class="about-grid">
+      <div>
+        <div class="section-label p reveal">Veronica Video AI</div>
+        <h2 class="section-h2 reveal">Um braço da<br>Veronica Hub.</h2>
+        <p class="about-p reveal">Geração de vídeo por IA nascida dentro do ecossistema Veronica Hub — mesma conta, mesmos créditos, mesma identidade visual. Direto ao ponto, sem enrolação.</p>
+        <p class="about-p reveal">Prompt entra, vídeo ultra-realista sai. Você escolhe o motor, a qualidade e a resolução — a gente cuida da fila de renderização.</p>
+      </div>
+      <div class="about-terminal reveal">
+        <div class="terminal-bar">
+          <div class="t-dot red"></div><div class="t-dot yellow"></div><div class="t-dot green"></div>
+          <div class="t-title">veronica-video — terminal</div>
+        </div>
+        <div class="terminal-body">
+          <div class="t-line"><span class="t-prompt">›</span><span class="t-cmd">generate<span class="t-val"> --prompt</span></span></div>
+          <div class="t-line"><span class="t-prompt" style="color:var(--text3)">  </span><span class="t-comment">"crânio holográfico girando em cápsula de vidro"</span></div>
+          <div class="t-sep"></div>
+          <div class="t-line"><span class="t-prompt">›</span><span class="t-cmd">engine<span class="t-val"> --auto</span></span></div>
+          <div class="t-line"><span class="t-prompt" style="color:var(--text3)">  </span><span class="t-comment" style="color:var(--accent)">✓ roteado para Google Veo 3</span></div>
+          <div class="t-sep"></div>
+          <div class="t-line"><span class="t-prompt">›</span><span class="t-cmd">config<span class="t-val"> --quality --res --dur</span></span></div>
+          <div class="t-line"><span class="t-prompt" style="color:var(--text3)">  </span><span class="t-comment">quality medium · 2K · 8s · 16:9</span></div>
+          <div class="t-sep"></div>
+          <div class="t-line"><span class="t-prompt">›</span><span class="t-cmd">credits<span class="t-val"> --cost</span></span></div>
+          <div class="t-line"><span class="t-prompt" style="color:var(--text3)">  </span><span class="t-comment" style="color:var(--accent)">11 créditos · coberto pelo plano Free</span></div>
+          <div class="t-sep"></div>
+          <div class="t-line"><span class="t-prompt" style="color:var(--accent)">›</span><span class="t-cmd" style="color:var(--accent)"> render concluído_<span id="terminalCursor">█</span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo"><div class="logo-pulse"></div>Veronica Video<b>·AI</b></div>
+      <p>Um braço da Veronica Hub para geração de vídeo por IA — ultra-realista, multi-engine e pronto para os melhores motores do mercado global.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2 .25 2.5.42.6.24 1 .5 1.5 1 .5.5.75.9 1 1.5.17.5.36 1.3.42 2.5.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 2-.42 2.5-.24.6-.5 1-1 1.5-.5.5-.9.75-1.5 1-.5.17-1.3.36-2.5.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-2-.25-2.5-.42-.6-.24-1-.5-1.5-1-.5-.5-.75-.9-1-1.5-.17-.5-.36-1.3-.42-2.5C2.21 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.25-2 .42-2.5.24-.6.5-1 1-1.5.5-.5.9-.75 1.5-1 .5-.17 1.3-.36 2.5-.42C8.4 2.21 8.8 2.2 12 2.2zm0 4.5a5.3 5.3 0 1 0 0 10.6 5.3 5.3 0 0 0 0-10.6zm0 1.8a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7zm5.5-2a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/></svg></a>
+        <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.5 2h-3.2v13.6a2.8 2.8 0 1 1-2-2.7v-3.3a6.1 6.1 0 1 0 5.2 6V8.8a7.6 7.6 0 0 0 4.5 1.5V7.1c-2.4 0-4.5-1.9-4.5-4.4V2z"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.4 20.4h-3.6v-5.6c0-1.3 0-3-1.8-3-1.9 0-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1c.5-.9 1.6-1.8 3.3-1.8 3.5 0 4.2 2.3 4.2 5.4v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.4H3.5V9h3.6v11.4zM22.2 0H1.8A1.8 1.8 0 0 0 0 1.8v20.4A1.8 1.8 0 0 0 1.8 24h20.4A1.8 1.8 0 0 0 24 22.2V1.8A1.8 1.8 0 0 0 22.2 0z"/></svg></a>
+        <a href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.2 2h3.4L13.8 10 23 22h-7L10.2 14 3.5 22H.1l8.4-9.6L0 2h7.2l5.4 7.1L18.2 2zm-1.2 18h1.9L7.1 4H5.1l11.9 16z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Produto</h4><ul>
+      <li><a href="#config">Configurações</a></li><li><a href="#precos">Créditos e planos</a></li>
+      <li><a href="#integracoes">Integrações</a></li><li><a href="#acesso">Entrar</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Veronica Hub</h4><ul>
+      <li><a href="/">Página inicial</a></li><li><a href="/#cursos">Cursos</a></li>
+      <li><a href="#">Comunidade</a></li><li><a href="#">Afiliados</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Suporte</h4><ul>
+      <li><a href="#">FAQ</a></li><li><a href="#">Contato</a></li>
+      <li><a href="#">Privacidade</a></li><li><a href="#">Termos</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Veronica Hub. Todos os direitos reservados.</div>
+    <div class="footer-mono">video·ai · v1.0 · build 2026</div>
+  </div>
+</footer>
+
+<script>
+// Particles
+(function(){
+  const c=document.getElementById('particleCanvas'),ctx=c.getContext('2d');
+  let W,H,pts=[];
+  function init(){
+    W=c.width=window.innerWidth;H=c.height=window.innerHeight;
+    pts=Array.from({length:45},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,r:Math.random()*1.3+.4}));
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    pts.forEach(p=>{
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(0,255,178,0.5)';ctx.fill();
+    });
+    pts.forEach((a,i)=>pts.slice(i+1).forEach(b=>{
+      const d=Math.hypot(a.x-b.x,a.y-b.y);
+      if(d<110){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);
+        ctx.strokeStyle=`rgba(0,255,178,${.08*(1-d/110)})`;ctx.lineWidth=.5;ctx.stroke()}
+    }));
+  }
+  init();setInterval(draw,1000/30);window.addEventListener('resize',init);
+})();
+
+// Marquee content
+const engines=["Google Veo 3","Kling AI 2.5","Seedance 1.0","Runway Gen-4","Luma Ray3","Pika 2.2","ElevenLabs Audio","4K Ultra","Multi-Engine Routing"];
+document.getElementById('marqueeTrack').innerHTML=[...engines,...engines].map(e=>`<div class="marquee-item"><span class="mi-dot">·</span>${e}</div>`).join('');
+
+// Reveal on scroll
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});
+document.querySelectorAll('.hero .reveal').forEach(el=>setTimeout(()=>el.classList.add('visible'),100));
+document.querySelectorAll('.reveal:not(.hero .reveal)').forEach(el=>obs.observe(el));
+
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>60));
+
+setInterval(()=>{const c=document.getElementById('terminalCursor');if(c)c.style.opacity=c.style.opacity==='0'?'1':'0'},530);
+
+// HUD ticker
+const engineNames=['VEO 3','SEEDANCE','KLING 2.5'];
+let engIdx=0;
+setInterval(()=>{
+  engIdx=(engIdx+1)%engineNames.length;
+  document.getElementById('hudEngine').textContent=engineNames[engIdx];
+  document.getElementById('hudId').textContent='#VX-'+Math.floor(1000+Math.random()*9000);
+},3400);
+const statuses=['STANDBY','RENDERING','SYNCED'];
+let stIdx=0;
+setInterval(()=>{stIdx=(stIdx+1)%statuses.length;document.getElementById('hudStatus').textContent=statuses[stIdx]},2600);
+
+// Auth tabs
+function switchTab(tab){
+  document.getElementById('tabLogin').classList.toggle('active',tab==='login');
+  document.getElementById('tabSignup').classList.toggle('active',tab==='signup');
+  document.getElementById('panelLogin').classList.toggle('active',tab==='login');
+  document.getElementById('panelSignup').classList.toggle('active',tab==='signup');
+}
+function togglePw(id,btn){
+  const el=document.getElementById(id);
+  el.type=el.type==='password'?'text':'password';
+  btn.style.color=el.type==='text'?'var(--accent)':'';
+}
+function fakeSubmit(e,which){
+  e.preventDefault();
+  const toast=document.getElementById(which==='login'?'toastLogin':'toastSignup');
+  toast.classList.add('show');
+  return false;
+}
+
+// Config calculator
+const cfg={quality:{val:'medium',mult:1.8},duration:{val:'8',base:6},res:{val:'2k',mult:1.6}};
+function bindPills(rowId,key,dataAttr){
+  document.getElementById(rowId).addEventListener('click',e=>{
+    const b=e.target.closest('.pill');if(!b)return;
+    document.getElementById(rowId).querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));
+    b.classList.add('active');
+    cfg[key].val=b.dataset.val;
+    cfg[key][dataAttr]=parseFloat(b.dataset[dataAttr]);
+    updateLabels();calc();
+  });
+}
+bindPills('qualityRow','quality','mult');
+bindPills('durationRow','duration','base');
+bindPills('resRow','res','mult');
+document.getElementById('ratioRow').addEventListener('click',e=>{
+  const b=e.target.closest('.ratio-pill');if(!b)return;
+  document.getElementById('ratioRow').querySelectorAll('.ratio-pill').forEach(p=>p.classList.remove('active'));
+  b.classList.add('active');
+});
+function updateLabels(){
+  document.getElementById('lblQuality').textContent={fast:'Fast',medium:'Médio',quality:'Quality'}[cfg.quality.val];
+  document.getElementById('lblDuration').textContent=cfg.duration.val+'s';
+  document.getElementById('lblRes').textContent=cfg.res.val.toUpperCase();
+}
+function calc(){
+  const credits=Math.max(1,Math.round(cfg.duration.base*cfg.quality.mult*cfg.res.mult));
+  document.getElementById('resultVal').innerHTML=credits+'<span>créditos / vídeo</span>';
+  const withinFree=cfg.res.val!=='4k'&&cfg.quality.val!=='quality'&&Number(cfg.duration.val)<=8;
+  document.getElementById('resultNote').textContent=withinFree
+    ? "Coberto pelos seus 2 vídeos grátis em 1080p no plano Free."
+    : "Acima do plano Free — consome créditos do seu saldo Creator/Studio.";
+}
+calc();
+</script>
+</body>
+</html>
