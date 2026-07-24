@@ -1,1165 +1,240 @@
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Veronica Hub — O Segredo Tá no Prompt</title>
-<meta name="description" content="Veronica Hub — ecossistema de cursos e ferramentas de IA para criadores digitais. Geração de vídeo, automação e conhecimento direto ao ponto.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<html lang="en" data-tsd-source="/src/routes/__root.tsx:123:5"><head data-tsd-source="/src/routes/__root.tsx:124:7"><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/styles-DlwpyWrF.css" data-precedence="default"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&amp;family=Space+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" data-precedence="default"/><title>Veronica Hub — Cursos + Vídeo AI · Um único hub</title><meta name="description" content="11 cursos diretos ao ponto: dark content, IA, tráfego pago, VSL, hacking ético. Acesso vitalício a partir de R$ 19,90."/><meta name="author" content="Veronica Hub"/><meta property="og:title" content="Veronica Hub — Laboratório Digital"/><meta property="og:description" content="11 cursos diretos ao ponto: dark content, IA, tráfego pago, VSL, hacking ético. Acesso vitalício."/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Veronica Hub — Laboratório Digital"/><meta name="twitter:description" content="Cursos + Vídeo AI · Um único hub. A partir de R$ 19,90."/><meta property="og:image" content="/assets/og-veronica-hub-vdx3P-nO.jpg"/><meta name="twitter:image" content="/assets/og-veronica-hub-vdx3P-nO.jpg"/><link rel="modulepreload" href="/assets/index-ChETRlvg.js"/><link rel="modulepreload" href="/assets/routes-DaQu6dzD.js"/><link rel="modulepreload" href="/assets/youtube-S4TloOeE.js"/><link rel="modulepreload" href="/assets/zap-B5k7ZYXy.js"/><link rel="icon" href="/favicon.ico" type="image/x-icon"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><link rel="preload" as="image" href="/__l5e/assets-v1/805cde01-9a79-4a7d-b04e-145c1690a824/veronica-cyborg-v2.jpg" fetchpriority="high"/><script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Veronica Hub","url":"https://veronicahub.com","description":"Laboratório digital com 11 cursos: dark content, IA generativa, tráfego pago, VSL, hacking ético.","sameAs":["https://instagram.com/veronicahub","https://youtube.com/@veronicahub"]}</script>
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:oklch(0.14 0.015 200);
-  --bg1:oklch(0.155 0.017 200);
-  --bg2:oklch(0.17 0.019 200);
-  --bg3:oklch(0.20 0.022 200);
-  --surface:oklch(0.19 0.02 200);
-  --border:rgba(255,255,255,0.05);
-  --border2:rgba(255,255,255,0.09);
-  --accent:oklch(0.85 0.22 155);
-  --accent2:oklch(0.88 0.15 195);
-  --purple:oklch(0.65 0.2 250);
-  --text:oklch(0.97 0.01 180);
-  --text2:oklch(0.65 0.03 190);
-  --text3:oklch(0.42 0.025 195);
-  --red:oklch(0.68 0.24 25);
-  --yellow:oklch(0.8 0.18 60);
-  --r:10px;
-}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'Space Grotesk',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-a{text-decoration:none;color:inherit}
-button{cursor:pointer;font-family:'Space Grotesk',sans-serif}
-img{display:block}
-::-webkit-scrollbar{width:3px}
-::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:oklch(0.85 0.22 155 / 0.3);border-radius:2px}
+	@font-face {
+		font-family: 'CameraPlainVariable';
+		src: url('https://cdn.gpteng.co/mcp-widgets/v1/fonts/CameraPlainVariable.woff2') format('woff2');
+		font-weight: 100 900;
+		font-style: normal;
+		font-display: swap;
+	}
 
-/* ═══ CANVASES ═══ */
-#particleCanvas{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0.4}
-.scanlines-fx{position:fixed;inset:0;z-index:1;pointer-events:none;mix-blend-mode:overlay;
-  background:repeating-linear-gradient(0deg,transparent 0px,transparent 3px,oklch(0.85 0.22 155 / 0.025) 3px,oklch(0.85 0.22 155 / 0.025) 4px)}
+	#lovable-badge {
+		--badge-bg: #1b1b1b;
+		--badge-text: #c5c1b9;
+		--badge-text-hover: #dcdad5;
+		--badge-radius: 6px;
+		--badge-padding: 8px;
+		--badge-gap: 6px;
+		--badge-shadow: 
+			0 0 0 1px rgba(0, 0, 0, 0.88),
+			0 1px 0 0 rgba(0, 0, 0, 0.04),
+			0 2px 2px -1px rgba(0, 0, 0, 0.08),
+			0 4px 4px -2px rgba(0, 0, 0, 0.08),
+			0 8px 8px -4px rgba(0, 0, 0, 0.08),
+			0 16px 16px -8px rgba(0, 0, 0, 0.08);
+		--badge-transition-duration: 0.2s;
+		--badge-transition-easing: cubic-bezier(0.16, 1, 0.32, 1);
+		--focus-color: #575ECF;
+		--focus-offset: 2px;
+		--focus-width: 2px;
+		
+		position: fixed;
+		bottom: 12px;
+		right: 12px;
+		height: 24px;
+		display: flex;
+		align-items: center;
+		z-index: 1000000;
+		background-color: var(--badge-bg) !important;
+		color: var(--badge-text) !important;
+		border-radius: var(--badge-radius);
+		box-shadow: var(--badge-shadow) !important;
+		font-size: 12px;
+		font-family: CameraPlainVariable, "CameraPlainVariable Fallback", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+		font-weight: 400 !important;
+		text-transform: none !important;
+		font-feature-settings: normal !important;
+		transform: translateZ(0);
+		will-change: transform, opacity;
+	}
 
-/* ═══ AMBIENT — MUITO MAIS AGRESSIVO ═══ */
-.amb{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.amb-blob{position:absolute;border-radius:50%;filter:blur(80px)}
-.a1{width:900px;height:900px;top:-300px;left:-200px;background:radial-gradient(circle,oklch(0.85 0.22 155 / 0.12) 0%,transparent 60%)}
-.a2{width:700px;height:700px;top:5%;right:-150px;background:radial-gradient(circle,oklch(0.65 0.2 250 / 0.16) 0%,transparent 60%)}
-.a3{width:600px;height:400px;bottom:5%;left:25%;background:radial-gradient(circle,oklch(0.88 0.15 195 / 0.1) 0%,transparent 60%)}
-.a4{width:400px;height:400px;top:45%;right:15%;background:radial-gradient(circle,oklch(0.85 0.22 155 / 0.08) 0%,transparent 60%)}
-.a5{width:300px;height:300px;bottom:20%;left:5%;background:radial-gradient(circle,oklch(0.65 0.2 250 / 0.1) 0%,transparent 60%)}
+	#lovable-badge-cta {
+		display: flex;
+		align-items: center;
+		gap: var(--badge-gap);
+		padding: 0 var(--badge-padding);
+		height: 100%;
+		color: inherit;
+		text-decoration: none;
+		white-space: nowrap;
+		border-radius: var(--badge-radius) 0 0 var(--badge-radius);
+		transition: 
+			background-color var(--badge-transition-duration) ease,
+			color var(--badge-transition-duration) ease,
+			transform 0.1s ease;
+	}
 
-/* Grid */
-.grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;
-  background-image:linear-gradient(oklch(0.85 0.22 155 / 0.03) 1px,transparent 1px),linear-gradient(90deg,oklch(0.85 0.22 155 / 0.03) 1px,transparent 1px);
-  background-size:50px 50px}
+	#lovable-badge-cta:hover {
+		background: rgba(255, 255, 255, 0.04);
+		color: var(--badge-text-hover);
+	}
 
-/* ═══ NAV ═══ */
-.nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  height:64px;display:flex;align-items:center;justify-content:space-between;
-  padding:0 48px;
-  background:rgba(2,4,8,0.4);
-  backdrop-filter:blur(32px) saturate(2);
-  border-bottom:1px solid oklch(0.85 0.22 155 / 0.08);
-  transition:all 0.3s;
-}
-.nav::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,oklch(0.85 0.22 155 / 0.5),oklch(0.88 0.15 195 / 0.3),transparent);
-}
-.nav.scrolled{background:rgba(2,4,8,0.9);border-color:oklch(0.85 0.22 155 / 0.12)}
-.nav-left{display:flex;align-items:center;gap:44px}
-.logo{
-  font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;
-  letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);
-  display:flex;align-items:center;gap:10px;
-}
-.logo-pulse{width:7px;height:7px;border-radius:50%;background:var(--accent);
-  box-shadow:0 0 12px var(--accent),0 0 24px oklch(0.85 0.22 155 / 0.5);
-  animation:pulse 2.4s infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.2;transform:scale(0.5)}}
-.nav-links{display:flex;gap:32px}
-.nav-links a{font-size:13px;font-weight:500;color:var(--text3);letter-spacing:0.02em;transition:color 0.2s;position:relative}
-.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1px;background:var(--accent);transform:scaleX(0);transition:transform 0.2s}
-.nav-links a:hover{color:var(--text)}
-.nav-links a:hover::after{transform:scaleX(1)}
-.nav-right{display:flex;align-items:center;gap:14px}
-.nav-social{display:flex;gap:8px}
-.nav-social a{width:34px;height:34px;border-radius:var(--r);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;color:var(--text3);transition:all 0.22s;position:relative;overflow:hidden}
-.nav-social a:hover{border-color:oklch(0.85 0.22 155 / 0.5);color:var(--accent);box-shadow:0 0 16px oklch(0.85 0.22 155 / 0.15),inset 0 0 16px oklch(0.85 0.22 155 / 0.05)}
-.nav-social svg{width:14px;height:14px;fill:currentColor}
-.btn-nav{
-  height:36px;padding:0 20px;background:transparent;
-  border:1px solid oklch(0.85 0.22 155 / 0.4);border-radius:var(--r);
-  color:var(--accent);font-size:12px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;
-  box-shadow:0 0 20px oklch(0.85 0.22 155 / 0.1),inset 0 0 20px oklch(0.85 0.22 155 / 0.03);
-  transition:all 0.2s;position:relative;overflow:hidden;
-}
-.btn-nav::before{content:'';position:absolute;inset:0;background:oklch(0.85 0.22 155 / 0);transition:background 0.2s}
-.btn-nav:hover{border-color:var(--accent);box-shadow:0 0 30px oklch(0.85 0.22 155 / 0.3),inset 0 0 30px oklch(0.85 0.22 155 / 0.08)}
-.btn-nav:hover::before{background:oklch(0.85 0.22 155 / 0.06)}
+	#lovable-badge-cta:active {
+		transform: scale(0.98);
+	}
 
-/* ═══ HERO — COMPLETAMENTE REDESENHADO ═══ */
-.hero{
-  position:relative;min-height:100vh;
-  display:flex;flex-direction:column;justify-content:center;
-  padding:120px 48px 80px;overflow:hidden;z-index:2;
-}
-.hero-bg{position:absolute;inset:0;z-index:0;
-  background:radial-gradient(ellipse 75% 65% at 72% 30%,oklch(0.65 0.2 250 / 0.22) 0%,transparent 58%),
-             radial-gradient(ellipse 60% 60% at 12% 78%,oklch(0.85 0.22 155 / 0.14) 0%,transparent 55%),
-             radial-gradient(ellipse 50% 45% at 90% 85%,oklch(0.88 0.15 195 / 0.1) 0%,transparent 55%),
-             linear-gradient(160deg,var(--bg) 0%,oklch(0.17 0.024 205) 50%,var(--bg) 100%)}
-.hero-bg::before{content:'';position:absolute;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,transparent,oklch(0.85 0.22 155 / 0.55),oklch(0.88 0.15 195 / 0.4),transparent);
-  filter:blur(1px);animation:holosweep 6s cubic-bezier(0.4,0,0.2,1) infinite}
-@keyframes holosweep{0%{top:-5%;opacity:0}12%{opacity:0.7}88%{opacity:0.7}100%{top:105%;opacity:0}}
+	#lovable-badge-cta:focus {
+		outline: none;
+	}
 
-/* Veronica — retrato cyborg holográfico de fundo */
-.hero-cyborg{position:absolute;inset:0;z-index:0;pointer-events:none;
-  background-image:url('assets/veronica-cyborg.webp');
-  background-size:cover;background-repeat:no-repeat;
-  background-position:38% 18%;
-  opacity:0.5;filter:contrast(1.08) saturate(0.82) brightness(0.82);
-  mix-blend-mode:screen;
-  animation:cyborgshimmer 5.5s ease-in-out infinite}
-@keyframes cyborgshimmer{0%,100%{opacity:0.42}50%{opacity:0.58}}
-.hero-cyborg-fade{position:absolute;inset:0;z-index:0;pointer-events:none;
-  background:
-    linear-gradient(90deg,var(--bg) 0%,oklch(0.14 0.015 200 / 0.7) 34%,transparent 68%,oklch(0.14 0.015 200 / 0.92) 100%),
-    linear-gradient(180deg,transparent 0%,transparent 58%,var(--bg) 100%)}
-@media(min-width:768px){
-  .hero-cyborg{background-position:44% 22%;opacity:0.44}
-}
-@media(min-width:1180px){
-  .hero-cyborg{background-position:68% center;opacity:0.4}
-  .hero-cyborg-fade{background:
-    linear-gradient(90deg,var(--bg) 0%,oklch(0.14 0.015 200 / 0.85) 32%,transparent 60%,oklch(0.14 0.015 200 / 0.3) 100%),
-    linear-gradient(180deg,transparent 0%,transparent 58%,var(--bg) 100%)}
-}
-.hero-scanlines{position:absolute;inset:0;z-index:2;pointer-events:none;
-  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.05) 2px,rgba(0,0,0,0.05) 4px)}
+	#lovable-badge-cta:focus-visible {
+		outline: var(--focus-width) solid var(--focus-color);
+		outline-offset: var(--focus-offset);
+		z-index: 1;
+	}
 
-/* Corner brackets — maior e mais visível */
-.hc{position:absolute;z-index:3;width:80px;height:80px}
-.hc.tl{top:72px;left:40px;border-top:2px solid var(--accent);border-left:2px solid var(--accent);
-  box-shadow:-4px -4px 20px oklch(0.85 0.22 155 / 0.3),inset 4px 4px 20px oklch(0.85 0.22 155 / 0.05)}
-.hc.tr{top:72px;right:40px;border-top:1px solid oklch(0.85 0.22 155 / 0.35);border-right:1px solid oklch(0.85 0.22 155 / 0.35)}
-.hc.bl{bottom:60px;left:40px;border-bottom:1px solid oklch(0.85 0.22 155 / 0.25);border-left:1px solid oklch(0.85 0.22 155 / 0.25)}
-.hc.br{bottom:60px;right:40px;border-bottom:1px solid oklch(0.85 0.22 155 / 0.12);border-right:1px solid oklch(0.85 0.22 155 / 0.12)}
+	#lovable-badge-text {
+		line-height: 1;
+	}
 
-/* Scan line horizontal que desce */
-.hero-scanline{
-  position:absolute;left:0;right:0;height:1px;z-index:3;
-  background:linear-gradient(90deg,transparent,oklch(0.85 0.22 155 / 0.6),transparent);
-  animation:scandown 8s linear infinite;pointer-events:none;
-}
-@keyframes scandown{0%{top:-1px;opacity:0}5%{opacity:1}95%{opacity:1}100%{top:100%;opacity:0}}
+	#lovable-badge-divider {
+		width: 1px;
+		height: 24px;
+		background-color: rgba(255, 255, 255, 0.04);
+		flex-shrink: 0;
+	}
 
-.hero-inner{max-width:1200px;margin:0 auto;width:100%;position:relative;z-index:4}
+	#lovable-badge-close {
+		width: 24px;
+		height: 24px;
+		min-width: 24px;
+		min-height: 24px;
+		cursor: pointer;
+		background: none;
+		border: none;
+		padding: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 0 var(--badge-radius) var(--badge-radius) 0;
+		flex-shrink: 0;
+		transition: 
+			background-color var(--badge-transition-duration) ease,
+			transform 0.1s ease;
+	}
 
-/* Badge — mais chamativo */
-.hero-badge{
-  display:inline-flex;align-items:center;gap:10px;margin-bottom:40px;
-  border:1px solid oklch(0.85 0.22 155 / 0.25);background:oklch(0.85 0.22 155 / 0.05);
-  border-radius:100px;padding:7px 18px 7px 8px;
-  font-size:11px;font-weight:600;letter-spacing:0.12em;color:var(--accent);text-transform:uppercase;
-  backdrop-filter:blur(12px);
-  box-shadow:0 0 30px oklch(0.85 0.22 155 / 0.1),inset 0 1px 0 oklch(0.85 0.22 155 / 0.15);
-}
-.badge-dot{width:24px;height:24px;border-radius:50%;
-  background:oklch(0.85 0.22 155 / 0.1);border:1px solid oklch(0.85 0.22 155 / 0.4);
-  display:flex;align-items:center;justify-content:center}
-.badge-dot::after{content:'';width:9px;height:9px;border-radius:50%;background:var(--accent);
-  box-shadow:0 0 10px var(--accent),0 0 20px oklch(0.85 0.22 155 / 0.5)}
+	#lovable-badge-close:hover {
+		background: rgba(255, 255, 255, 0.04);
+	}
 
-/* H1 — maior, mais impactante */
-.hero-h1{
-  font-family:'Bricolage Grotesque',system-ui,sans-serif;
-  font-size:clamp(64px,9vw,130px);font-weight:800;line-height:0.9;
-  letter-spacing:-0.05em;margin-bottom:32px;text-wrap:balance;
-}
-.hero-h1 .w1{
-  display:block;
-  background:linear-gradient(135deg,#ffffff 20%,rgba(255,255,255,0.5) 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-.hero-h1 .w2{
-  display:block;
-  -webkit-text-stroke:1.5px oklch(0.85 0.22 155 / 0.4);color:transparent;
-}
-.hero-h1 .w3{
-  display:block;
-  background:linear-gradient(90deg,oklch(0.85 0.22 155) 0%,oklch(0.88 0.15 195) 50%,oklch(0.65 0.2 250) 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  filter:drop-shadow(0 0 40px oklch(0.85 0.22 155 / 0.5));
-}
+	#lovable-badge-close:active {
+		transform: scale(0.92);
+	}
 
-.hero-sub{font-size:18px;font-weight:400;line-height:1.75;color:var(--text2);max-width:500px;margin-bottom:48px}
+	#lovable-badge-close:focus {
+		outline: none;
+	}
 
-.hero-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:80px}
+	#lovable-badge-close:focus-visible {
+		outline: var(--focus-width) solid var(--focus-color);
+		outline-offset: calc(var(--focus-offset) * -1);
+		z-index: 1;
+	}
 
-/* Botão primário — glow pesado */
-.btn-primary{
-  display:inline-flex;align-items:center;gap:10px;
-  height:56px;padding:0 36px;
-  background:linear-gradient(135deg,oklch(0.85 0.22 155 / 0.15) 0%,oklch(0.88 0.15 195 / 0.08) 100%);
-  color:var(--accent);
-  border:1px solid oklch(0.85 0.22 155 / 0.5);border-radius:var(--r);
-  font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
-  box-shadow:0 0 30px oklch(0.85 0.22 155 / 0.2),0 0 80px oklch(0.85 0.22 155 / 0.08),inset 0 1px 0 oklch(0.85 0.22 155 / 0.2);
-  transition:all 0.25s;position:relative;overflow:hidden;
-}
-.btn-primary::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
-  background:linear-gradient(90deg,transparent,oklch(0.85 0.22 155 / 0.15),transparent);transition:left 0.5s}
-.btn-primary:hover::before{left:100%}
-.btn-primary:hover{
-  box-shadow:0 0 50px oklch(0.85 0.22 155 / 0.35),0 0 120px oklch(0.85 0.22 155 / 0.12),inset 0 1px 0 oklch(0.85 0.22 155 / 0.3);
-  border-color:oklch(0.85 0.22 155 / 0.8);transform:translateY(-2px);
-  background:linear-gradient(135deg,oklch(0.85 0.22 155 / 0.2) 0%,oklch(0.88 0.15 195 / 0.12) 100%);
-}
-.btn-ghost{
-  display:inline-flex;align-items:center;gap:8px;
-  height:56px;padding:0 28px;
-  background:rgba(255,255,255,0.02);color:var(--text2);
-  border:1px solid var(--border2);border-radius:var(--r);
-  font-size:13px;font-weight:500;
-  backdrop-filter:blur(8px);transition:all 0.22s;
-}
-.btn-ghost:hover{border-color:rgba(255,255,255,0.18);color:var(--text);background:rgba(255,255,255,0.05)}
+	#lovable-badge-close svg path {
+		fill: var(--badge-text);
+		transition: fill var(--badge-transition-duration) ease;
+	}
 
-/* Hero stats — glass cards individuais */
-.hero-stats{display:flex;gap:12px;flex-wrap:wrap}
-.hero-stat{
-  padding:18px 28px;
-  background:rgba(255,255,255,0.02);
-  border:1px solid rgba(255,255,255,0.07);
-  border-radius:12px;
-  backdrop-filter:blur(20px);
-  position:relative;overflow:hidden;
-  transition:all 0.3s;
-}
-.hero-stat::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,oklch(0.85 0.22 155 / 0.6),transparent);
-  opacity:0;transition:opacity 0.3s;
-}
-.hero-stat:hover{border-color:oklch(0.85 0.22 155 / 0.2);background:oklch(0.85 0.22 155 / 0.03);
-  box-shadow:0 0 30px oklch(0.85 0.22 155 / 0.08)}
-.hero-stat:hover::before{opacity:1}
-.stat-n{font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;color:var(--text);line-height:1;margin-bottom:6px}
-.stat-n em{color:var(--accent);font-style:normal;font-size:18px}
-.stat-l{font-size:10px;font-weight:600;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase}
+	#lovable-badge-close:hover svg path {
+		fill: var(--badge-text-hover);
+	}
 
-/* ═══ MARQUEE ═══ */
-.marquee-wrap{
-  border-top:1px solid oklch(0.85 0.22 155 / 0.08);border-bottom:1px solid oklch(0.85 0.22 155 / 0.08);
-  overflow:hidden;background:rgba(5,8,15,0.95);position:relative;z-index:2;
-}
-.marquee-wrap::before,.marquee-wrap::after{content:'';position:absolute;top:0;bottom:0;width:160px;z-index:2;pointer-events:none}
-.marquee-wrap::before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
-.marquee-wrap::after{right:0;background:linear-gradient(-90deg,var(--bg),transparent)}
-.marquee-track{display:flex;width:max-content;animation:marquee 30s linear infinite;padding:14px 0}
-.marquee-track:hover{animation-play-state:paused}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.marquee-item{display:flex;align-items:center;gap:12px;padding:0 32px;
-  font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.12em;
-  text-transform:uppercase;color:var(--text3);white-space:nowrap;border-right:1px solid var(--border)}
-.mi-dot{color:var(--accent);font-size:16px}
+	@media (prefers-reduced-motion: reduce) {
+		#lovable-badge-cta,
+		#lovable-badge-close,
+		#lovable-badge-close svg path {
+			transition: none;
+		}
+		
+		#lovable-badge-cta:active,
+		#lovable-badge-close:active {
+			transform: none;
+		}
+	}
 
-/* ═══ SECTION ═══ */
-.wrap{max-width:1280px;margin:0 auto;padding:0 48px}
-.section{padding:100px 0;position:relative;z-index:2}
-.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.6s cubic-bezier(0.16,1,0.3,1),transform 0.6s cubic-bezier(0.16,1,0.3,1)}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.reveal-delay-1{transition-delay:0.1s}.reveal-delay-2{transition-delay:0.2s}
-.reveal-delay-3{transition-delay:0.3s}.reveal-delay-4{transition-delay:0.4s}
-.section-label{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.2em;
-  text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:flex;align-items:center;gap:10px}
-.section-label::before{content:'';width:28px;height:1px;background:linear-gradient(90deg,var(--accent),transparent)}
-.section-h2{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:clamp(34px,4.5vw,60px);font-weight:800;letter-spacing:-0.03em;line-height:1.05;margin-bottom:16px;text-wrap:balance}
-.section-sub{font-size:16px;color:var(--text2);line-height:1.7;max-width:480px;margin-bottom:56px}
-
-/* ═══ FILTER ═══ */
-.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px}
-.filter-btn{height:32px;padding:0 18px;border:1px solid var(--border2);border-radius:100px;
-  background:transparent;color:var(--text3);font-size:12px;font-weight:600;letter-spacing:0.05em;transition:all 0.2s}
-.filter-btn:hover{border-color:oklch(0.85 0.22 155 / 0.3);color:var(--text2)}
-.filter-btn.active{background:oklch(0.85 0.22 155 / 0.08);border-color:oklch(0.85 0.22 155 / 0.5);color:var(--accent);
-  box-shadow:0 0 20px oklch(0.85 0.22 155 / 0.12)}
-
-/* ═══ CARDS — REDESENHADOS RADICALMENTE ═══ */
-.courses-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
-  gap:16px;
-}
-.course-card{
-  background:rgba(5,8,15,0.8);cursor:pointer;
-  display:flex;flex-direction:column;
-  border-radius:16px;overflow:hidden;
-  border:1px solid rgba(255,255,255,0.06);
-  transition:all 0.35s cubic-bezier(0.16,1,0.3,1);
-  position:relative;
-}
-/* Top light — o efeito holográfico principal */
-.course-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:1px;z-index:5;
-  background:linear-gradient(90deg,transparent,oklch(0.85 0.22 155 / 0.0),transparent);
-  transition:all 0.4s;
-}
-/* Glow interno no hover */
-.course-card::after{
-  content:'';position:absolute;inset:0;z-index:0;border-radius:16px;
-  background:radial-gradient(ellipse 80% 60% at 50% 0%,oklch(0.85 0.22 155 / 0.0) 0%,transparent 70%);
-  transition:background 0.4s;pointer-events:none;
-}
-.course-card:hover{
-  border-color:oklch(0.85 0.22 155 / 0.25);
-  transform:translateY(-6px);
-  box-shadow:
-    0 0 0 1px oklch(0.85 0.22 155 / 0.1),
-    0 20px 60px rgba(0,0,0,0.6),
-    0 0 80px oklch(0.85 0.22 155 / 0.08);
-}
-.course-card:hover::before{
-  background:linear-gradient(90deg,transparent 5%,oklch(0.85 0.22 155 / 0.7) 50%,transparent 95%);
-  box-shadow:0 0 20px oklch(0.85 0.22 155 / 0.3);
-}
-.course-card:hover::after{
-  background:radial-gradient(ellipse 80% 60% at 50% 0%,oklch(0.85 0.22 155 / 0.06) 0%,transparent 70%);
-}
-.course-card:hover .card-img{filter:brightness(0.85) saturate(1.4)}
-.course-card:hover .card-cta{opacity:1;transform:translateX(0)}
-.course-card:hover .card-title{color:var(--accent)}
-
-.card-thumb{position:relative;overflow:hidden;height:200px;flex-shrink:0}
-.card-img{width:100%;height:100%;object-fit:cover;filter:brightness(0.55) saturate(1.2);transition:all 0.5s}
-.card-img-placeholder{width:100%;height:100%;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:52px}
-.card-overlay{position:absolute;inset:0;
-  background:linear-gradient(to top,rgba(5,8,15,1) 0%,rgba(5,8,15,0.4) 50%,rgba(5,8,15,0.1) 100%)}
-/* Corner brackets nos cards */
-.cf-tl,.cf-br{position:absolute;width:18px;height:18px;z-index:2;transition:all 0.4s}
-.cf-tl{top:12px;left:12px;border-top:1.5px solid oklch(0.85 0.22 155 / 0.5);border-left:1.5px solid oklch(0.85 0.22 155 / 0.5)}
-.cf-br{bottom:12px;right:12px;border-bottom:1.5px solid oklch(0.85 0.22 155 / 0.25);border-right:1.5px solid oklch(0.85 0.22 155 / 0.25)}
-.course-card:hover .cf-tl{top:8px;left:8px;border-color:var(--accent);box-shadow:0 0 10px oklch(0.85 0.22 155 / 0.4)}
-.course-card:hover .cf-br{bottom:8px;right:8px;border-color:oklch(0.85 0.22 155 / 0.6)}
-.card-level-badge{
-  position:absolute;top:12px;right:12px;z-index:3;
-  font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.14em;
-  text-transform:uppercase;padding:4px 12px;border-radius:100px;backdrop-filter:blur(12px);
-}
-.lvl-init{background:oklch(0.85 0.22 155 / 0.1);color:var(--accent);border:1px solid oklch(0.85 0.22 155 / 0.35)}
-.lvl-inter{background:oklch(0.8 0.18 60 / 0.1);color:var(--yellow);border:1px solid oklch(0.8 0.18 60 / 0.35)}
-.lvl-av{background:oklch(0.68 0.24 25 / 0.1);color:var(--red);border:1px solid oklch(0.68 0.24 25 / 0.35)}
-
-.card-body{padding:22px 24px 24px;flex:1;display:flex;flex-direction:column;position:relative;z-index:1}
-.card-tag{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.14em;
-  color:var(--purple);text-transform:uppercase;margin-bottom:10px}
-.card-title{font-size:17px;font-weight:700;line-height:1.3;letter-spacing:-0.01em;
-  margin-bottom:10px;transition:color 0.3s}
-.card-desc{font-size:13px;color:var(--text2);line-height:1.7;flex:1;margin-bottom:20px}
-.card-footer{display:flex;align-items:center;justify-content:space-between;
-  padding-top:16px;border-top:1px solid rgba(255,255,255,0.05)}
-.card-price{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;
-  color:var(--accent);text-shadow:0 0 20px oklch(0.85 0.22 155 / 0.3)}
-.card-meta-right{display:flex;align-items:center;gap:12px}
-.card-duration{font-size:11px;color:var(--text3);font-weight:500}
-.card-cta{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:0.05em;
-  opacity:0;transform:translateX(-8px);transition:all 0.3s}
-
-/* ═══ TRUST — REDESENHADO ═══ */
-.trust-section{padding:0;position:relative;z-index:2}
-.trust-inner{
-  background:rgba(5,8,15,0.6);
-  border-top:1px solid oklch(0.85 0.22 155 / 0.08);
-  border-bottom:1px solid oklch(0.85 0.22 155 / 0.08);
-  padding:64px 48px;
-  backdrop-filter:blur(24px);
-}
-.trust-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.trust-item{
-  background:rgba(5,8,15,0.8);
-  border:1px solid rgba(255,255,255,0.06);
-  border-radius:14px;padding:28px;
-  transition:all 0.35s;position:relative;overflow:hidden;
-}
-.trust-item::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,oklch(0.85 0.22 155 / 0.0),transparent);
-  transition:all 0.4s;
-}
-.trust-item:hover{
-  border-color:oklch(0.85 0.22 155 / 0.2);
-  transform:translateY(-4px);
-  box-shadow:0 20px 50px rgba(0,0,0,0.5),0 0 50px oklch(0.85 0.22 155 / 0.06);
-}
-.trust-item:hover::before{
-  background:linear-gradient(90deg,transparent 5%,oklch(0.85 0.22 155 / 0.6) 50%,transparent 95%);
-}
-.trust-icon{
-  width:44px;height:44px;border-radius:12px;
-  background:oklch(0.85 0.22 155 / 0.05);border:1px solid oklch(0.85 0.22 155 / 0.2);
-  display:flex;align-items:center;justify-content:center;
-  margin-bottom:16px;
-  box-shadow:0 0 24px oklch(0.85 0.22 155 / 0.08);
-  transition:all 0.35s;
-}
-.trust-item:hover .trust-icon{
-  box-shadow:0 0 40px oklch(0.85 0.22 155 / 0.25);
-  border-color:oklch(0.85 0.22 155 / 0.4);
-  background:oklch(0.85 0.22 155 / 0.08);
-}
-.trust-icon svg{width:20px;height:20px;fill:var(--accent)}
-.trust-title{font-size:15px;font-weight:700;margin-bottom:8px;letter-spacing:-0.01em}
-.trust-desc{font-size:13px;color:var(--text2);line-height:1.65}
-
-/* ═══ DIVIDER ═══ */
-.glow-divider{position:relative;z-index:2;height:1px;margin:0;
-  background:linear-gradient(90deg,transparent 5%,oklch(0.85 0.22 155 / 0.2) 50%,transparent 95%);
-  box-shadow:0 0 20px oklch(0.85 0.22 155 / 0.1)}
-
-/* ═══ ABOUT ═══ */
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.about-label{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;
-  letter-spacing:0.2em;text-transform:uppercase;color:var(--purple);
-  margin-bottom:14px;display:flex;align-items:center;gap:10px}
-.about-label::before{content:'';width:20px;height:1px;background:var(--purple)}
-.about-h2{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:clamp(30px,3.5vw,50px);font-weight:800;letter-spacing:-0.025em;line-height:1.08;margin-bottom:20px;text-wrap:balance}
-.about-p{font-size:15px;color:var(--text2);line-height:1.8;margin-bottom:16px}
-
-/* Terminal — glass pesado */
-.about-terminal{
-  background:rgba(2,4,8,0.95);
-  border:1px solid oklch(0.85 0.22 155 / 0.15);
-  border-radius:16px;overflow:hidden;
-  box-shadow:
-    0 0 0 1px oklch(0.85 0.22 155 / 0.05),
-    0 0 80px rgba(0,0,0,0.8),
-    0 0 120px oklch(0.85 0.22 155 / 0.08),
-    inset 0 0 80px oklch(0.85 0.22 155 / 0.02);
-  position:relative;
-}
-.about-terminal::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:1px;z-index:2;
-  background:linear-gradient(90deg,transparent 5%,oklch(0.85 0.22 155 / 0.7) 50%,transparent 95%);
-  box-shadow:0 0 16px oklch(0.85 0.22 155 / 0.4);
-}
-.terminal-bar{background:rgba(8,12,24,0.95);padding:13px 20px;
-  display:flex;align-items:center;gap:10px;border-bottom:1px solid oklch(0.85 0.22 155 / 0.08)}
-.t-dot{width:10px;height:10px;border-radius:50%}
-.t-dot.red{background:#FF5F56;box-shadow:0 0 6px rgba(255,95,86,0.4)}
-.t-dot.yellow{background:#FFBD2E;box-shadow:0 0 6px rgba(255,189,46,0.4)}
-.t-dot.green{background:#27C93F;box-shadow:0 0 6px rgba(39,201,63,0.4)}
-.t-title{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3);letter-spacing:0.06em;margin-left:8px}
-.terminal-body{padding:28px}
-.t-line{font-family:'JetBrains Mono',monospace;font-size:13px;line-height:2.1;display:flex;gap:12px}
-.t-prompt{color:var(--accent)}
-.t-cmd{color:var(--text)}
-.t-val{color:var(--purple)}
-.t-comment{color:var(--text3)}
-.t-sep{height:1px;background:oklch(0.85 0.22 155 / 0.06);margin:6px 0}
-
-/* ═══ PROVA SOCIAL ═══ */
-.proof-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:40px}
-.proof-rating{display:flex;align-items:center;gap:12px;border:1px solid var(--border2);border-radius:10px;
-  padding:10px 18px;background:oklch(0.19 0.02 200 / 0.5);backdrop-filter:blur(12px)}
-.proof-stars{display:flex;gap:2px;color:var(--accent)}
-.proof-stars svg{width:14px;height:14px;fill:var(--accent)}
-.proof-rating-text{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text2);letter-spacing:0.04em}
-.proof-rating-text b{color:var(--text)}
-.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.testi-card{background:rgba(5,8,15,0.8);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:26px;
-  transition:all 0.3s;position:relative;overflow:hidden}
-.testi-card::before,.testi-card::after{content:'';position:absolute;width:16px;height:16px;z-index:1;transition:all 0.35s}
-.testi-card::before{top:10px;left:10px;border-top:1.5px solid oklch(0.85 0.22 155 / 0.4);border-left:1.5px solid oklch(0.85 0.22 155 / 0.4)}
-.testi-card::after{bottom:10px;right:10px;border-bottom:1.5px solid oklch(0.88 0.15 195 / 0.3);border-right:1.5px solid oklch(0.88 0.15 195 / 0.3)}
-.testi-card:hover{border-color:oklch(0.85 0.22 155 / 0.3);transform:translateY(-4px);
-  box-shadow:0 20px 50px rgba(0,0,0,0.5),0 0 40px oklch(0.85 0.22 155 / 0.08)}
-.testi-card:hover::before{top:7px;left:7px;border-color:var(--accent);box-shadow:0 0 10px oklch(0.85 0.22 155 / 0.4)}
-.testi-card:hover::after{bottom:7px;right:7px;border-color:var(--accent2)}
-.testi-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;
-  font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase}
-.testi-course{color:var(--accent)}
-.testi-result{color:var(--accent2);border:1px solid oklch(0.88 0.15 195 / 0.35);border-radius:100px;padding:3px 10px}
-.testi-quote{font-size:14px;line-height:1.75;color:var(--text);margin-bottom:22px}
-.testi-foot{display:flex;align-items:center;gap:12px}
-.testi-avatar{width:36px;height:36px;border-radius:50%;flex-shrink:0;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;
-  font-weight:800;font-size:14px;color:oklch(0.14 0.015 200)}
-.testi-name{font-size:12.5px;font-weight:700;color:var(--text)}
-.testi-handle{font-size:11px;color:var(--text3)}
-@media(max-width:960px){.testi-grid{grid-template-columns:1fr}}
-
-/* ═══ PLANOS ═══ */
-.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.plan-card{background:rgba(5,8,15,0.8);border:1px solid rgba(255,255,255,0.06);border-radius:18px;padding:32px 28px;
-  display:flex;flex-direction:column;position:relative;transition:all 0.35s cubic-bezier(0.16,1,0.3,1)}
-.plan-card:hover{transform:translateY(-6px);border-color:oklch(0.85 0.22 155 / 0.2);
-  box-shadow:0 20px 60px rgba(0,0,0,0.6),0 0 60px oklch(0.85 0.22 155 / 0.06)}
-.plan-card.feat{border-color:oklch(0.85 0.22 155 / 0.45);background:oklch(0.85 0.22 155 / 0.04);
-  box-shadow:0 0 0 1px oklch(0.85 0.22 155 / 0.15),0 0 70px oklch(0.85 0.22 155 / 0.1)}
-.plan-card.feat::before,.plan-card.feat::after{content:'';position:absolute;width:18px;height:18px}
-.plan-card.feat::before{top:10px;left:10px;border-top:1.5px solid var(--accent);border-left:1.5px solid var(--accent);box-shadow:0 0 10px oklch(0.85 0.22 155 / 0.4)}
-.plan-card.feat::after{bottom:10px;right:10px;border-bottom:1.5px solid var(--accent2);border-right:1.5px solid var(--accent2)}
-.plan-badge{position:absolute;top:-12px;left:28px;background:var(--accent);color:oklch(0.14 0.015 200);
-  font-size:10px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;padding:5px 14px;border-radius:100px}
-.plan-tag{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:0.1em;
-  text-transform:uppercase;color:var(--text3);margin-bottom:16px}
-.plan-name{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.02em;margin-bottom:20px}
-.plan-price{display:flex;align-items:baseline;gap:4px;margin-bottom:6px}
-.plan-price .cur{font-size:20px;color:var(--text2);font-weight:600}
-.plan-price .num{font-family:'Bricolage Grotesque',sans-serif;font-size:48px;font-weight:800;line-height:1}
-.plan-card.feat .plan-price .num{color:var(--accent);text-shadow:0 0 30px oklch(0.85 0.22 155 / 0.4)}
-.plan-note{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--text3);letter-spacing:0.05em;margin-bottom:28px}
-.plan-feats{list-style:none;display:flex;flex-direction:column;gap:13px;margin-bottom:32px;flex:1}
-.plan-feats li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--text2);line-height:1.5}
-.plan-feats li svg{width:15px;height:15px;fill:var(--accent2);flex-shrink:0;margin-top:2px}
-.plan-card.feat .plan-feats li svg{fill:var(--accent)}
-.btn-plan{height:48px;border-radius:10px;background:rgba(255,255,255,0.03);border:1px solid var(--border2);
-  color:var(--text);font-size:12.5px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;transition:all 0.2s}
-.plan-card.feat .btn-plan{background:oklch(0.85 0.22 155 / 0.15);border-color:oklch(0.85 0.22 155 / 0.55);color:var(--accent)}
-.btn-plan:hover{border-color:oklch(0.85 0.22 155 / 0.4);color:var(--accent)}
-.plans-trust{display:flex;flex-wrap:wrap;justify-content:center;gap:28px;margin-top:36px;
-  font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--text3)}
-.plans-trust span{display:flex;align-items:center;gap:7px}
-.plans-trust svg{width:13px;height:13px;fill:var(--accent)}
-@media(max-width:960px){.plans-grid{grid-template-columns:1fr}}
-
-/* ═══ FAQ ═══ */
-.faq-list{max-width:820px;border:1px solid var(--border2);border-radius:14px;overflow:hidden;background:oklch(0.19 0.02 200 / 0.5)}
-.faq-item{border-bottom:1px solid var(--border)}
-.faq-item:last-child{border-bottom:none}
-.faq-item summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;
-  padding:20px 24px;font-family:'Bricolage Grotesque',sans-serif;font-size:15.5px;font-weight:700;color:var(--text);
-  letter-spacing:-0.01em;transition:background 0.2s}
-.faq-item summary::-webkit-details-marker{display:none}
-.faq-item summary:hover{background:oklch(0.85 0.22 155 / 0.04)}
-.faq-toggle{width:26px;height:26px;border-radius:8px;border:1px solid var(--border2);flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;color:var(--text3);transition:all 0.25s}
-.faq-item[open] .faq-toggle{background:oklch(0.85 0.22 155 / 0.1);border-color:oklch(0.85 0.22 155 / 0.5);color:var(--accent);transform:rotate(180deg)}
-.faq-toggle svg{width:13px;height:13px}
-.faq-answer{padding:0 24px 22px;font-size:13.5px;line-height:1.75;color:var(--text2);max-width:640px}
-
-/* ═══ FOOTER ═══ */
-.footer{border-top:1px solid oklch(0.85 0.22 155 / 0.08);position:relative;z-index:2;background:rgba(2,4,8,0.98)}
-.footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent 5%,oklch(0.85 0.22 155 / 0.3) 50%,transparent 95%)}
-.footer-top{padding:64px 48px 48px;max-width:1280px;margin:0 auto;
-  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;border-bottom:1px solid var(--border)}
-.footer-brand .footer-logo{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;
-  letter-spacing:0.16em;color:var(--accent);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px}
-.footer-brand p{font-size:13px;color:var(--text3);line-height:1.7;max-width:260px;margin-bottom:20px}
-.footer-social{display:flex;gap:8px}
-.footer-social a{width:36px;height:36px;border-radius:var(--r);border:1px solid var(--border2);
-  display:flex;align-items:center;justify-content:center;color:var(--text3);transition:all 0.22s}
-.footer-social a:hover{border-color:oklch(0.85 0.22 155 / 0.4);color:var(--accent);
-  background:oklch(0.85 0.22 155 / 0.05);box-shadow:0 0 20px oklch(0.85 0.22 155 / 0.12)}
-.footer-social svg{width:14px;height:14px;fill:currentColor}
-.footer-col h4{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;
-  color:var(--text3);margin-bottom:18px}
-.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
-.footer-col ul li a{font-size:13px;color:var(--text3);transition:color 0.2s}
-.footer-col ul li a:hover{color:var(--accent)}
-.footer-bottom{max-width:1280px;margin:0 auto;padding:24px 48px;
-  display:flex;align-items:center;justify-content:space-between}
-.footer-copy{font-size:12px;color:var(--text3)}
-.footer-mono{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3);letter-spacing:0.06em}
-
-/* ═══ MODAL ═══ */
-.modal-overlay{display:none;position:fixed;inset:0;z-index:500;
-  background:rgba(2,4,8,0.92);backdrop-filter:blur(24px);
-  overflow-y:auto;padding:40px 20px;align-items:flex-start;justify-content:center}
-.modal-overlay.active{display:flex;animation:fadeIn 0.2s ease}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-.modal{
-  background:rgba(5,8,15,0.98);
-  border:1px solid oklch(0.85 0.22 155 / 0.15);
-  border-radius:18px;max-width:960px;width:100%;
-  position:relative;overflow:hidden;
-  animation:slideUp 0.3s cubic-bezier(0.16,1,0.3,1);
-  box-shadow:0 0 0 1px oklch(0.85 0.22 155 / 0.05),0 0 100px rgba(0,0,0,0.9),0 0 200px oklch(0.85 0.22 155 / 0.08);
-}
-.modal::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;z-index:10;
-  background:linear-gradient(90deg,transparent 5%,var(--accent) 50%,transparent 95%);
-  box-shadow:0 0 20px oklch(0.85 0.22 155 / 0.5)}
-@keyframes slideUp{from{opacity:0;transform:translateY(40px) scale(0.96)}to{opacity:1;transform:translateY(0) scale(1)}}
-.modal-close{position:absolute;top:16px;right:16px;z-index:20;width:36px;height:36px;border-radius:8px;
-  background:rgba(255,255,255,0.04);border:1px solid var(--border2);color:var(--text3);font-size:18px;
-  display:flex;align-items:center;justify-content:center;transition:all 0.2s}
-.modal-close:hover{color:var(--text);border-color:oklch(0.85 0.22 155 / 0.4);box-shadow:0 0 16px oklch(0.85 0.22 155 / 0.1)}
-.modal-hero{position:relative;height:280px;overflow:hidden}
-.modal-hero-img{width:100%;height:100%;object-fit:cover;filter:brightness(0.5) saturate(1.3)}
-.modal-hero-placeholder{width:100%;height:100%;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:80px}
-.modal-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,8,15,1) 0%,transparent 55%)}
-.modal-hero-badge{position:absolute;bottom:20px;left:32px}
-.modal-body{padding:32px 36px 40px}
-.modal-label{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.18em;
-  text-transform:uppercase;color:var(--purple);margin-bottom:10px;display:flex;align-items:center;gap:8px}
-.modal-label::before{content:'';width:16px;height:1px;background:var(--purple)}
-.modal-title{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:clamp(26px,3.5vw,40px);font-weight:800;letter-spacing:-0.025em;line-height:1.05;margin-bottom:14px;text-wrap:balance}
-.modal-desc{font-size:15px;color:var(--text2);line-height:1.8;margin-bottom:36px;max-width:680px}
-.modal-meta-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
-  background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.07);border-radius:10px;
-  overflow:hidden;margin-bottom:36px}
-.modal-meta-item{background:var(--surface);padding:16px 20px}
-.meta-label{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.12em;
-  text-transform:uppercase;color:var(--text3);margin-bottom:6px}
-.meta-val{font-size:14px;font-weight:600;color:var(--text)}
-.modal-modules-title{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;
-  color:var(--text3);margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border)}
-.module-item{display:flex;align-items:flex-start;gap:14px;padding:11px 0;border-bottom:1px solid var(--border)}
-.module-item:last-child{border-bottom:none}
-.module-num{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--accent);min-width:28px;padding-top:2px}
-.module-text{font-size:14px;color:var(--text);line-height:1.5}
-.modal-cta{margin-top:36px;padding-top:28px;border-top:1px solid var(--border);display:flex;align-items:center;gap:20px;flex-wrap:wrap}
-.modal-price{font-family:'JetBrains Mono',monospace;font-size:38px;font-weight:700;
-  color:var(--accent);text-shadow:0 0 30px oklch(0.85 0.22 155 / 0.4);line-height:1}
-.btn-buy{height:52px;padding:0 36px;
-  background:oklch(0.85 0.22 155 / 0.08);color:var(--accent);
-  border:1px solid oklch(0.85 0.22 155 / 0.4);border-radius:var(--r);
-  font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
-  display:flex;align-items:center;gap:8px;
-  box-shadow:0 0 30px oklch(0.85 0.22 155 / 0.15),inset 0 1px 0 oklch(0.85 0.22 155 / 0.15);
-  transition:all 0.25s;position:relative;overflow:hidden}
-.btn-buy::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
-  background:linear-gradient(90deg,transparent,oklch(0.85 0.22 155 / 0.12),transparent);transition:left 0.5s}
-.btn-buy:hover::before{left:100%}
-.btn-buy:hover{box-shadow:0 0 50px oklch(0.85 0.22 155 / 0.3),inset 0 1px 0 oklch(0.85 0.22 155 / 0.2);
-  border-color:oklch(0.85 0.22 155 / 0.7);transform:translateY(-2px)}
-.btn-buy svg{width:16px;height:16px;fill:var(--accent)}
-.modal-guarantee{font-size:12px;color:var(--text3);display:flex;align-items:center;gap:6px}
-.modal-guarantee svg{width:14px;height:14px;fill:var(--accent);flex-shrink:0}
-
-@media(max-width:960px){
-  .nav{padding:0 20px}.nav-links{display:none}
-  .hero{padding:100px 20px 60px}.wrap{padding:0 20px}
-  .about-grid{grid-template-columns:1fr}
-  .footer-top{grid-template-columns:1fr 1fr;gap:32px;padding:40px 20px}
-  .footer-bottom{padding:20px}
-  .trust-grid{grid-template-columns:1fr 1fr;gap:12px}
-  .trust-inner{padding:40px 20px}
-  .modal-meta-row{grid-template-columns:1fr 1fr}
-  .modal-body{padding:20px 20px 32px}
-  .hero-stats{flex-direction:column;gap:8px}
-  .courses-grid{grid-template-columns:1fr;gap:12px}
-}
-@media(max-width:560px){.nav-social{display:none}}
-@media(max-width:400px){.btn-nav{padding:0 14px;font-size:10.5px}.nav-left{gap:20px}}
+	@media (prefers-contrast: high) {
+		#lovable-badge {
+			--badge-bg: #000;
+			--badge-text: #fff;
+			--badge-text-hover: #fff;
+			border: 2px solid currentColor;
+		}
+		
+		#lovable-badge-cta:focus-visible,
+		#lovable-badge-close:focus-visible {
+			outline-width: 3px;
+		}
+	}
 </style>
-</head>
-<body>
+</head><body data-tsd-source="/src/routes/__root.tsx:127:7"><!--$--><div class="min-h-screen bg-background text-foreground overflow-x-hidden" data-tsd-source="/src/routes/index.tsx:135:5"><header class="relative sticky top-0 z-30 border-b border-border/40 bg-background/70 backdrop-blur-md supports-[backdrop-filter]:bg-background/55" data-tsd-source="/src/routes/index.tsx:137:7"><div aria-hidden="true" class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-destructive/60 to-transparent" data-tsd-source="/src/routes/index.tsx:139:9"></div><div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4" data-tsd-source="/src/routes/index.tsx:140:9"><a href="#" class="flex items-center gap-2 font-mono-tech text-sm uppercase tracking-widest" data-tsd-source="/src/routes/index.tsx:141:11"><span class="h-2 w-2 rounded-full bg-neon-green animate-pulse-dot" data-tsd-source="/src/routes/index.tsx:142:13"></span><span class="font-display text-base tracking-tight" data-tsd-source="/src/routes/index.tsx:143:13">Veronica</span><span class="text-muted-foreground" data-tsd-source="/src/routes/index.tsx:144:13">·</span><span class="text-muted-foreground" data-tsd-source="/src/routes/index.tsx:145:13">Hub</span></a><nav class="hidden items-center gap-1 text-xs font-mono-tech uppercase tracking-wider md:flex" data-tsd-source="/src/routes/index.tsx:147:11"><a href="#cursos" class="group relative px-3 py-2 text-muted-foreground transition hover:text-neon-green" data-tsd-source="/src/routes/index.tsx:153:15">Cursos<span class="absolute inset-x-3 -bottom-0.5 h-px origin-left scale-x-0 bg-neon-green transition-transform duration-300 group-hover:scale-x-100" data-tsd-source="/src/routes/index.tsx:159:17"></span></a><a href="#sobre" class="group relative px-3 py-2 text-muted-foreground transition hover:text-neon-green" data-tsd-source="/src/routes/index.tsx:153:15">Sobre<span class="absolute inset-x-3 -bottom-0.5 h-px origin-left scale-x-0 bg-neon-green transition-transform duration-300 group-hover:scale-x-100" data-tsd-source="/src/routes/index.tsx:159:17"></span></a><a href="#video-ai" class="group relative px-3 py-2 text-muted-foreground transition hover:text-neon-green" data-tsd-source="/src/routes/index.tsx:153:15">Vídeo AI<span class="absolute inset-x-3 -bottom-0.5 h-px origin-left scale-x-0 bg-neon-green transition-transform duration-300 group-hover:scale-x-100" data-tsd-source="/src/routes/index.tsx:159:17"></span></a></nav><div class="flex items-center gap-4" data-tsd-source="/src/routes/index.tsx:163:11"><div class="hidden items-center gap-3 text-muted-foreground sm:flex" data-tsd-source="/src/routes/index.tsx:164:13"><a href="#" aria-label="YouTube" class="transition hover:text-neon-green hover:-translate-y-0.5" data-tsd-source="/src/routes/index.tsx:165:15"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-youtube h-4 w-4" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:165:116"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path><path d="m10 15 5-3-5-3z"></path></svg></a><a href="#" aria-label="Instagram" class="transition hover:text-neon-green hover:-translate-y-0.5" data-tsd-source="/src/routes/index.tsx:166:15"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram h-4 w-4" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:166:118"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg></a><a href="#" aria-label="WhatsApp" class="transition hover:text-neon-green hover:-translate-y-0.5" data-tsd-source="/src/routes/index.tsx:167:15"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle h-4 w-4" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:167:117"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path></svg></a></div><a href="https://veronicahub.com" target="_blank" rel="noopener noreferrer" class="group relative inline-flex items-center gap-2 rounded-sm bg-neon-green px-4 py-2 font-mono-tech text-[11px] uppercase tracking-widest text-primary-foreground shadow-[0_0_0_1px_oklch(0.85_0.22_155),0_8px_24px_-8px_oklch(0.85_0.22_155/0.6)] transition duration-200 hover:-translate-y-0.5 hover:shadow-glow-green active:translate-y-0 active:brightness-95" data-tsd-source="/src/routes/index.tsx:169:13"><span class="text-[10px] opacity-70 group-hover:opacity-100" data-tsd-source="/src/routes/index.tsx:175:15">▸</span>Acessar Hub</a></div></div></header><section class="relative overflow-hidden scanlines" data-tsd-source="/src/routes/index.tsx:183:7"><div aria-hidden="true" class="pointer-events-none absolute inset-0 animate-holo-shimmer bg-cover bg-no-repeat opacity-[0.55] md:opacity-[0.45] lg:opacity-[0.38] bg-[position:42%_22%] md:bg-[position:46%_26%] lg:bg-[position:center_30%]" style="background-image:url(/__l5e/assets-v1/805cde01-9a79-4a7d-b04e-145c1690a824/veronica-cyborg-v2.jpg);filter:contrast(1.05) saturate(0.85) brightness(0.9);mix-blend-mode:screen" data-tsd-source="/src/routes/index.tsx:185:9"></div><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-0 h-32 animate-holo-sweep" style="background:linear-gradient(180deg, transparent 0%, oklch(0.88 0.15 195 / 0.14) 45%, oklch(0.85 0.22 155 / 0.22) 50%, oklch(0.88 0.15 195 / 0.14) 55%, transparent 100%);mix-blend-mode:screen" data-tsd-source="/src/routes/index.tsx:195:9"></div><div aria-hidden="true" class="pointer-events-none absolute inset-0 opacity-40" style="background-image:repeating-linear-gradient(0deg, transparent 0 2px, oklch(0.14 0.015 200 / 0.35) 2px 3px);mix-blend-mode:multiply" data-tsd-source="/src/routes/index.tsx:205:9"></div><div aria-hidden="true" class="pointer-events-none absolute inset-0" style="background:linear-gradient(90deg, var(--background) 0%, oklch(0.14 0.015 200 / 0.6) 40%, transparent 75%, oklch(0.14 0.015 200 / 0.85) 100%), linear-gradient(180deg, transparent 0%, transparent 55%, var(--background) 100%)" data-tsd-source="/src/routes/index.tsx:215:9"></div><div aria-hidden="true" class="pointer-events-none absolute left-6 top-6 h-16 w-16 border-l-2 border-t-2 border-neon-green/70" data-tsd-source="/src/routes/index.tsx:224:9"></div><div aria-hidden="true" class="pointer-events-none absolute right-6 bottom-6 h-16 w-16 border-r-2 border-b-2 border-neon-cyan/70" data-tsd-source="/src/routes/index.tsx:225:9"></div><div class="relative mx-auto max-w-7xl px-6 pb-24 pt-20 md:pb-32 md:pt-28" data-tsd-source="/src/routes/index.tsx:227:9"><div class="max-w-3xl" data-tsd-source="/src/routes/index.tsx:228:11"><div class="inline-flex items-center gap-3 rounded-full border border-neon-green/40 bg-background/60 px-4 py-1.5 font-mono-tech text-[10px] uppercase tracking-widest text-neon-green backdrop-blur" data-tsd-source="/src/routes/index.tsx:229:13"><span class="h-1.5 w-1.5 rounded-full bg-neon-green animate-pulse-dot" data-tsd-source="/src/routes/index.tsx:230:15"></span>Veronica Hub · Laboratório Digital · 2026</div><h1 class="mt-8 font-display text-5xl sm:text-7xl md:text-8xl" style="letter-spacing:-0.045em;line-height:0.9" data-tsd-source="/src/routes/index.tsx:234:13"><span class="block text-foreground" data-tsd-source="/src/routes/index.tsx:235:15">O Segredo</span><span class="block text-foreground" data-tsd-source="/src/routes/index.tsx:236:15">Tá no</span><span class="block text-outline-neon animate-glow-pulse" data-tsd-source="/src/routes/index.tsx:237:15">Prompt<span class="text-neon-green" data-tsd-source="/src/routes/index.tsx:238:23">_</span></span></h1><p class="mt-8 max-w-xl text-base leading-[1.65] text-muted-foreground sm:text-lg" data-tsd-source="/src/routes/index.tsx:242:13">Comandos diretos ao ponto para quem quer entrar no digital sem enrolação, guiados pela Veronica. Do dark content à IA, do tráfego pago ao hacking ético.</p><div class="mt-8 max-w-md rounded-sm border border-neon-green/30 bg-background/70 p-4 font-mono-tech text-[11px] leading-relaxed text-neon-green/90 backdrop-blur" data-tsd-source="/src/components/TerminalBoot.tsx:38:5"><div data-tsd-source="/src/components/TerminalBoot.tsx:43:9"><span class="ml-0.5 inline-block h-3 w-1.5 -translate-y-[1px] bg-neon-green align-middle animate-pulse" data-tsd-source="/src/components/TerminalBoot.tsx:45:11"></span></div></div><div class="mt-10 flex flex-wrap items-center gap-4" data-tsd-source="/src/routes/index.tsx:249:13"><a href="https://veronicahub.com" target="_blank" rel="noopener noreferrer" class="group relative inline-flex items-center gap-3 overflow-hidden rounded-sm bg-neon-green px-7 py-4 font-mono-tech text-xs uppercase tracking-[0.18em] text-primary-foreground shadow-glow-green transition duration-200 hover:-translate-y-0.5 hover:brightness-110 hover:shadow-[0_0_60px_oklch(0.85_0.22_155/0.6)] active:translate-y-0 active:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-green focus-visible:ring-offset-2 focus-visible:ring-offset-background" data-tsd-source="/src/routes/index.tsx:250:15"><span class="text-[10px] transition-transform group-hover:translate-x-0.5" data-tsd-source="/src/routes/index.tsx:256:17">▸</span>Entrar no Hub<span aria-hidden="true" class="pointer-events-none absolute inset-y-0 -left-full w-1/2 -skew-x-12 bg-white/25 transition-all duration-700 group-hover:left-[150%]" data-tsd-source="/src/routes/index.tsx:258:17"></span></a><a href="#cursos" class="group inline-flex items-center gap-2 rounded-sm border border-border/60 bg-background/40 px-7 py-4 font-mono-tech text-xs uppercase tracking-[0.18em] text-muted-foreground backdrop-blur transition duration-200 hover:-translate-y-0.5 hover:border-neon-cyan/60 hover:bg-neon-cyan/5 hover:text-neon-cyan active:translate-y-0" data-tsd-source="/src/routes/index.tsx:260:15">Ver os 11 cursos <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right h-3 w-3 transition-transform group-hover:translate-x-0.5" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:264:34"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div></div><div class="reveal  mt-20 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4 cv-auto" data-tsd-source="/src/routes/index.tsx:270:11"><div class="rounded-sm border border-border/60 bg-background/50 p-5 backdrop-blur transition hover:-translate-y-0.5 hover:border-neon-green/50 hover:shadow-glow-green" data-tsd-source="/src/routes/index.tsx:280:15"><div class="font-display text-3xl text-foreground sm:text-4xl" data-tsd-source="/src/routes/index.tsx:284:17">0<span class="text-neon-green" data-tsd-source="/src/routes/index.tsx:286:19">+</span></div><div class="mt-2 font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground" data-tsd-source="/src/routes/index.tsx:288:17">Cursos no hub</div></div><div class="rounded-sm border border-border/60 bg-background/50 p-5 backdrop-blur transition hover:-translate-y-0.5 hover:border-neon-green/50 hover:shadow-glow-green" data-tsd-source="/src/routes/index.tsx:280:15"><div class="font-display text-3xl text-foreground sm:text-4xl" data-tsd-source="/src/routes/index.tsx:284:17">0<span class="text-neon-green" data-tsd-source="/src/routes/index.tsx:286:19">%</span></div><div class="mt-2 font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground" data-tsd-source="/src/routes/index.tsx:288:17">Online · vitalício</div></div><div class="rounded-sm border border-border/60 bg-background/50 p-5 backdrop-blur transition hover:-translate-y-0.5 hover:border-neon-green/50 hover:shadow-glow-green" data-tsd-source="/src/routes/index.tsx:280:15"><div class="font-display text-3xl text-foreground sm:text-4xl" data-tsd-source="/src/routes/index.tsx:284:17">0<span class="text-neon-green" data-tsd-source="/src/routes/index.tsx:286:19">+</span></div><div class="mt-2 font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground" data-tsd-source="/src/routes/index.tsx:288:17">Alunos ativos</div></div><div class="rounded-sm border border-border/60 bg-background/50 p-5 backdrop-blur transition hover:-translate-y-0.5 hover:border-neon-green/50 hover:shadow-glow-green" data-tsd-source="/src/routes/index.tsx:280:15"><div class="font-display text-3xl text-foreground sm:text-4xl" data-tsd-source="/src/routes/index.tsx:284:17">R$19<span class="text-neon-green" data-tsd-source="/src/routes/index.tsx:286:19">,90</span></div><div class="mt-2 font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground" data-tsd-source="/src/routes/index.tsx:288:17">A partir de</div></div></div></div></section><section class="relative overflow-hidden border-y border-border/40 bg-surface/60 py-6 cv-auto" data-tsd-source="/src/routes/index.tsx:298:7"><div class="flex animate-marquee gap-10 whitespace-nowrap font-mono-tech text-sm uppercase tracking-widest text-muted-foreground" data-tsd-source="/src/routes/index.tsx:299:9"><span class="flex items-center gap-10" data-tsd-source="/src/routes/index.tsx:301:13"><span class="text-neon-green" data-tsd-source="/src/routes/index.tsx:302:15">·</span><span class="transition hover:text-foreground" data-tsd-source="/src/routes/index.tsx:303:15">Canais Dark</span></span><span class="flex items-center gap-10" data-tsd-source="/src/routes/index.tsx:301:13"><span class="text-neon-green" data-tsd-source="/src/routes/index.tsx:302:15">·</span><span class="transition hover:text-foreground" data-tsd-source="/src/routes/index.tsx:303:15">VSL Cinematográfico</span></span><span class="flex items-center gap-10" data-tsd-source="/src/routes/index.tsx:301:13"><span class="text-neon-green" data-tsd-source="/src/routes/index.tsx:302:15">·</span><span class="transition hover:text-foreground" data-tsd-source="/src/routes/index.tsx:303:15">Avatar Digital IA</span></span><span class="flex items-center gap-10" data-tsd-source="/src/routes/index.tsx:301:13"><span class="text-neon-green" data-tsd-source="/src/routes/index.tsx:302:15">·</span><span class="transition hover:text-foreground" data-tsd-source="/src/routes/index.tsx:303:15">Afiliado</span></span><span class="flex items-center gap-10" data-tsd-source="/src/routes/index.tsx:301:13"><span class="text-neon-green" data-tsd-source="/src/routes/index.tsx:302:15">·</span><span class="transition hover:text-foreground" data-tsd-source="/src/routes/index.tsx:303:15">iFood</span></span><span class="flex items-center gap-10" data-tsd-source="/src/routes/index.tsx:301:13"><span class="text-neon-green" data-tsd-source="/src/routes/index.tsx:302:15">·</span><span class="transition hover:text-foreground" data-tsd-source="/src/routes/index.tsx:303:15">Meta Ads</span></span><span class="flex items-center gap-10" data-tsd-source="/src/routes/index.tsx:301:13"><span class="text-neon-green" data-tsd-source="/src/routes/index.tsx:302:15">·</span><span class="transition hover:text-foreground" data-tsd-source="/src/routes/index.tsx:303:15">VFX com IA</span></span><span class="flex items-center gap-10" data-tsd-source="/src/routes/index.tsx:301:13"><span class="text-neon-green" data-tsd-source="/src/routes/index.tsx:302:15">·</span><span class="transition hover:text-foreground" data-tsd-source="/src/routes/index.tsx:303:15">Copywriting</span></span><span class="flex items-center gap-10" data-tsd-source="/src/routes/index.tsx:301:13"><span class="text-neon-green" data-tsd-source="/src/routes/index.tsx:302:15">·</span><span class="transition hover:text-foreground" data-tsd-source="/src/routes/index.tsx:303:15">App no-code</span></span><span class="flex items-center gap-10" data-tsd-source="/src/routes/index.tsx:301:13"><span class="text-neon-green" data-tsd-source="/src/routes/index.tsx:302:15">·</span><span class="transition hover:text-foreground" data-tsd-source="/src/routes/index.tsx:303:15">Criar Site</span></span><span class="flex items-center gap-10" data-tsd-source="/src/routes/index.tsx:301:13"><span class="text-neon-green" data-tsd-source="/src/routes/index.tsx:302:15">·</span><span class="transition hover:text-foreground" data-tsd-source="/src/routes/index.tsx:303:15">Hacking Ético</span></span><span class="flex items-center gap-10" data-tsd-source="/src/routes/index.tsx:301:13"><span class="text-neon-green" data-tsd-source="/src/routes/index.tsx:302:15">·</span><span class="transition hover:text-foreground" data-tsd-source="/src/routes/index.tsx:303:15">Canais Dark</span></span><span class="flex items-center gap-10" data-tsd-source="/src/routes/index.tsx:301:13"><span class="text-neon-green" data-tsd-source="/src/routes/index.tsx:302:15">·</span><span class="transition hover:text-foreground" data-tsd-source="/src/routes/index.tsx:303:15">VSL Cinematográfico</span></span><span class="flex items-center gap-10" data-tsd-source="/src/routes/index.tsx:301:13"><span class="text-neon-green" data-tsd-source="/src/routes/index.tsx:302:15">·</span><span class="transition hover:text-foreground" data-tsd-source="/src/routes/index.tsx:303:15">Avatar Digital IA</span></span><span class="flex items-center gap-10" data-tsd-source="/src/routes/index.tsx:301:13"><span class="text-neon-green" data-tsd-source="/src/routes/index.tsx:302:15">·</span><span class="transition hover:text-foreground" data-tsd-source="/src/routes/index.tsx:303:15">Afiliado</span></span><span class="flex items-center gap-10" data-tsd-source="/src/routes/index.tsx:301:13"><span class="text-neon-green" data-tsd-source="/src/routes/index.tsx:302:15">·</span><span class="transition hover:text-foreground" data-tsd-source="/src/routes/index.tsx:303:15">iFood</span></span><span class="flex items-center gap-10" data-tsd-source="/src/routes/index.tsx:301:13"><span class="text-neon-green" data-tsd-source="/src/routes/index.tsx:302:15">·</span><span class="transition hover:text-foreground" data-tsd-source="/src/routes/index.tsx:303:15">Meta Ads</span></span><span class="flex items-center gap-10" data-tsd-source="/src/routes/index.tsx:301:13"><span class="text-neon-green" data-tsd-source="/src/routes/index.tsx:302:15">·</span><span class="transition hover:text-foreground" data-tsd-source="/src/routes/index.tsx:303:15">VFX com IA</span></span><span class="flex items-center gap-10" data-tsd-source="/src/routes/index.tsx:301:13"><span class="text-neon-green" data-tsd-source="/src/routes/index.tsx:302:15">·</span><span class="transition hover:text-foreground" data-tsd-source="/src/routes/index.tsx:303:15">Copywriting</span></span><span class="flex items-center gap-10" data-tsd-source="/src/routes/index.tsx:301:13"><span class="text-neon-green" data-tsd-source="/src/routes/index.tsx:302:15">·</span><span class="transition hover:text-foreground" data-tsd-source="/src/routes/index.tsx:303:15">App no-code</span></span><span class="flex items-center gap-10" data-tsd-source="/src/routes/index.tsx:301:13"><span class="text-neon-green" data-tsd-source="/src/routes/index.tsx:302:15">·</span><span class="transition hover:text-foreground" data-tsd-source="/src/routes/index.tsx:303:15">Criar Site</span></span><span class="flex items-center gap-10" data-tsd-source="/src/routes/index.tsx:301:13"><span class="text-neon-green" data-tsd-source="/src/routes/index.tsx:302:15">·</span><span class="transition hover:text-foreground" data-tsd-source="/src/routes/index.tsx:303:15">Hacking Ético</span></span></div></section><section class="reveal  mx-auto max-w-7xl px-6 py-24 cv-auto" data-tsd-source="/src/routes/index.tsx:310:7"><div class="mb-10 flex flex-wrap items-end justify-between gap-6" data-tsd-source="/src/routes/index.tsx:314:9"><div data-tsd-source="/src/routes/index.tsx:315:11"><div class="flex items-center gap-3 font-mono-tech text-[11px] uppercase tracking-widest text-neon-green" data-tsd-source="/src/routes/index.tsx:316:13"><span class="h-px w-8 bg-neon-green" data-tsd-source="/src/routes/index.tsx:317:15"></span>[ 00 ] Prova real</div><h2 class="mt-3 font-display text-3xl sm:text-4xl md:text-5xl" style="letter-spacing:-0.04em;line-height:0.95" data-tsd-source="/src/routes/index.tsx:320:13">Quem já entrou no Hub<br data-tsd-source="/src/routes/index.tsx:321:36"/><span class="text-neon-green text-glow-green" data-tsd-source="/src/routes/index.tsx:322:15">colhe resultado</span>.</h2></div><div class="flex items-center gap-3 rounded-sm border border-border/60 bg-background/60 px-4 py-2.5 backdrop-blur" data-tsd-source="/src/routes/index.tsx:325:11"><div class="flex items-center gap-0.5 text-neon-green" data-tsd-source="/src/routes/index.tsx:326:13"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star h-4 w-4 fill-neon-green" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:328:17"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star h-4 w-4 fill-neon-green" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:328:17"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star h-4 w-4 fill-neon-green" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:328:17"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star h-4 w-4 fill-neon-green" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:328:17"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star h-4 w-4 fill-neon-green" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:328:17"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg></div><div class="font-mono-tech text-[11px] uppercase tracking-widest text-muted-foreground" data-tsd-source="/src/routes/index.tsx:331:13"><span class="text-foreground" data-tsd-source="/src/routes/index.tsx:332:15">4.9</span> · 2.4k avaliações</div></div></div><div class="grid gap-4 md:grid-cols-3" data-tsd-source="/src/routes/index.tsx:337:9"><figure class="group relative overflow-hidden rounded-sm border border-border/60 bg-surface/70 p-6 backdrop-blur transition hover:-translate-y-1 hover:border-neon-green/50 hover:shadow-glow-green" data-tsd-source="/src/routes/index.tsx:339:13"><div class="flex items-center justify-between font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground" data-tsd-source="/src/routes/index.tsx:343:15"><span class="text-neon-green" data-tsd-source="/src/routes/index.tsx:344:17">Canais Dark</span><span class="rounded-full border border-neon-cyan/40 px-2 py-0.5 text-neon-cyan" data-tsd-source="/src/routes/index.tsx:345:17">R$ 12k/mês em 90 dias</span></div><blockquote class="mt-5 text-sm leading-[1.65] text-foreground/90" data-tsd-source="/src/routes/index.tsx:347:15">&quot;<!-- -->Larguei a CLT. O método é execução pura, sem enrolação. Em 3 meses tinha 2 canais rodando no automático.<!-- -->&quot;</blockquote><figcaption class="mt-6 flex items-center gap-3" data-tsd-source="/src/routes/index.tsx:348:15"><div class="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-neon font-display text-sm text-primary-foreground" data-tsd-source="/src/routes/index.tsx:349:17">M</div><div class="font-mono-tech text-[11px] uppercase tracking-widest" data-tsd-source="/src/routes/index.tsx:352:17"><div class="text-foreground" data-tsd-source="/src/routes/index.tsx:353:19">Marina R.</div><div class="text-muted-foreground" data-tsd-source="/src/routes/index.tsx:354:19">@marinacria</div></div></figcaption></figure><figure class="group relative overflow-hidden rounded-sm border border-border/60 bg-surface/70 p-6 backdrop-blur transition hover:-translate-y-1 hover:border-neon-green/50 hover:shadow-glow-green" data-tsd-source="/src/routes/index.tsx:339:13"><div class="flex items-center justify-between font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground" data-tsd-source="/src/routes/index.tsx:343:15"><span class="text-neon-green" data-tsd-source="/src/routes/index.tsx:344:17">VSL + Meta Ads</span><span class="rounded-full border border-neon-cyan/40 px-2 py-0.5 text-neon-cyan" data-tsd-source="/src/routes/index.tsx:345:17">+340% ROAS</span></div><blockquote class="mt-5 text-sm leading-[1.65] text-foreground/90" data-tsd-source="/src/routes/index.tsx:347:15">&quot;<!-- -->Nunca vi uma didática tão direta. A Veronica corta o fluff e vai pro que faz vender. Aplicável no dia 1.<!-- -->&quot;</blockquote><figcaption class="mt-6 flex items-center gap-3" data-tsd-source="/src/routes/index.tsx:348:15"><div class="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-neon font-display text-sm text-primary-foreground" data-tsd-source="/src/routes/index.tsx:349:17">D</div><div class="font-mono-tech text-[11px] uppercase tracking-widest" data-tsd-source="/src/routes/index.tsx:352:17"><div class="text-foreground" data-tsd-source="/src/routes/index.tsx:353:19">Diego F.</div><div class="text-muted-foreground" data-tsd-source="/src/routes/index.tsx:354:19">@diegoflow</div></div></figcaption></figure><figure class="group relative overflow-hidden rounded-sm border border-border/60 bg-surface/70 p-6 backdrop-blur transition hover:-translate-y-1 hover:border-neon-green/50 hover:shadow-glow-green" data-tsd-source="/src/routes/index.tsx:339:13"><div class="flex items-center justify-between font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground" data-tsd-source="/src/routes/index.tsx:343:15"><span class="text-neon-green" data-tsd-source="/src/routes/index.tsx:344:17">Avatar Digital IA</span><span class="rounded-full border border-neon-cyan/40 px-2 py-0.5 text-neon-cyan" data-tsd-source="/src/routes/index.tsx:345:17">8 clientes em 30 dias</span></div><blockquote class="mt-5 text-sm leading-[1.65] text-foreground/90" data-tsd-source="/src/routes/index.tsx:347:15">&quot;<!-- -->Comecei do zero em IA. Hoje entrego avatar digital pra advogados e nutricionistas. Case real, resultado real.<!-- -->&quot;</blockquote><figcaption class="mt-6 flex items-center gap-3" data-tsd-source="/src/routes/index.tsx:348:15"><div class="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-neon font-display text-sm text-primary-foreground" data-tsd-source="/src/routes/index.tsx:349:17">C</div><div class="font-mono-tech text-[11px] uppercase tracking-widest" data-tsd-source="/src/routes/index.tsx:352:17"><div class="text-foreground" data-tsd-source="/src/routes/index.tsx:353:19">Camila S.</div><div class="text-muted-foreground" data-tsd-source="/src/routes/index.tsx:354:19">@camilaia</div></div></figcaption></figure></div></section><section id="cursos" class="reveal  mx-auto max-w-7xl px-6 py-24 cv-auto" data-tsd-source="/src/routes/index.tsx:363:7"><div class="mb-14 flex flex-col gap-3" data-tsd-source="/src/routes/index.tsx:368:9"><div class="flex items-center gap-3 font-mono-tech text-[11px] uppercase tracking-widest text-neon-green" data-tsd-source="/src/routes/index.tsx:369:11"><span class="h-px w-8 bg-neon-green" data-tsd-source="/src/routes/index.tsx:370:13"></span>[ 01 ] Catálogo · 11 cursos</div><h2 class="font-display text-4xl sm:text-5xl md:text-6xl" style="letter-spacing:-0.04em;line-height:0.95" data-tsd-source="/src/routes/index.tsx:373:11">Do <span class="text-neon-green text-glow-green" data-tsd-source="/src/routes/index.tsx:374:16">dark content</span><br data-tsd-source="/src/routes/index.tsx:375:13"/>ao <span class="text-neon-cyan text-glow-cyan" data-tsd-source="/src/routes/index.tsx:376:16">hacking ético</span>.</h2><p class="max-w-2xl leading-[1.65] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:378:11">Sem fluff. Cada curso é construído sobre resultado real e execução prática.</p></div><div class="mb-8 flex flex-wrap gap-2" data-tsd-source="/src/routes/index.tsx:384:9"><button class="rounded-full border px-3.5 py-1.5 font-mono-tech text-[10px] uppercase tracking-widest transition border-neon-green bg-neon-green/15 text-neon-green shadow-[0_0_20px_-4px_oklch(0.85_0.22_155/0.7)]" data-tsd-source="/src/routes/index.tsx:388:15">Todos</button><button class="rounded-full border px-3.5 py-1.5 font-mono-tech text-[10px] uppercase tracking-widest transition border-border/60 text-muted-foreground hover:border-neon-green/40 hover:text-foreground" data-tsd-source="/src/routes/index.tsx:388:15">Conteúdo</button><button class="rounded-full border px-3.5 py-1.5 font-mono-tech text-[10px] uppercase tracking-widest transition border-border/60 text-muted-foreground hover:border-neon-green/40 hover:text-foreground" data-tsd-source="/src/routes/index.tsx:388:15">Vídeo</button><button class="rounded-full border px-3.5 py-1.5 font-mono-tech text-[10px] uppercase tracking-widest transition border-border/60 text-muted-foreground hover:border-neon-green/40 hover:text-foreground" data-tsd-source="/src/routes/index.tsx:388:15">IA</button><button class="rounded-full border px-3.5 py-1.5 font-mono-tech text-[10px] uppercase tracking-widest transition border-border/60 text-muted-foreground hover:border-neon-green/40 hover:text-foreground" data-tsd-source="/src/routes/index.tsx:388:15">Vendas</button><button class="rounded-full border px-3.5 py-1.5 font-mono-tech text-[10px] uppercase tracking-widest transition border-border/60 text-muted-foreground hover:border-neon-green/40 hover:text-foreground" data-tsd-source="/src/routes/index.tsx:388:15">Delivery</button><button class="rounded-full border px-3.5 py-1.5 font-mono-tech text-[10px] uppercase tracking-widest transition border-border/60 text-muted-foreground hover:border-neon-green/40 hover:text-foreground" data-tsd-source="/src/routes/index.tsx:388:15">Tráfego</button><button class="rounded-full border px-3.5 py-1.5 font-mono-tech text-[10px] uppercase tracking-widest transition border-border/60 text-muted-foreground hover:border-neon-green/40 hover:text-foreground" data-tsd-source="/src/routes/index.tsx:388:15">Escrita</button><button class="rounded-full border px-3.5 py-1.5 font-mono-tech text-[10px] uppercase tracking-widest transition border-border/60 text-muted-foreground hover:border-neon-green/40 hover:text-foreground" data-tsd-source="/src/routes/index.tsx:388:15">Dev</button><button class="rounded-full border px-3.5 py-1.5 font-mono-tech text-[10px] uppercase tracking-widest transition border-border/60 text-muted-foreground hover:border-neon-green/40 hover:text-foreground" data-tsd-source="/src/routes/index.tsx:388:15">Segurança</button></div><div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-tsd-source="/src/routes/index.tsx:403:9"><a href="https://veronicahub.com" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-sm border p-6 backdrop-blur transition duration-300 hover:-translate-y-1 hover:shadow-glow-green border-neon-green/60 bg-gradient-to-br from-neon-green/8 via-surface/70 to-surface" data-tsd-source="/src/routes/index.tsx:405:13"><div class="relative -mx-6 -mt-6 mb-6 h-36 overflow-hidden border-b border-border/50" data-tsd-source="/src/routes/index.tsx:417:15"><img src="/__l5e/assets-v1/4c3759b7-4b48-4cea-b568-0d3f3d17ad3d/pexels-merlin-11308988.jpg" alt="" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out group-hover:scale-110 group-hover:[filter:contrast(1.15)_saturate(1.2)_hue-rotate(-8deg)] [filter:contrast(1.05)_saturate(0.75)_brightness(0.75)_hue-rotate(140deg)]" data-tsd-source="/src/routes/index.tsx:418:17"/><div aria-hidden="true" class="absolute inset-0 opacity-70 transition-opacity duration-500 group-hover:opacity-40" style="background:linear-gradient(135deg, oklch(0.85 0.22 155 / 0.35) 0%, transparent 45%, oklch(0.88 0.15 195 / 0.25) 100%);mix-blend-mode:screen" data-tsd-source="/src/routes/index.tsx:426:17"></div><div aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-transparent" data-tsd-source="/src/routes/index.tsx:436:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-0 opacity-50" style="background-image:repeating-linear-gradient(0deg, transparent 0 2px, oklch(0.14 0.015 200 / 0.4) 2px 3px)" data-tsd-source="/src/routes/index.tsx:438:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-neon-cyan/25 to-transparent transition-transform duration-1000 ease-out group-hover:translate-x-full" data-tsd-source="/src/routes/index.tsx:447:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-3 h-px bg-neon-green/0 transition-colors duration-300 group-hover:bg-neon-green/70" data-tsd-source="/src/routes/index.tsx:452:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-4 h-px bg-neon-cyan/0 transition-colors duration-500 group-hover:bg-neon-cyan/60" data-tsd-source="/src/routes/index.tsx:453:17"></div><span aria-hidden="true" class="absolute left-2 top-2 h-3 w-3 border-l border-t border-neon-green/70" data-tsd-source="/src/routes/index.tsx:455:17"></span><span aria-hidden="true" class="absolute right-2 top-2 h-3 w-3 border-r border-t border-neon-cyan/70" data-tsd-source="/src/routes/index.tsx:456:17"></span><span class="absolute left-3 bottom-3 font-mono-tech text-[10px] uppercase tracking-widest text-foreground/90" data-tsd-source="/src/routes/index.tsx:458:17">[ <!-- -->01<!-- --> ]</span><span class="absolute right-3 bottom-3 rounded-full border border-border/60 bg-background/60 px-2.5 py-0.5 font-mono-tech text-[9px] uppercase tracking-widest text-muted-foreground backdrop-blur group-hover:border-neon-cyan/60 group-hover:text-neon-cyan" data-tsd-source="/src/routes/index.tsx:461:17">Conteúdo</span><span class="absolute right-3 top-3 rounded-full bg-neon-green px-2 py-0.5 font-mono-tech text-[9px] uppercase tracking-widest text-primary-foreground shadow-glow-green" data-tsd-source="/src/routes/index.tsx:465:19">Mais vendido</span></div><h3 class="font-display text-2xl text-foreground" style="letter-spacing:-0.03em;line-height:1" data-tsd-source="/src/routes/index.tsx:470:15">Canais Dark</h3><div class="mt-3 flex items-center gap-3 font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground" data-tsd-source="/src/routes/index.tsx:471:15"><span data-tsd-source="/src/routes/index.tsx:472:17">32<!-- --> aulas</span><span class="opacity-40" data-tsd-source="/src/routes/index.tsx:473:17">·</span><span data-tsd-source="/src/routes/index.tsx:474:17">6h</span><span class="opacity-40" data-tsd-source="/src/routes/index.tsx:475:17">·</span><span class="text-neon-cyan/80" data-tsd-source="/src/routes/index.tsx:476:17">Intermediário</span></div><ul class="mt-5 space-y-1.5 text-[13px] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:478:15"><li class="flex items-start gap-2" data-tsd-source="/src/routes/index.tsx:480:19"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-neon-green/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:481:21"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:482:21">Nichos ocultos que faturam</span></li><li class="flex items-start gap-2" data-tsd-source="/src/routes/index.tsx:480:19"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-neon-green/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:481:21"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:482:21">Automação com IA</span></li><li class="flex items-start gap-2" data-tsd-source="/src/routes/index.tsx:480:19"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-neon-green/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:481:21"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:482:21">Monetização YouTube</span></li></ul><div class="mt-6 flex items-center gap-2 font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground transition group-hover:text-neon-green" data-tsd-source="/src/routes/index.tsx:486:15">Acessar curso <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right h-3 w-3 transition-transform group-hover:translate-x-1" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:487:31"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div><div class="pointer-events-none absolute right-3 bottom-3 h-4 w-4 border-r border-b border-neon-green/0 transition group-hover:border-neon-green/80" data-tsd-source="/src/routes/index.tsx:489:15"></div></a><a href="https://veronicahub.com" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-sm border p-6 backdrop-blur transition duration-300 hover:-translate-y-1 hover:shadow-glow-green border-border/60 bg-surface/70 hover:border-neon-green/60 hover:bg-surface" data-tsd-source="/src/routes/index.tsx:405:13"><div class="relative -mx-6 -mt-6 mb-6 h-36 overflow-hidden border-b border-border/50" data-tsd-source="/src/routes/index.tsx:417:15"><img src="/__l5e/assets-v1/66ec3a2b-932a-4cca-b0b2-924caff7b464/pexels-merlin-14268798.jpg" alt="" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out group-hover:scale-110 group-hover:[filter:contrast(1.15)_saturate(1.2)_hue-rotate(-8deg)] [filter:contrast(1.05)_saturate(0.75)_brightness(0.75)_hue-rotate(140deg)]" data-tsd-source="/src/routes/index.tsx:418:17"/><div aria-hidden="true" class="absolute inset-0 opacity-70 transition-opacity duration-500 group-hover:opacity-40" style="background:linear-gradient(135deg, oklch(0.85 0.22 155 / 0.35) 0%, transparent 45%, oklch(0.88 0.15 195 / 0.25) 100%);mix-blend-mode:screen" data-tsd-source="/src/routes/index.tsx:426:17"></div><div aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-transparent" data-tsd-source="/src/routes/index.tsx:436:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-0 opacity-50" style="background-image:repeating-linear-gradient(0deg, transparent 0 2px, oklch(0.14 0.015 200 / 0.4) 2px 3px)" data-tsd-source="/src/routes/index.tsx:438:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-neon-cyan/25 to-transparent transition-transform duration-1000 ease-out group-hover:translate-x-full" data-tsd-source="/src/routes/index.tsx:447:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-3 h-px bg-neon-green/0 transition-colors duration-300 group-hover:bg-neon-green/70" data-tsd-source="/src/routes/index.tsx:452:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-4 h-px bg-neon-cyan/0 transition-colors duration-500 group-hover:bg-neon-cyan/60" data-tsd-source="/src/routes/index.tsx:453:17"></div><span aria-hidden="true" class="absolute left-2 top-2 h-3 w-3 border-l border-t border-neon-green/70" data-tsd-source="/src/routes/index.tsx:455:17"></span><span aria-hidden="true" class="absolute right-2 top-2 h-3 w-3 border-r border-t border-neon-cyan/70" data-tsd-source="/src/routes/index.tsx:456:17"></span><span class="absolute left-3 bottom-3 font-mono-tech text-[10px] uppercase tracking-widest text-foreground/90" data-tsd-source="/src/routes/index.tsx:458:17">[ <!-- -->02<!-- --> ]</span><span class="absolute right-3 bottom-3 rounded-full border border-border/60 bg-background/60 px-2.5 py-0.5 font-mono-tech text-[9px] uppercase tracking-widest text-muted-foreground backdrop-blur group-hover:border-neon-cyan/60 group-hover:text-neon-cyan" data-tsd-source="/src/routes/index.tsx:461:17">Vídeo</span></div><h3 class="font-display text-2xl text-foreground" style="letter-spacing:-0.03em;line-height:1" data-tsd-source="/src/routes/index.tsx:470:15">VSL Cinematográfico</h3><div class="mt-3 flex items-center gap-3 font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground" data-tsd-source="/src/routes/index.tsx:471:15"><span data-tsd-source="/src/routes/index.tsx:472:17">24<!-- --> aulas</span><span class="opacity-40" data-tsd-source="/src/routes/index.tsx:473:17">·</span><span data-tsd-source="/src/routes/index.tsx:474:17">5h</span><span class="opacity-40" data-tsd-source="/src/routes/index.tsx:475:17">·</span><span class="text-neon-cyan/80" data-tsd-source="/src/routes/index.tsx:476:17">Intermediário</span></div><ul class="mt-5 space-y-1.5 text-[13px] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:478:15"><li class="flex items-start gap-2" data-tsd-source="/src/routes/index.tsx:480:19"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-neon-green/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:481:21"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:482:21">Roteiro que converte</span></li><li class="flex items-start gap-2" data-tsd-source="/src/routes/index.tsx:480:19"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-neon-green/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:481:21"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:482:21">Edição cinematográfica</span></li><li class="flex items-start gap-2" data-tsd-source="/src/routes/index.tsx:480:19"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-neon-green/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:481:21"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:482:21">CapCut + IA</span></li></ul><div class="mt-6 flex items-center gap-2 font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground transition group-hover:text-neon-green" data-tsd-source="/src/routes/index.tsx:486:15">Acessar curso <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right h-3 w-3 transition-transform group-hover:translate-x-1" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:487:31"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div><div class="pointer-events-none absolute right-3 bottom-3 h-4 w-4 border-r border-b border-neon-green/0 transition group-hover:border-neon-green/80" data-tsd-source="/src/routes/index.tsx:489:15"></div></a><a href="https://veronicahub.com" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-sm border p-6 backdrop-blur transition duration-300 hover:-translate-y-1 hover:shadow-glow-green border-border/60 bg-surface/70 hover:border-neon-green/60 hover:bg-surface" data-tsd-source="/src/routes/index.tsx:405:13"><div class="relative -mx-6 -mt-6 mb-6 h-36 overflow-hidden border-b border-border/50" data-tsd-source="/src/routes/index.tsx:417:15"><img src="/__l5e/assets-v1/a5e225b0-8a3d-4274-abe1-1e69c7ab1690/pexels-leo-gilmant-1144880343-30459143.jpg" alt="" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out group-hover:scale-110 group-hover:[filter:contrast(1.15)_saturate(1.2)_hue-rotate(-8deg)] [filter:contrast(1.05)_saturate(0.75)_brightness(0.75)_hue-rotate(140deg)]" data-tsd-source="/src/routes/index.tsx:418:17"/><div aria-hidden="true" class="absolute inset-0 opacity-70 transition-opacity duration-500 group-hover:opacity-40" style="background:linear-gradient(135deg, oklch(0.85 0.22 155 / 0.35) 0%, transparent 45%, oklch(0.88 0.15 195 / 0.25) 100%);mix-blend-mode:screen" data-tsd-source="/src/routes/index.tsx:426:17"></div><div aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-transparent" data-tsd-source="/src/routes/index.tsx:436:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-0 opacity-50" style="background-image:repeating-linear-gradient(0deg, transparent 0 2px, oklch(0.14 0.015 200 / 0.4) 2px 3px)" data-tsd-source="/src/routes/index.tsx:438:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-neon-cyan/25 to-transparent transition-transform duration-1000 ease-out group-hover:translate-x-full" data-tsd-source="/src/routes/index.tsx:447:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-3 h-px bg-neon-green/0 transition-colors duration-300 group-hover:bg-neon-green/70" data-tsd-source="/src/routes/index.tsx:452:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-4 h-px bg-neon-cyan/0 transition-colors duration-500 group-hover:bg-neon-cyan/60" data-tsd-source="/src/routes/index.tsx:453:17"></div><span aria-hidden="true" class="absolute left-2 top-2 h-3 w-3 border-l border-t border-neon-green/70" data-tsd-source="/src/routes/index.tsx:455:17"></span><span aria-hidden="true" class="absolute right-2 top-2 h-3 w-3 border-r border-t border-neon-cyan/70" data-tsd-source="/src/routes/index.tsx:456:17"></span><span class="absolute left-3 bottom-3 font-mono-tech text-[10px] uppercase tracking-widest text-foreground/90" data-tsd-source="/src/routes/index.tsx:458:17">[ <!-- -->03<!-- --> ]</span><span class="absolute right-3 bottom-3 rounded-full border border-border/60 bg-background/60 px-2.5 py-0.5 font-mono-tech text-[9px] uppercase tracking-widest text-muted-foreground backdrop-blur group-hover:border-neon-cyan/60 group-hover:text-neon-cyan" data-tsd-source="/src/routes/index.tsx:461:17">IA</span></div><h3 class="font-display text-2xl text-foreground" style="letter-spacing:-0.03em;line-height:1" data-tsd-source="/src/routes/index.tsx:470:15">Avatar Digital IA</h3><div class="mt-3 flex items-center gap-3 font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground" data-tsd-source="/src/routes/index.tsx:471:15"><span data-tsd-source="/src/routes/index.tsx:472:17">18<!-- --> aulas</span><span class="opacity-40" data-tsd-source="/src/routes/index.tsx:473:17">·</span><span data-tsd-source="/src/routes/index.tsx:474:17">4h</span><span class="opacity-40" data-tsd-source="/src/routes/index.tsx:475:17">·</span><span class="text-neon-cyan/80" data-tsd-source="/src/routes/index.tsx:476:17">Iniciante</span></div><ul class="mt-5 space-y-1.5 text-[13px] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:478:15"><li class="flex items-start gap-2" data-tsd-source="/src/routes/index.tsx:480:19"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-neon-green/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:481:21"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:482:21">Clone da sua voz</span></li><li class="flex items-start gap-2" data-tsd-source="/src/routes/index.tsx:480:19"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-neon-green/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:481:21"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:482:21">Avatar realista</span></li><li class="flex items-start gap-2" data-tsd-source="/src/routes/index.tsx:480:19"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-neon-green/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:481:21"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:482:21">Automação total</span></li></ul><div class="mt-6 flex items-center gap-2 font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground transition group-hover:text-neon-green" data-tsd-source="/src/routes/index.tsx:486:15">Acessar curso <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right h-3 w-3 transition-transform group-hover:translate-x-1" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:487:31"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div><div class="pointer-events-none absolute right-3 bottom-3 h-4 w-4 border-r border-b border-neon-green/0 transition group-hover:border-neon-green/80" data-tsd-source="/src/routes/index.tsx:489:15"></div></a><a href="https://veronicahub.com" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-sm border p-6 backdrop-blur transition duration-300 hover:-translate-y-1 hover:shadow-glow-green border-border/60 bg-surface/70 hover:border-neon-green/60 hover:bg-surface" data-tsd-source="/src/routes/index.tsx:405:13"><div class="relative -mx-6 -mt-6 mb-6 h-36 overflow-hidden border-b border-border/50" data-tsd-source="/src/routes/index.tsx:417:15"><img src="/__l5e/assets-v1/2565bc08-25a7-4963-85c2-30ea64e219b6/pexels-themob000-30895543.jpg" alt="" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out group-hover:scale-110 group-hover:[filter:contrast(1.15)_saturate(1.2)_hue-rotate(-8deg)] [filter:contrast(1.05)_saturate(0.75)_brightness(0.75)_hue-rotate(140deg)]" data-tsd-source="/src/routes/index.tsx:418:17"/><div aria-hidden="true" class="absolute inset-0 opacity-70 transition-opacity duration-500 group-hover:opacity-40" style="background:linear-gradient(135deg, oklch(0.85 0.22 155 / 0.35) 0%, transparent 45%, oklch(0.88 0.15 195 / 0.25) 100%);mix-blend-mode:screen" data-tsd-source="/src/routes/index.tsx:426:17"></div><div aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-transparent" data-tsd-source="/src/routes/index.tsx:436:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-0 opacity-50" style="background-image:repeating-linear-gradient(0deg, transparent 0 2px, oklch(0.14 0.015 200 / 0.4) 2px 3px)" data-tsd-source="/src/routes/index.tsx:438:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-neon-cyan/25 to-transparent transition-transform duration-1000 ease-out group-hover:translate-x-full" data-tsd-source="/src/routes/index.tsx:447:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-3 h-px bg-neon-green/0 transition-colors duration-300 group-hover:bg-neon-green/70" data-tsd-source="/src/routes/index.tsx:452:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-4 h-px bg-neon-cyan/0 transition-colors duration-500 group-hover:bg-neon-cyan/60" data-tsd-source="/src/routes/index.tsx:453:17"></div><span aria-hidden="true" class="absolute left-2 top-2 h-3 w-3 border-l border-t border-neon-green/70" data-tsd-source="/src/routes/index.tsx:455:17"></span><span aria-hidden="true" class="absolute right-2 top-2 h-3 w-3 border-r border-t border-neon-cyan/70" data-tsd-source="/src/routes/index.tsx:456:17"></span><span class="absolute left-3 bottom-3 font-mono-tech text-[10px] uppercase tracking-widest text-foreground/90" data-tsd-source="/src/routes/index.tsx:458:17">[ <!-- -->04<!-- --> ]</span><span class="absolute right-3 bottom-3 rounded-full border border-border/60 bg-background/60 px-2.5 py-0.5 font-mono-tech text-[9px] uppercase tracking-widest text-muted-foreground backdrop-blur group-hover:border-neon-cyan/60 group-hover:text-neon-cyan" data-tsd-source="/src/routes/index.tsx:461:17">Vendas</span></div><h3 class="font-display text-2xl text-foreground" style="letter-spacing:-0.03em;line-height:1" data-tsd-source="/src/routes/index.tsx:470:15">Afiliado</h3><div class="mt-3 flex items-center gap-3 font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground" data-tsd-source="/src/routes/index.tsx:471:15"><span data-tsd-source="/src/routes/index.tsx:472:17">28<!-- --> aulas</span><span class="opacity-40" data-tsd-source="/src/routes/index.tsx:473:17">·</span><span data-tsd-source="/src/routes/index.tsx:474:17">5h</span><span class="opacity-40" data-tsd-source="/src/routes/index.tsx:475:17">·</span><span class="text-neon-cyan/80" data-tsd-source="/src/routes/index.tsx:476:17">Iniciante</span></div><ul class="mt-5 space-y-1.5 text-[13px] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:478:15"><li class="flex items-start gap-2" data-tsd-source="/src/routes/index.tsx:480:19"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-neon-green/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:481:21"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:482:21">Primeira comissão</span></li><li class="flex items-start gap-2" data-tsd-source="/src/routes/index.tsx:480:19"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-neon-green/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:481:21"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:482:21">Funil validado</span></li><li class="flex items-start gap-2" data-tsd-source="/src/routes/index.tsx:480:19"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-neon-green/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:481:21"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:482:21">Escala orgânica</span></li></ul><div class="mt-6 flex items-center gap-2 font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground transition group-hover:text-neon-green" data-tsd-source="/src/routes/index.tsx:486:15">Acessar curso <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right h-3 w-3 transition-transform group-hover:translate-x-1" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:487:31"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div><div class="pointer-events-none absolute right-3 bottom-3 h-4 w-4 border-r border-b border-neon-green/0 transition group-hover:border-neon-green/80" data-tsd-source="/src/routes/index.tsx:489:15"></div></a><a href="https://veronicahub.com" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-sm border p-6 backdrop-blur transition duration-300 hover:-translate-y-1 hover:shadow-glow-green border-border/60 bg-surface/70 hover:border-neon-green/60 hover:bg-surface" data-tsd-source="/src/routes/index.tsx:405:13"><div class="relative -mx-6 -mt-6 mb-6 h-36 overflow-hidden border-b border-border/50" data-tsd-source="/src/routes/index.tsx:417:15"><img src="/__l5e/assets-v1/f52c61fd-361f-4bc1-b7aa-04c9bbaed617/pexels-yaroslav-shuraev-7688551.jpg" alt="" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out group-hover:scale-110 group-hover:[filter:contrast(1.15)_saturate(1.2)_hue-rotate(-8deg)] [filter:contrast(1.05)_saturate(0.75)_brightness(0.75)_hue-rotate(140deg)]" data-tsd-source="/src/routes/index.tsx:418:17"/><div aria-hidden="true" class="absolute inset-0 opacity-70 transition-opacity duration-500 group-hover:opacity-40" style="background:linear-gradient(135deg, oklch(0.85 0.22 155 / 0.35) 0%, transparent 45%, oklch(0.88 0.15 195 / 0.25) 100%);mix-blend-mode:screen" data-tsd-source="/src/routes/index.tsx:426:17"></div><div aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-transparent" data-tsd-source="/src/routes/index.tsx:436:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-0 opacity-50" style="background-image:repeating-linear-gradient(0deg, transparent 0 2px, oklch(0.14 0.015 200 / 0.4) 2px 3px)" data-tsd-source="/src/routes/index.tsx:438:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-neon-cyan/25 to-transparent transition-transform duration-1000 ease-out group-hover:translate-x-full" data-tsd-source="/src/routes/index.tsx:447:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-3 h-px bg-neon-green/0 transition-colors duration-300 group-hover:bg-neon-green/70" data-tsd-source="/src/routes/index.tsx:452:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-4 h-px bg-neon-cyan/0 transition-colors duration-500 group-hover:bg-neon-cyan/60" data-tsd-source="/src/routes/index.tsx:453:17"></div><span aria-hidden="true" class="absolute left-2 top-2 h-3 w-3 border-l border-t border-neon-green/70" data-tsd-source="/src/routes/index.tsx:455:17"></span><span aria-hidden="true" class="absolute right-2 top-2 h-3 w-3 border-r border-t border-neon-cyan/70" data-tsd-source="/src/routes/index.tsx:456:17"></span><span class="absolute left-3 bottom-3 font-mono-tech text-[10px] uppercase tracking-widest text-foreground/90" data-tsd-source="/src/routes/index.tsx:458:17">[ <!-- -->05<!-- --> ]</span><span class="absolute right-3 bottom-3 rounded-full border border-border/60 bg-background/60 px-2.5 py-0.5 font-mono-tech text-[9px] uppercase tracking-widest text-muted-foreground backdrop-blur group-hover:border-neon-cyan/60 group-hover:text-neon-cyan" data-tsd-source="/src/routes/index.tsx:461:17">Delivery</span></div><h3 class="font-display text-2xl text-foreground" style="letter-spacing:-0.03em;line-height:1" data-tsd-source="/src/routes/index.tsx:470:15">iFood</h3><div class="mt-3 flex items-center gap-3 font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground" data-tsd-source="/src/routes/index.tsx:471:15"><span data-tsd-source="/src/routes/index.tsx:472:17">20<!-- --> aulas</span><span class="opacity-40" data-tsd-source="/src/routes/index.tsx:473:17">·</span><span data-tsd-source="/src/routes/index.tsx:474:17">3h</span><span class="opacity-40" data-tsd-source="/src/routes/index.tsx:475:17">·</span><span class="text-neon-cyan/80" data-tsd-source="/src/routes/index.tsx:476:17">Iniciante</span></div><ul class="mt-5 space-y-1.5 text-[13px] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:478:15"><li class="flex items-start gap-2" data-tsd-source="/src/routes/index.tsx:480:19"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-neon-green/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:481:21"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:482:21">Dark kitchen</span></li><li class="flex items-start gap-2" data-tsd-source="/src/routes/index.tsx:480:19"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-neon-green/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:481:21"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:482:21">Anúncios que vendem</span></li><li class="flex items-start gap-2" data-tsd-source="/src/routes/index.tsx:480:19"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-neon-green/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:481:21"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:482:21">Escala local</span></li></ul><div class="mt-6 flex items-center gap-2 font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground transition group-hover:text-neon-green" data-tsd-source="/src/routes/index.tsx:486:15">Acessar curso <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right h-3 w-3 transition-transform group-hover:translate-x-1" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:487:31"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div><div class="pointer-events-none absolute right-3 bottom-3 h-4 w-4 border-r border-b border-neon-green/0 transition group-hover:border-neon-green/80" data-tsd-source="/src/routes/index.tsx:489:15"></div></a><a href="https://veronicahub.com" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-sm border p-6 backdrop-blur transition duration-300 hover:-translate-y-1 hover:shadow-glow-green border-border/60 bg-surface/70 hover:border-neon-green/60 hover:bg-surface" data-tsd-source="/src/routes/index.tsx:405:13"><div class="relative -mx-6 -mt-6 mb-6 h-36 overflow-hidden border-b border-border/50" data-tsd-source="/src/routes/index.tsx:417:15"><img src="/__l5e/assets-v1/2565bc08-25a7-4963-85c2-30ea64e219b6/pexels-themob000-30895543.jpg" alt="" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out group-hover:scale-110 group-hover:[filter:contrast(1.15)_saturate(1.2)_hue-rotate(-8deg)] [filter:contrast(1.05)_saturate(0.75)_brightness(0.75)_hue-rotate(140deg)]" data-tsd-source="/src/routes/index.tsx:418:17"/><div aria-hidden="true" class="absolute inset-0 opacity-70 transition-opacity duration-500 group-hover:opacity-40" style="background:linear-gradient(135deg, oklch(0.85 0.22 155 / 0.35) 0%, transparent 45%, oklch(0.88 0.15 195 / 0.25) 100%);mix-blend-mode:screen" data-tsd-source="/src/routes/index.tsx:426:17"></div><div aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-transparent" data-tsd-source="/src/routes/index.tsx:436:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-0 opacity-50" style="background-image:repeating-linear-gradient(0deg, transparent 0 2px, oklch(0.14 0.015 200 / 0.4) 2px 3px)" data-tsd-source="/src/routes/index.tsx:438:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-neon-cyan/25 to-transparent transition-transform duration-1000 ease-out group-hover:translate-x-full" data-tsd-source="/src/routes/index.tsx:447:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-3 h-px bg-neon-green/0 transition-colors duration-300 group-hover:bg-neon-green/70" data-tsd-source="/src/routes/index.tsx:452:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-4 h-px bg-neon-cyan/0 transition-colors duration-500 group-hover:bg-neon-cyan/60" data-tsd-source="/src/routes/index.tsx:453:17"></div><span aria-hidden="true" class="absolute left-2 top-2 h-3 w-3 border-l border-t border-neon-green/70" data-tsd-source="/src/routes/index.tsx:455:17"></span><span aria-hidden="true" class="absolute right-2 top-2 h-3 w-3 border-r border-t border-neon-cyan/70" data-tsd-source="/src/routes/index.tsx:456:17"></span><span class="absolute left-3 bottom-3 font-mono-tech text-[10px] uppercase tracking-widest text-foreground/90" data-tsd-source="/src/routes/index.tsx:458:17">[ <!-- -->06<!-- --> ]</span><span class="absolute right-3 bottom-3 rounded-full border border-border/60 bg-background/60 px-2.5 py-0.5 font-mono-tech text-[9px] uppercase tracking-widest text-muted-foreground backdrop-blur group-hover:border-neon-cyan/60 group-hover:text-neon-cyan" data-tsd-source="/src/routes/index.tsx:461:17">Tráfego</span></div><h3 class="font-display text-2xl text-foreground" style="letter-spacing:-0.03em;line-height:1" data-tsd-source="/src/routes/index.tsx:470:15">Meta Ads</h3><div class="mt-3 flex items-center gap-3 font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground" data-tsd-source="/src/routes/index.tsx:471:15"><span data-tsd-source="/src/routes/index.tsx:472:17">26<!-- --> aulas</span><span class="opacity-40" data-tsd-source="/src/routes/index.tsx:473:17">·</span><span data-tsd-source="/src/routes/index.tsx:474:17">6h</span><span class="opacity-40" data-tsd-source="/src/routes/index.tsx:475:17">·</span><span class="text-neon-cyan/80" data-tsd-source="/src/routes/index.tsx:476:17">Intermediário</span></div><ul class="mt-5 space-y-1.5 text-[13px] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:478:15"><li class="flex items-start gap-2" data-tsd-source="/src/routes/index.tsx:480:19"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-neon-green/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:481:21"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:482:21">Estrutura de campanha</span></li><li class="flex items-start gap-2" data-tsd-source="/src/routes/index.tsx:480:19"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-neon-green/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:481:21"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:482:21">Escala vertical</span></li><li class="flex items-start gap-2" data-tsd-source="/src/routes/index.tsx:480:19"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-neon-green/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:481:21"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:482:21">Otimização diária</span></li></ul><div class="mt-6 flex items-center gap-2 font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground transition group-hover:text-neon-green" data-tsd-source="/src/routes/index.tsx:486:15">Acessar curso <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right h-3 w-3 transition-transform group-hover:translate-x-1" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:487:31"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div><div class="pointer-events-none absolute right-3 bottom-3 h-4 w-4 border-r border-b border-neon-green/0 transition group-hover:border-neon-green/80" data-tsd-source="/src/routes/index.tsx:489:15"></div></a><a href="https://veronicahub.com" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-sm border p-6 backdrop-blur transition duration-300 hover:-translate-y-1 hover:shadow-glow-green border-border/60 bg-surface/70 hover:border-neon-green/60 hover:bg-surface" data-tsd-source="/src/routes/index.tsx:405:13"><div class="relative -mx-6 -mt-6 mb-6 h-36 overflow-hidden border-b border-border/50" data-tsd-source="/src/routes/index.tsx:417:15"><img src="/__l5e/assets-v1/12f0a9f0-a1b3-4ca5-b455-62baaf0c2716/pexels-cottonbro-6153739.jpg" alt="" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out group-hover:scale-110 group-hover:[filter:contrast(1.15)_saturate(1.2)_hue-rotate(-8deg)] [filter:contrast(1.05)_saturate(0.75)_brightness(0.75)_hue-rotate(140deg)]" data-tsd-source="/src/routes/index.tsx:418:17"/><div aria-hidden="true" class="absolute inset-0 opacity-70 transition-opacity duration-500 group-hover:opacity-40" style="background:linear-gradient(135deg, oklch(0.85 0.22 155 / 0.35) 0%, transparent 45%, oklch(0.88 0.15 195 / 0.25) 100%);mix-blend-mode:screen" data-tsd-source="/src/routes/index.tsx:426:17"></div><div aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-transparent" data-tsd-source="/src/routes/index.tsx:436:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-0 opacity-50" style="background-image:repeating-linear-gradient(0deg, transparent 0 2px, oklch(0.14 0.015 200 / 0.4) 2px 3px)" data-tsd-source="/src/routes/index.tsx:438:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-neon-cyan/25 to-transparent transition-transform duration-1000 ease-out group-hover:translate-x-full" data-tsd-source="/src/routes/index.tsx:447:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-3 h-px bg-neon-green/0 transition-colors duration-300 group-hover:bg-neon-green/70" data-tsd-source="/src/routes/index.tsx:452:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-4 h-px bg-neon-cyan/0 transition-colors duration-500 group-hover:bg-neon-cyan/60" data-tsd-source="/src/routes/index.tsx:453:17"></div><span aria-hidden="true" class="absolute left-2 top-2 h-3 w-3 border-l border-t border-neon-green/70" data-tsd-source="/src/routes/index.tsx:455:17"></span><span aria-hidden="true" class="absolute right-2 top-2 h-3 w-3 border-r border-t border-neon-cyan/70" data-tsd-source="/src/routes/index.tsx:456:17"></span><span class="absolute left-3 bottom-3 font-mono-tech text-[10px] uppercase tracking-widest text-foreground/90" data-tsd-source="/src/routes/index.tsx:458:17">[ <!-- -->07<!-- --> ]</span><span class="absolute right-3 bottom-3 rounded-full border border-border/60 bg-background/60 px-2.5 py-0.5 font-mono-tech text-[9px] uppercase tracking-widest text-muted-foreground backdrop-blur group-hover:border-neon-cyan/60 group-hover:text-neon-cyan" data-tsd-source="/src/routes/index.tsx:461:17">IA</span></div><h3 class="font-display text-2xl text-foreground" style="letter-spacing:-0.03em;line-height:1" data-tsd-source="/src/routes/index.tsx:470:15">VFX com IA</h3><div class="mt-3 flex items-center gap-3 font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground" data-tsd-source="/src/routes/index.tsx:471:15"><span data-tsd-source="/src/routes/index.tsx:472:17">16<!-- --> aulas</span><span class="opacity-40" data-tsd-source="/src/routes/index.tsx:473:17">·</span><span data-tsd-source="/src/routes/index.tsx:474:17">4h</span><span class="opacity-40" data-tsd-source="/src/routes/index.tsx:475:17">·</span><span class="text-neon-cyan/80" data-tsd-source="/src/routes/index.tsx:476:17">Avançado</span></div><ul class="mt-5 space-y-1.5 text-[13px] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:478:15"><li class="flex items-start gap-2" data-tsd-source="/src/routes/index.tsx:480:19"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-neon-green/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:481:21"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:482:21">Runway + Kling</span></li><li class="flex items-start gap-2" data-tsd-source="/src/routes/index.tsx:480:19"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-neon-green/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:481:21"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:482:21">Efeitos cinematográficos</span></li><li class="flex items-start gap-2" data-tsd-source="/src/routes/index.tsx:480:19"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-neon-green/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:481:21"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:482:21">Pipeline pro</span></li></ul><div class="mt-6 flex items-center gap-2 font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground transition group-hover:text-neon-green" data-tsd-source="/src/routes/index.tsx:486:15">Acessar curso <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right h-3 w-3 transition-transform group-hover:translate-x-1" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:487:31"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div><div class="pointer-events-none absolute right-3 bottom-3 h-4 w-4 border-r border-b border-neon-green/0 transition group-hover:border-neon-green/80" data-tsd-source="/src/routes/index.tsx:489:15"></div></a><a href="https://veronicahub.com" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-sm border p-6 backdrop-blur transition duration-300 hover:-translate-y-1 hover:shadow-glow-green border-border/60 bg-surface/70 hover:border-neon-green/60 hover:bg-surface" data-tsd-source="/src/routes/index.tsx:405:13"><div class="relative -mx-6 -mt-6 mb-6 h-36 overflow-hidden border-b border-border/50" data-tsd-source="/src/routes/index.tsx:417:15"><img src="/__l5e/assets-v1/66ec3a2b-932a-4cca-b0b2-924caff7b464/pexels-merlin-14268798.jpg" alt="" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out group-hover:scale-110 group-hover:[filter:contrast(1.15)_saturate(1.2)_hue-rotate(-8deg)] [filter:contrast(1.05)_saturate(0.75)_brightness(0.75)_hue-rotate(140deg)]" data-tsd-source="/src/routes/index.tsx:418:17"/><div aria-hidden="true" class="absolute inset-0 opacity-70 transition-opacity duration-500 group-hover:opacity-40" style="background:linear-gradient(135deg, oklch(0.85 0.22 155 / 0.35) 0%, transparent 45%, oklch(0.88 0.15 195 / 0.25) 100%);mix-blend-mode:screen" data-tsd-source="/src/routes/index.tsx:426:17"></div><div aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-transparent" data-tsd-source="/src/routes/index.tsx:436:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-0 opacity-50" style="background-image:repeating-linear-gradient(0deg, transparent 0 2px, oklch(0.14 0.015 200 / 0.4) 2px 3px)" data-tsd-source="/src/routes/index.tsx:438:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-neon-cyan/25 to-transparent transition-transform duration-1000 ease-out group-hover:translate-x-full" data-tsd-source="/src/routes/index.tsx:447:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-3 h-px bg-neon-green/0 transition-colors duration-300 group-hover:bg-neon-green/70" data-tsd-source="/src/routes/index.tsx:452:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-4 h-px bg-neon-cyan/0 transition-colors duration-500 group-hover:bg-neon-cyan/60" data-tsd-source="/src/routes/index.tsx:453:17"></div><span aria-hidden="true" class="absolute left-2 top-2 h-3 w-3 border-l border-t border-neon-green/70" data-tsd-source="/src/routes/index.tsx:455:17"></span><span aria-hidden="true" class="absolute right-2 top-2 h-3 w-3 border-r border-t border-neon-cyan/70" data-tsd-source="/src/routes/index.tsx:456:17"></span><span class="absolute left-3 bottom-3 font-mono-tech text-[10px] uppercase tracking-widest text-foreground/90" data-tsd-source="/src/routes/index.tsx:458:17">[ <!-- -->08<!-- --> ]</span><span class="absolute right-3 bottom-3 rounded-full border border-border/60 bg-background/60 px-2.5 py-0.5 font-mono-tech text-[9px] uppercase tracking-widest text-muted-foreground backdrop-blur group-hover:border-neon-cyan/60 group-hover:text-neon-cyan" data-tsd-source="/src/routes/index.tsx:461:17">Escrita</span></div><h3 class="font-display text-2xl text-foreground" style="letter-spacing:-0.03em;line-height:1" data-tsd-source="/src/routes/index.tsx:470:15">Copywriting</h3><div class="mt-3 flex items-center gap-3 font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground" data-tsd-source="/src/routes/index.tsx:471:15"><span data-tsd-source="/src/routes/index.tsx:472:17">22<!-- --> aulas</span><span class="opacity-40" data-tsd-source="/src/routes/index.tsx:473:17">·</span><span data-tsd-source="/src/routes/index.tsx:474:17">4h</span><span class="opacity-40" data-tsd-source="/src/routes/index.tsx:475:17">·</span><span class="text-neon-cyan/80" data-tsd-source="/src/routes/index.tsx:476:17">Iniciante</span></div><ul class="mt-5 space-y-1.5 text-[13px] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:478:15"><li class="flex items-start gap-2" data-tsd-source="/src/routes/index.tsx:480:19"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-neon-green/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:481:21"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:482:21">Fórmulas que vendem</span></li><li class="flex items-start gap-2" data-tsd-source="/src/routes/index.tsx:480:19"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-neon-green/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:481:21"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:482:21">IA como parceira</span></li><li class="flex items-start gap-2" data-tsd-source="/src/routes/index.tsx:480:19"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-neon-green/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:481:21"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:482:21">Portfolio real</span></li></ul><div class="mt-6 flex items-center gap-2 font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground transition group-hover:text-neon-green" data-tsd-source="/src/routes/index.tsx:486:15">Acessar curso <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right h-3 w-3 transition-transform group-hover:translate-x-1" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:487:31"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div><div class="pointer-events-none absolute right-3 bottom-3 h-4 w-4 border-r border-b border-neon-green/0 transition group-hover:border-neon-green/80" data-tsd-source="/src/routes/index.tsx:489:15"></div></a><a href="https://veronicahub.com" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-sm border p-6 backdrop-blur transition duration-300 hover:-translate-y-1 hover:shadow-glow-green border-border/60 bg-surface/70 hover:border-neon-green/60 hover:bg-surface" data-tsd-source="/src/routes/index.tsx:405:13"><div class="relative -mx-6 -mt-6 mb-6 h-36 overflow-hidden border-b border-border/50" data-tsd-source="/src/routes/index.tsx:417:15"><img src="/__l5e/assets-v1/f52c61fd-361f-4bc1-b7aa-04c9bbaed617/pexels-yaroslav-shuraev-7688551.jpg" alt="" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out group-hover:scale-110 group-hover:[filter:contrast(1.15)_saturate(1.2)_hue-rotate(-8deg)] [filter:contrast(1.05)_saturate(0.75)_brightness(0.75)_hue-rotate(140deg)]" data-tsd-source="/src/routes/index.tsx:418:17"/><div aria-hidden="true" class="absolute inset-0 opacity-70 transition-opacity duration-500 group-hover:opacity-40" style="background:linear-gradient(135deg, oklch(0.85 0.22 155 / 0.35) 0%, transparent 45%, oklch(0.88 0.15 195 / 0.25) 100%);mix-blend-mode:screen" data-tsd-source="/src/routes/index.tsx:426:17"></div><div aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-transparent" data-tsd-source="/src/routes/index.tsx:436:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-0 opacity-50" style="background-image:repeating-linear-gradient(0deg, transparent 0 2px, oklch(0.14 0.015 200 / 0.4) 2px 3px)" data-tsd-source="/src/routes/index.tsx:438:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-neon-cyan/25 to-transparent transition-transform duration-1000 ease-out group-hover:translate-x-full" data-tsd-source="/src/routes/index.tsx:447:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-3 h-px bg-neon-green/0 transition-colors duration-300 group-hover:bg-neon-green/70" data-tsd-source="/src/routes/index.tsx:452:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-4 h-px bg-neon-cyan/0 transition-colors duration-500 group-hover:bg-neon-cyan/60" data-tsd-source="/src/routes/index.tsx:453:17"></div><span aria-hidden="true" class="absolute left-2 top-2 h-3 w-3 border-l border-t border-neon-green/70" data-tsd-source="/src/routes/index.tsx:455:17"></span><span aria-hidden="true" class="absolute right-2 top-2 h-3 w-3 border-r border-t border-neon-cyan/70" data-tsd-source="/src/routes/index.tsx:456:17"></span><span class="absolute left-3 bottom-3 font-mono-tech text-[10px] uppercase tracking-widest text-foreground/90" data-tsd-source="/src/routes/index.tsx:458:17">[ <!-- -->09<!-- --> ]</span><span class="absolute right-3 bottom-3 rounded-full border border-border/60 bg-background/60 px-2.5 py-0.5 font-mono-tech text-[9px] uppercase tracking-widest text-muted-foreground backdrop-blur group-hover:border-neon-cyan/60 group-hover:text-neon-cyan" data-tsd-source="/src/routes/index.tsx:461:17">Dev</span></div><h3 class="font-display text-2xl text-foreground" style="letter-spacing:-0.03em;line-height:1" data-tsd-source="/src/routes/index.tsx:470:15">App no-code</h3><div class="mt-3 flex items-center gap-3 font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground" data-tsd-source="/src/routes/index.tsx:471:15"><span data-tsd-source="/src/routes/index.tsx:472:17">30<!-- --> aulas</span><span class="opacity-40" data-tsd-source="/src/routes/index.tsx:473:17">·</span><span data-tsd-source="/src/routes/index.tsx:474:17">7h</span><span class="opacity-40" data-tsd-source="/src/routes/index.tsx:475:17">·</span><span class="text-neon-cyan/80" data-tsd-source="/src/routes/index.tsx:476:17">Intermediário</span></div><ul class="mt-5 space-y-1.5 text-[13px] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:478:15"><li class="flex items-start gap-2" data-tsd-source="/src/routes/index.tsx:480:19"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-neon-green/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:481:21"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:482:21">App em 7 dias</span></li><li class="flex items-start gap-2" data-tsd-source="/src/routes/index.tsx:480:19"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-neon-green/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:481:21"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:482:21">Backend automático</span></li><li class="flex items-start gap-2" data-tsd-source="/src/routes/index.tsx:480:19"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-neon-green/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:481:21"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:482:21">Publicar nas stores</span></li></ul><div class="mt-6 flex items-center gap-2 font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground transition group-hover:text-neon-green" data-tsd-source="/src/routes/index.tsx:486:15">Acessar curso <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right h-3 w-3 transition-transform group-hover:translate-x-1" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:487:31"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div><div class="pointer-events-none absolute right-3 bottom-3 h-4 w-4 border-r border-b border-neon-green/0 transition group-hover:border-neon-green/80" data-tsd-source="/src/routes/index.tsx:489:15"></div></a><a href="https://veronicahub.com" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-sm border p-6 backdrop-blur transition duration-300 hover:-translate-y-1 hover:shadow-glow-green border-border/60 bg-surface/70 hover:border-neon-green/60 hover:bg-surface" data-tsd-source="/src/routes/index.tsx:405:13"><div class="relative -mx-6 -mt-6 mb-6 h-36 overflow-hidden border-b border-border/50" data-tsd-source="/src/routes/index.tsx:417:15"><img src="/__l5e/assets-v1/4c3759b7-4b48-4cea-b568-0d3f3d17ad3d/pexels-merlin-11308988.jpg" alt="" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out group-hover:scale-110 group-hover:[filter:contrast(1.15)_saturate(1.2)_hue-rotate(-8deg)] [filter:contrast(1.05)_saturate(0.75)_brightness(0.75)_hue-rotate(140deg)]" data-tsd-source="/src/routes/index.tsx:418:17"/><div aria-hidden="true" class="absolute inset-0 opacity-70 transition-opacity duration-500 group-hover:opacity-40" style="background:linear-gradient(135deg, oklch(0.85 0.22 155 / 0.35) 0%, transparent 45%, oklch(0.88 0.15 195 / 0.25) 100%);mix-blend-mode:screen" data-tsd-source="/src/routes/index.tsx:426:17"></div><div aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-transparent" data-tsd-source="/src/routes/index.tsx:436:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-0 opacity-50" style="background-image:repeating-linear-gradient(0deg, transparent 0 2px, oklch(0.14 0.015 200 / 0.4) 2px 3px)" data-tsd-source="/src/routes/index.tsx:438:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-neon-cyan/25 to-transparent transition-transform duration-1000 ease-out group-hover:translate-x-full" data-tsd-source="/src/routes/index.tsx:447:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-3 h-px bg-neon-green/0 transition-colors duration-300 group-hover:bg-neon-green/70" data-tsd-source="/src/routes/index.tsx:452:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-4 h-px bg-neon-cyan/0 transition-colors duration-500 group-hover:bg-neon-cyan/60" data-tsd-source="/src/routes/index.tsx:453:17"></div><span aria-hidden="true" class="absolute left-2 top-2 h-3 w-3 border-l border-t border-neon-green/70" data-tsd-source="/src/routes/index.tsx:455:17"></span><span aria-hidden="true" class="absolute right-2 top-2 h-3 w-3 border-r border-t border-neon-cyan/70" data-tsd-source="/src/routes/index.tsx:456:17"></span><span class="absolute left-3 bottom-3 font-mono-tech text-[10px] uppercase tracking-widest text-foreground/90" data-tsd-source="/src/routes/index.tsx:458:17">[ <!-- -->10<!-- --> ]</span><span class="absolute right-3 bottom-3 rounded-full border border-border/60 bg-background/60 px-2.5 py-0.5 font-mono-tech text-[9px] uppercase tracking-widest text-muted-foreground backdrop-blur group-hover:border-neon-cyan/60 group-hover:text-neon-cyan" data-tsd-source="/src/routes/index.tsx:461:17">Dev</span></div><h3 class="font-display text-2xl text-foreground" style="letter-spacing:-0.03em;line-height:1" data-tsd-source="/src/routes/index.tsx:470:15">Criar Site</h3><div class="mt-3 flex items-center gap-3 font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground" data-tsd-source="/src/routes/index.tsx:471:15"><span data-tsd-source="/src/routes/index.tsx:472:17">24<!-- --> aulas</span><span class="opacity-40" data-tsd-source="/src/routes/index.tsx:473:17">·</span><span data-tsd-source="/src/routes/index.tsx:474:17">5h</span><span class="opacity-40" data-tsd-source="/src/routes/index.tsx:475:17">·</span><span class="text-neon-cyan/80" data-tsd-source="/src/routes/index.tsx:476:17">Iniciante</span></div><ul class="mt-5 space-y-1.5 text-[13px] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:478:15"><li class="flex items-start gap-2" data-tsd-source="/src/routes/index.tsx:480:19"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-neon-green/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:481:21"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:482:21">Sem código</span></li><li class="flex items-start gap-2" data-tsd-source="/src/routes/index.tsx:480:19"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-neon-green/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:481:21"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:482:21">Deploy grátis</span></li><li class="flex items-start gap-2" data-tsd-source="/src/routes/index.tsx:480:19"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-neon-green/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:481:21"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:482:21">SEO técnico</span></li></ul><div class="mt-6 flex items-center gap-2 font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground transition group-hover:text-neon-green" data-tsd-source="/src/routes/index.tsx:486:15">Acessar curso <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right h-3 w-3 transition-transform group-hover:translate-x-1" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:487:31"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div><div class="pointer-events-none absolute right-3 bottom-3 h-4 w-4 border-r border-b border-neon-green/0 transition group-hover:border-neon-green/80" data-tsd-source="/src/routes/index.tsx:489:15"></div></a><a href="https://veronicahub.com" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-sm border p-6 backdrop-blur transition duration-300 hover:-translate-y-1 hover:shadow-glow-green border-border/60 bg-surface/70 hover:border-neon-green/60 hover:bg-surface" data-tsd-source="/src/routes/index.tsx:405:13"><div class="relative -mx-6 -mt-6 mb-6 h-36 overflow-hidden border-b border-border/50" data-tsd-source="/src/routes/index.tsx:417:15"><img src="/__l5e/assets-v1/12f0a9f0-a1b3-4ca5-b455-62baaf0c2716/pexels-cottonbro-6153739.jpg" alt="" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out group-hover:scale-110 group-hover:[filter:contrast(1.15)_saturate(1.2)_hue-rotate(-8deg)] [filter:contrast(1.05)_saturate(0.75)_brightness(0.75)_hue-rotate(140deg)]" data-tsd-source="/src/routes/index.tsx:418:17"/><div aria-hidden="true" class="absolute inset-0 opacity-70 transition-opacity duration-500 group-hover:opacity-40" style="background:linear-gradient(135deg, oklch(0.85 0.22 155 / 0.35) 0%, transparent 45%, oklch(0.88 0.15 195 / 0.25) 100%);mix-blend-mode:screen" data-tsd-source="/src/routes/index.tsx:426:17"></div><div aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-transparent" data-tsd-source="/src/routes/index.tsx:436:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-0 opacity-50" style="background-image:repeating-linear-gradient(0deg, transparent 0 2px, oklch(0.14 0.015 200 / 0.4) 2px 3px)" data-tsd-source="/src/routes/index.tsx:438:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-neon-cyan/25 to-transparent transition-transform duration-1000 ease-out group-hover:translate-x-full" data-tsd-source="/src/routes/index.tsx:447:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-3 h-px bg-neon-green/0 transition-colors duration-300 group-hover:bg-neon-green/70" data-tsd-source="/src/routes/index.tsx:452:17"></div><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-4 h-px bg-neon-cyan/0 transition-colors duration-500 group-hover:bg-neon-cyan/60" data-tsd-source="/src/routes/index.tsx:453:17"></div><span aria-hidden="true" class="absolute left-2 top-2 h-3 w-3 border-l border-t border-neon-green/70" data-tsd-source="/src/routes/index.tsx:455:17"></span><span aria-hidden="true" class="absolute right-2 top-2 h-3 w-3 border-r border-t border-neon-cyan/70" data-tsd-source="/src/routes/index.tsx:456:17"></span><span class="absolute left-3 bottom-3 font-mono-tech text-[10px] uppercase tracking-widest text-foreground/90" data-tsd-source="/src/routes/index.tsx:458:17">[ <!-- -->11<!-- --> ]</span><span class="absolute right-3 bottom-3 rounded-full border border-border/60 bg-background/60 px-2.5 py-0.5 font-mono-tech text-[9px] uppercase tracking-widest text-muted-foreground backdrop-blur group-hover:border-neon-cyan/60 group-hover:text-neon-cyan" data-tsd-source="/src/routes/index.tsx:461:17">Segurança</span></div><h3 class="font-display text-2xl text-foreground" style="letter-spacing:-0.03em;line-height:1" data-tsd-source="/src/routes/index.tsx:470:15">Hacking Ético</h3><div class="mt-3 flex items-center gap-3 font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground" data-tsd-source="/src/routes/index.tsx:471:15"><span data-tsd-source="/src/routes/index.tsx:472:17">34<!-- --> aulas</span><span class="opacity-40" data-tsd-source="/src/routes/index.tsx:473:17">·</span><span data-tsd-source="/src/routes/index.tsx:474:17">8h</span><span class="opacity-40" data-tsd-source="/src/routes/index.tsx:475:17">·</span><span class="text-neon-cyan/80" data-tsd-source="/src/routes/index.tsx:476:17">Avançado</span></div><ul class="mt-5 space-y-1.5 text-[13px] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:478:15"><li class="flex items-start gap-2" data-tsd-source="/src/routes/index.tsx:480:19"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-neon-green/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:481:21"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:482:21">Pentesting real</span></li><li class="flex items-start gap-2" data-tsd-source="/src/routes/index.tsx:480:19"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-neon-green/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:481:21"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:482:21">Bug bounty</span></li><li class="flex items-start gap-2" data-tsd-source="/src/routes/index.tsx:480:19"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-neon-green/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:481:21"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:482:21">Lab dedicado</span></li></ul><div class="mt-6 flex items-center gap-2 font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground transition group-hover:text-neon-green" data-tsd-source="/src/routes/index.tsx:486:15">Acessar curso <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right h-3 w-3 transition-transform group-hover:translate-x-1" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:487:31"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div><div class="pointer-events-none absolute right-3 bottom-3 h-4 w-4 border-r border-b border-neon-green/0 transition group-hover:border-neon-green/80" data-tsd-source="/src/routes/index.tsx:489:15"></div></a></div></section><section id="sobre" class="reveal  border-t border-border/40 bg-surface/40 py-24 cv-auto" data-tsd-source="/src/routes/index.tsx:496:7"><div class="mx-auto max-w-7xl px-6" data-tsd-source="/src/routes/index.tsx:501:9"><div class="mb-14 flex items-center gap-3 font-mono-tech text-[11px] uppercase tracking-widest text-neon-cyan" data-tsd-source="/src/routes/index.tsx:502:11"><span class="h-px w-8 bg-neon-cyan" data-tsd-source="/src/routes/index.tsx:503:13"></span>[ 02 ] Por que Veronica Hub</div><div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4" data-tsd-source="/src/routes/index.tsx:506:11"><div class="group rounded-sm border border-border/60 bg-background/60 p-6 backdrop-blur transition duration-200 hover:-translate-y-0.5 hover:border-neon-green/50 hover:shadow-glow-green" data-tsd-source="/src/routes/index.tsx:513:15"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-infinity h-6 w-6 text-neon-green transition-transform group-hover:scale-110" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:514:17"><path d="M6 16c5 0 7-8 12-8a4 4 0 0 1 0 8c-5 0-7-8-12-8a4 4 0 1 0 0 8"></path></svg><h3 class="mt-5 font-display text-xl" style="letter-spacing:-0.03em;line-height:1.05" data-tsd-source="/src/routes/index.tsx:515:17">Acesso Vitalício</h3><p class="mt-2 text-sm leading-[1.6] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:516:17">Pague uma vez, acesse para sempre. Atualizações incluídas.</p></div><div class="group rounded-sm border border-border/60 bg-background/60 p-6 backdrop-blur transition duration-200 hover:-translate-y-0.5 hover:border-neon-green/50 hover:shadow-glow-green" data-tsd-source="/src/routes/index.tsx:513:15"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wifi h-6 w-6 text-neon-green transition-transform group-hover:scale-110" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:514:17"><path d="M12 20h.01"></path><path d="M2 8.82a15 15 0 0 1 20 0"></path><path d="M5 12.859a10 10 0 0 1 14 0"></path><path d="M8.5 16.429a5 5 0 0 1 7 0"></path></svg><h3 class="mt-5 font-display text-xl" style="letter-spacing:-0.03em;line-height:1.05" data-tsd-source="/src/routes/index.tsx:515:17">100% Online</h3><p class="mt-2 text-sm leading-[1.6] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:516:17">No seu ritmo, no seu horário, em qualquer dispositivo.</p></div><div class="group rounded-sm border border-border/60 bg-background/60 p-6 backdrop-blur transition duration-200 hover:-translate-y-0.5 hover:border-neon-green/50 hover:shadow-glow-green" data-tsd-source="/src/routes/index.tsx:513:15"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target h-6 w-6 text-neon-green transition-transform group-hover:scale-110" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:514:17"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg><h3 class="mt-5 font-display text-xl" style="letter-spacing:-0.03em;line-height:1.05" data-tsd-source="/src/routes/index.tsx:515:17">Foco em Execução</h3><p class="mt-2 text-sm leading-[1.6] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:516:17">Sem fluff. Cada aula é construída sobre resultado real.</p></div><div class="group rounded-sm border border-border/60 bg-background/60 p-6 backdrop-blur transition duration-200 hover:-translate-y-0.5 hover:border-neon-green/50 hover:shadow-glow-green" data-tsd-source="/src/routes/index.tsx:513:15"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-award h-6 w-6 text-neon-green transition-transform group-hover:scale-110" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:514:17"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path><circle cx="12" cy="8" r="6"></circle></svg><h3 class="mt-5 font-display text-xl" style="letter-spacing:-0.03em;line-height:1.05" data-tsd-source="/src/routes/index.tsx:515:17">Certificado</h3><p class="mt-2 text-sm leading-[1.6] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:516:17">Comprovante de conclusão para cada curso finalizado.</p></div></div></div></section><section id="pricing" class="reveal  relative border-t border-border/40 py-24 cv-auto" data-tsd-source="/src/routes/index.tsx:524:7"><div aria-hidden="true" class="pointer-events-none absolute inset-0 opacity-30" style="background:radial-gradient(circle at 50% 0%, oklch(0.85 0.22 155 / 0.2), transparent 60%)" data-tsd-source="/src/routes/index.tsx:529:9"></div><div class="relative mx-auto max-w-7xl px-6" data-tsd-source="/src/routes/index.tsx:530:9"><div class="mb-14 flex flex-col gap-3 text-center" data-tsd-source="/src/routes/index.tsx:531:11"><div class="mx-auto flex items-center gap-3 font-mono-tech text-[11px] uppercase tracking-widest text-neon-green" data-tsd-source="/src/routes/index.tsx:532:13"><span class="h-px w-8 bg-neon-green" data-tsd-source="/src/routes/index.tsx:533:15"></span>[ 03 ] Planos · escolha o seu<span class="h-px w-8 bg-neon-green" data-tsd-source="/src/routes/index.tsx:535:15"></span></div><h2 class="mx-auto max-w-3xl font-display text-4xl sm:text-5xl md:text-6xl" style="letter-spacing:-0.04em;line-height:0.95" data-tsd-source="/src/routes/index.tsx:537:13">Pague uma vez.<br data-tsd-source="/src/routes/index.tsx:538:29"/><span class="text-outline-neon" data-tsd-source="/src/routes/index.tsx:539:15">Acesse pra sempre.</span></h2></div><div class="grid gap-5 lg:grid-cols-3" data-tsd-source="/src/routes/index.tsx:542:11"><div class="relative flex flex-col rounded-sm border p-8 backdrop-blur transition duration-300 hover:-translate-y-1 border-border/60 bg-surface/60 hover:border-neon-green/50 hover:shadow-glow-green" data-tsd-source="/src/routes/index.tsx:544:15"><span class="font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground" data-tsd-source="/src/routes/index.tsx:558:19">A partir de</span><h3 class="mt-3 font-display text-2xl" style="letter-spacing:-0.03em" data-tsd-source="/src/routes/index.tsx:562:17">Curso Avulso</h3><div class="mt-6 flex items-baseline gap-1 font-display" data-tsd-source="/src/routes/index.tsx:563:17"><span class="text-2xl text-muted-foreground" data-tsd-source="/src/routes/index.tsx:564:19">R$</span><span class="text-6xl text-foreground" data-tsd-source="/src/routes/index.tsx:565:19">19</span><span class="text-2xl text-muted-foreground" data-tsd-source="/src/routes/index.tsx:566:19">,<!-- -->90</span></div><div class="mt-1 font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground" data-tsd-source="/src/routes/index.tsx:568:17">Pagamento único · sem mensalidade</div><ul class="mt-8 flex-1 space-y-3 text-sm" data-tsd-source="/src/routes/index.tsx:571:17"><li class="flex items-start gap-3 text-foreground/90" data-tsd-source="/src/routes/index.tsx:573:21"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-4 w-4 flex-shrink-0 text-neon-cyan/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:574:23"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:575:23">Acesso vitalício ao curso</span></li><li class="flex items-start gap-3 text-foreground/90" data-tsd-source="/src/routes/index.tsx:573:21"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-4 w-4 flex-shrink-0 text-neon-cyan/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:574:23"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:575:23">Atualizações incluídas</span></li><li class="flex items-start gap-3 text-foreground/90" data-tsd-source="/src/routes/index.tsx:573:21"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-4 w-4 flex-shrink-0 text-neon-cyan/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:574:23"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:575:23">Certificado de conclusão</span></li><li class="flex items-start gap-3 text-foreground/90" data-tsd-source="/src/routes/index.tsx:573:21"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-4 w-4 flex-shrink-0 text-neon-cyan/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:574:23"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:575:23">Comunidade no Telegram</span></li></ul><a href="https://veronicahub.com" target="_blank" rel="noopener noreferrer" class="group mt-10 inline-flex items-center justify-center gap-2 rounded-sm px-6 py-3.5 font-mono-tech text-xs uppercase tracking-[0.18em] transition duration-200 hover:-translate-y-0.5 active:translate-y-0 border border-border/60 text-foreground hover:border-neon-green/60 hover:text-neon-green" data-tsd-source="/src/routes/index.tsx:579:17">Escolher curso<!-- --> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right h-3.5 w-3.5 transition-transform group-hover:translate-x-1" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:589:27"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div><div class="relative flex flex-col rounded-sm border p-8 backdrop-blur transition duration-300 hover:-translate-y-1 border-neon-green bg-gradient-to-br from-neon-green/10 via-surface to-neon-cyan/5 shadow-glow-green lg:scale-105" data-tsd-source="/src/routes/index.tsx:544:15"><span class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-neon-green px-3 py-1 font-mono-tech text-[10px] uppercase tracking-widest text-primary-foreground shadow-glow-green" data-tsd-source="/src/routes/index.tsx:553:19"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles mr-1 inline h-3 w-3" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:554:21"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path><path d="M20 2v4"></path><path d="M22 4h-4"></path><circle cx="4" cy="20" r="2"></circle></svg> <!-- -->Mais vendido</span><h3 class="mt-3 font-display text-2xl" style="letter-spacing:-0.03em" data-tsd-source="/src/routes/index.tsx:562:17">Hub Completo</h3><div class="mt-6 flex items-baseline gap-1 font-display" data-tsd-source="/src/routes/index.tsx:563:17"><span class="text-2xl text-muted-foreground" data-tsd-source="/src/routes/index.tsx:564:19">R$</span><span class="text-6xl text-neon-green text-glow-green" data-tsd-source="/src/routes/index.tsx:565:19">197</span><span class="text-2xl text-muted-foreground" data-tsd-source="/src/routes/index.tsx:566:19">,<!-- -->00</span></div><div class="mt-1 font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground" data-tsd-source="/src/routes/index.tsx:568:17">Pagamento único · sem mensalidade</div><ul class="mt-8 flex-1 space-y-3 text-sm" data-tsd-source="/src/routes/index.tsx:571:17"><li class="flex items-start gap-3 text-foreground/90" data-tsd-source="/src/routes/index.tsx:573:21"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-4 w-4 flex-shrink-0 text-neon-green" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:574:23"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:575:23">Todos os 11 cursos</span></li><li class="flex items-start gap-3 text-foreground/90" data-tsd-source="/src/routes/index.tsx:573:21"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-4 w-4 flex-shrink-0 text-neon-green" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:574:23"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:575:23">Acesso vitalício a tudo</span></li><li class="flex items-start gap-3 text-foreground/90" data-tsd-source="/src/routes/index.tsx:573:21"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-4 w-4 flex-shrink-0 text-neon-green" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:574:23"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:575:23">Cursos novos incluídos</span></li><li class="flex items-start gap-3 text-foreground/90" data-tsd-source="/src/routes/index.tsx:573:21"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-4 w-4 flex-shrink-0 text-neon-green" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:574:23"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:575:23">Certificados</span></li><li class="flex items-start gap-3 text-foreground/90" data-tsd-source="/src/routes/index.tsx:573:21"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-4 w-4 flex-shrink-0 text-neon-green" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:574:23"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:575:23">Comunidade VIP</span></li><li class="flex items-start gap-3 text-foreground/90" data-tsd-source="/src/routes/index.tsx:573:21"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-4 w-4 flex-shrink-0 text-neon-green" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:574:23"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:575:23">Suporte direto</span></li></ul><a href="https://veronicahub.com" target="_blank" rel="noopener noreferrer" class="group mt-10 inline-flex items-center justify-center gap-2 rounded-sm px-6 py-3.5 font-mono-tech text-xs uppercase tracking-[0.18em] transition duration-200 hover:-translate-y-0.5 active:translate-y-0 bg-neon-green text-primary-foreground shadow-glow-green hover:brightness-110" data-tsd-source="/src/routes/index.tsx:579:17">Quero o Hub<!-- --> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right h-3.5 w-3.5 transition-transform group-hover:translate-x-1" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:589:27"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div><div class="relative flex flex-col rounded-sm border p-8 backdrop-blur transition duration-300 hover:-translate-y-1 border-border/60 bg-surface/60 hover:border-neon-green/50 hover:shadow-glow-green" data-tsd-source="/src/routes/index.tsx:544:15"><span class="font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground" data-tsd-source="/src/routes/index.tsx:558:19">Aceleração</span><h3 class="mt-3 font-display text-2xl" style="letter-spacing:-0.03em" data-tsd-source="/src/routes/index.tsx:562:17">Hub + Mentoria</h3><div class="mt-6 flex items-baseline gap-1 font-display" data-tsd-source="/src/routes/index.tsx:563:17"><span class="text-2xl text-muted-foreground" data-tsd-source="/src/routes/index.tsx:564:19">R$</span><span class="text-6xl text-foreground" data-tsd-source="/src/routes/index.tsx:565:19">497</span><span class="text-2xl text-muted-foreground" data-tsd-source="/src/routes/index.tsx:566:19">,<!-- -->00</span></div><div class="mt-1 font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground" data-tsd-source="/src/routes/index.tsx:568:17">Pagamento único · sem mensalidade</div><ul class="mt-8 flex-1 space-y-3 text-sm" data-tsd-source="/src/routes/index.tsx:571:17"><li class="flex items-start gap-3 text-foreground/90" data-tsd-source="/src/routes/index.tsx:573:21"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-4 w-4 flex-shrink-0 text-neon-cyan/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:574:23"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:575:23">Tudo do Hub Completo</span></li><li class="flex items-start gap-3 text-foreground/90" data-tsd-source="/src/routes/index.tsx:573:21"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-4 w-4 flex-shrink-0 text-neon-cyan/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:574:23"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:575:23">4 mentorias em grupo/mês</span></li><li class="flex items-start gap-3 text-foreground/90" data-tsd-source="/src/routes/index.tsx:573:21"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-4 w-4 flex-shrink-0 text-neon-cyan/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:574:23"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:575:23">Revisão de projeto</span></li><li class="flex items-start gap-3 text-foreground/90" data-tsd-source="/src/routes/index.tsx:573:21"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-4 w-4 flex-shrink-0 text-neon-cyan/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:574:23"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:575:23">Grupo fechado</span></li><li class="flex items-start gap-3 text-foreground/90" data-tsd-source="/src/routes/index.tsx:573:21"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 h-4 w-4 flex-shrink-0 text-neon-cyan/80" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:574:23"><path d="M20 6 9 17l-5-5"></path></svg><span data-tsd-source="/src/routes/index.tsx:575:23">Prioridade no suporte</span></li></ul><a href="https://veronicahub.com" target="_blank" rel="noopener noreferrer" class="group mt-10 inline-flex items-center justify-center gap-2 rounded-sm px-6 py-3.5 font-mono-tech text-xs uppercase tracking-[0.18em] transition duration-200 hover:-translate-y-0.5 active:translate-y-0 border border-border/60 text-foreground hover:border-neon-green/60 hover:text-neon-green" data-tsd-source="/src/routes/index.tsx:579:17">Aplicar agora<!-- --> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right h-3.5 w-3.5 transition-transform group-hover:translate-x-1" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:589:27"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div></div><div class="mt-10 flex flex-wrap items-center justify-center gap-6 font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground" data-tsd-source="/src/routes/index.tsx:594:11"><span class="flex items-center gap-2" data-tsd-source="/src/routes/index.tsx:595:13"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check h-3 w-3 text-neon-green" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:595:55"><path d="M20 6 9 17l-5-5"></path></svg> Garantia 7 dias</span><span class="flex items-center gap-2" data-tsd-source="/src/routes/index.tsx:596:13"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check h-3 w-3 text-neon-green" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:596:55"><path d="M20 6 9 17l-5-5"></path></svg> Emite NF</span><span class="flex items-center gap-2" data-tsd-source="/src/routes/index.tsx:597:13"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check h-3 w-3 text-neon-green" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:597:55"><path d="M20 6 9 17l-5-5"></path></svg> Cartão · Pix · Boleto</span></div></div></section><section id="faq" class="reveal  border-t border-border/40 bg-surface/30 py-24 cv-auto" data-tsd-source="/src/routes/index.tsx:603:7"><div class="mx-auto max-w-4xl px-6" data-tsd-source="/src/routes/index.tsx:608:9"><div class="mb-12" data-tsd-source="/src/routes/index.tsx:609:11"><div class="flex items-center gap-3 font-mono-tech text-[11px] uppercase tracking-widest text-neon-cyan" data-tsd-source="/src/routes/index.tsx:610:13"><span class="h-px w-8 bg-neon-cyan" data-tsd-source="/src/routes/index.tsx:611:15"></span>[ 04 ] Dúvidas frequentes</div><h2 class="mt-3 font-display text-4xl sm:text-5xl" style="letter-spacing:-0.04em;line-height:0.95" data-tsd-source="/src/routes/index.tsx:614:13">Antes de entrar,<br data-tsd-source="/src/routes/index.tsx:615:31"/><span class="text-neon-cyan text-glow-cyan" data-tsd-source="/src/routes/index.tsx:616:15">se liga</span>.</h2></div><div class="divide-y divide-border/60 rounded-sm border border-border/60 bg-background/50 backdrop-blur" data-tsd-source="/src/routes/index.tsx:619:11"><div data-tsd-source="/src/routes/index.tsx:722:5"><button class="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition hover:bg-neon-green/5" aria-expanded="true" data-tsd-source="/src/routes/index.tsx:723:7"><span class="font-display text-base text-foreground sm:text-lg" style="letter-spacing:-0.02em" data-tsd-source="/src/routes/index.tsx:728:9">Como funciona o acesso?</span><span class="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-sm border transition border-neon-green bg-neon-green/10 text-neon-green rotate-180" data-tsd-source="/src/routes/index.tsx:729:9"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus h-3.5 w-3.5" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:730:19"><path d="M5 12h14"></path></svg></span></button><div class="grid overflow-hidden px-6 transition-all duration-300 ease-out" style="grid-template-rows:1fr" data-tsd-source="/src/routes/index.tsx:733:7"><div class="min-h-0 overflow-hidden" data-tsd-source="/src/routes/index.tsx:737:9"><p class="pb-5 pr-10 text-sm leading-[1.7] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:738:11">Após a compra você recebe login imediato na plataforma. É 100% online, no seu ritmo, em qualquer dispositivo — e o acesso é vitalício.</p></div></div></div><div data-tsd-source="/src/routes/index.tsx:722:5"><button class="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition hover:bg-neon-green/5" aria-expanded="false" data-tsd-source="/src/routes/index.tsx:723:7"><span class="font-display text-base text-foreground sm:text-lg" style="letter-spacing:-0.02em" data-tsd-source="/src/routes/index.tsx:728:9">Serve pra quem tá começando do zero?</span><span class="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-sm border transition border-border/60 text-muted-foreground" data-tsd-source="/src/routes/index.tsx:729:9"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus h-3.5 w-3.5" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:730:55"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></span></button><div class="grid overflow-hidden px-6 transition-all duration-300 ease-out" style="grid-template-rows:0fr" data-tsd-source="/src/routes/index.tsx:733:7"><div class="min-h-0 overflow-hidden" data-tsd-source="/src/routes/index.tsx:737:9"><p class="pb-5 pr-10 text-sm leading-[1.7] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:738:11">Sim. Cada curso tem trilha do básico ao avançado. A gente parte do princípio que você nunca fez nada disso — e te leva ao resultado.</p></div></div></div><div data-tsd-source="/src/routes/index.tsx:722:5"><button class="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition hover:bg-neon-green/5" aria-expanded="false" data-tsd-source="/src/routes/index.tsx:723:7"><span class="font-display text-base text-foreground sm:text-lg" style="letter-spacing:-0.02em" data-tsd-source="/src/routes/index.tsx:728:9">Tem suporte?</span><span class="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-sm border transition border-border/60 text-muted-foreground" data-tsd-source="/src/routes/index.tsx:729:9"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus h-3.5 w-3.5" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:730:55"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></span></button><div class="grid overflow-hidden px-6 transition-all duration-300 ease-out" style="grid-template-rows:0fr" data-tsd-source="/src/routes/index.tsx:733:7"><div class="min-h-0 overflow-hidden" data-tsd-source="/src/routes/index.tsx:737:9"><p class="pb-5 pr-10 text-sm leading-[1.7] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:738:11">Sim. Comunidade ativa no Telegram, tira-dúvidas com a equipe, e no plano de mentoria você tem contato direto com a Veronica.</p></div></div></div><div data-tsd-source="/src/routes/index.tsx:722:5"><button class="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition hover:bg-neon-green/5" aria-expanded="false" data-tsd-source="/src/routes/index.tsx:723:7"><span class="font-display text-base text-foreground sm:text-lg" style="letter-spacing:-0.02em" data-tsd-source="/src/routes/index.tsx:728:9">Emite nota fiscal?</span><span class="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-sm border transition border-border/60 text-muted-foreground" data-tsd-source="/src/routes/index.tsx:729:9"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus h-3.5 w-3.5" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:730:55"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></span></button><div class="grid overflow-hidden px-6 transition-all duration-300 ease-out" style="grid-template-rows:0fr" data-tsd-source="/src/routes/index.tsx:733:7"><div class="min-h-0 overflow-hidden" data-tsd-source="/src/routes/index.tsx:737:9"><p class="pb-5 pr-10 text-sm leading-[1.7] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:738:11">Sim, emitimos NF-e automaticamente após a compra. Serve pra CNPJ MEI, ME e pessoa física.</p></div></div></div><div data-tsd-source="/src/routes/index.tsx:722:5"><button class="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition hover:bg-neon-green/5" aria-expanded="false" data-tsd-source="/src/routes/index.tsx:723:7"><span class="font-display text-base text-foreground sm:text-lg" style="letter-spacing:-0.02em" data-tsd-source="/src/routes/index.tsx:728:9">Posso pedir reembolso?</span><span class="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-sm border transition border-border/60 text-muted-foreground" data-tsd-source="/src/routes/index.tsx:729:9"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus h-3.5 w-3.5" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:730:55"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></span></button><div class="grid overflow-hidden px-6 transition-all duration-300 ease-out" style="grid-template-rows:0fr" data-tsd-source="/src/routes/index.tsx:733:7"><div class="min-h-0 overflow-hidden" data-tsd-source="/src/routes/index.tsx:737:9"><p class="pb-5 pr-10 text-sm leading-[1.7] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:738:11">Garantia incondicional de 7 dias. Não gostou? A gente devolve 100% do valor, sem perguntas.</p></div></div></div><div data-tsd-source="/src/routes/index.tsx:722:5"><button class="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition hover:bg-neon-green/5" aria-expanded="false" data-tsd-source="/src/routes/index.tsx:723:7"><span class="font-display text-base text-foreground sm:text-lg" style="letter-spacing:-0.02em" data-tsd-source="/src/routes/index.tsx:728:9">Como recebo os cursos novos?</span><span class="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-sm border transition border-border/60 text-muted-foreground" data-tsd-source="/src/routes/index.tsx:729:9"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus h-3.5 w-3.5" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:730:55"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></span></button><div class="grid overflow-hidden px-6 transition-all duration-300 ease-out" style="grid-template-rows:0fr" data-tsd-source="/src/routes/index.tsx:733:7"><div class="min-h-0 overflow-hidden" data-tsd-source="/src/routes/index.tsx:737:9"><p class="pb-5 pr-10 text-sm leading-[1.7] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:738:11">Todo curso lançado dentro do Hub Completo já entra na sua conta automaticamente, sem custo adicional.</p></div></div></div><div data-tsd-source="/src/routes/index.tsx:722:5"><button class="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition hover:bg-neon-green/5" aria-expanded="false" data-tsd-source="/src/routes/index.tsx:723:7"><span class="font-display text-base text-foreground sm:text-lg" style="letter-spacing:-0.02em" data-tsd-source="/src/routes/index.tsx:728:9">Preciso de equipamento caro?</span><span class="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-sm border transition border-border/60 text-muted-foreground" data-tsd-source="/src/routes/index.tsx:729:9"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus h-3.5 w-3.5" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:730:55"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></span></button><div class="grid overflow-hidden px-6 transition-all duration-300 ease-out" style="grid-template-rows:0fr" data-tsd-source="/src/routes/index.tsx:733:7"><div class="min-h-0 overflow-hidden" data-tsd-source="/src/routes/index.tsx:737:9"><p class="pb-5 pr-10 text-sm leading-[1.7] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:738:11">Não. Todos os cursos são pensados pra funcionar com celular + notebook básico. As ferramentas de IA usadas têm plano free.</p></div></div></div><div data-tsd-source="/src/routes/index.tsx:722:5"><button class="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition hover:bg-neon-green/5" aria-expanded="false" data-tsd-source="/src/routes/index.tsx:723:7"><span class="font-display text-base text-foreground sm:text-lg" style="letter-spacing:-0.02em" data-tsd-source="/src/routes/index.tsx:728:9">Quanto tempo leva pra ter resultado?</span><span class="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-sm border transition border-border/60 text-muted-foreground" data-tsd-source="/src/routes/index.tsx:729:9"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus h-3.5 w-3.5" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:730:55"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></span></button><div class="grid overflow-hidden px-6 transition-all duration-300 ease-out" style="grid-template-rows:0fr" data-tsd-source="/src/routes/index.tsx:733:7"><div class="min-h-0 overflow-hidden" data-tsd-source="/src/routes/index.tsx:737:9"><p class="pb-5 pr-10 text-sm leading-[1.7] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:738:11">Depende de execução. Alunos aplicando 1h/dia costumam ter primeiros resultados entre 30 e 90 dias.</p></div></div></div></div></div></section><section id="video-ai" class="reveal  relative overflow-hidden py-24 cv-auto" data-tsd-source="/src/routes/index.tsx:628:7"><div aria-hidden="true" class="pointer-events-none absolute inset-0 opacity-40" style="background:radial-gradient(circle at 30% 50%, oklch(0.85 0.22 155 / 0.25), transparent 50%), radial-gradient(circle at 70% 50%, oklch(0.88 0.15 195 / 0.25), transparent 50%)" data-tsd-source="/src/routes/index.tsx:633:9"></div><div class="relative mx-auto max-w-4xl px-6 text-center" data-tsd-source="/src/routes/index.tsx:634:9"><div class="inline-flex items-center gap-2 font-mono-tech text-[10px] uppercase tracking-widest text-neon-green" data-tsd-source="/src/routes/index.tsx:635:11"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap h-3 w-3" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:636:13"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg> Comece agora</div><h2 class="mt-6 font-display text-4xl sm:text-6xl" style="letter-spacing:-0.04em;line-height:0.95" data-tsd-source="/src/routes/index.tsx:638:11">Entre no <span class="text-outline-neon" data-tsd-source="/src/routes/index.tsx:639:22">Hub</span>.<br data-tsd-source="/src/routes/index.tsx:639:69"/>Domine o <span class="text-neon-cyan text-glow-cyan" data-tsd-source="/src/routes/index.tsx:640:22">digital</span>.</h2><p class="mx-auto mt-6 max-w-xl leading-[1.65] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:642:11">11 cursos, acesso vitalício, a partir de R$ 19,90. Sem enrolação.</p><a href="https://veronicahub.com" target="_blank" rel="noopener noreferrer" class="group relative mt-10 inline-flex items-center gap-3 overflow-hidden rounded-sm bg-neon-green px-10 py-5 font-mono-tech text-sm uppercase tracking-[0.18em] text-primary-foreground shadow-glow-green transition duration-200 hover:-translate-y-0.5 hover:brightness-110 hover:shadow-[0_0_80px_oklch(0.85_0.22_155/0.7)] active:translate-y-0 active:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-green focus-visible:ring-offset-2 focus-visible:ring-offset-background" data-tsd-source="/src/routes/index.tsx:645:11">Garantir meu acesso <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:651:33"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg><span aria-hidden="true" class="pointer-events-none absolute inset-y-0 -left-full w-1/2 -skew-x-12 bg-white/25 transition-all duration-700 group-hover:left-[150%]" data-tsd-source="/src/routes/index.tsx:652:13"></span></a></div></section><footer class="border-t border-border/40 bg-background/80" data-tsd-source="/src/routes/index.tsx:658:7"><div class="mx-auto max-w-7xl px-6 py-16" data-tsd-source="/src/routes/index.tsx:659:9"><div class="grid gap-10 md:grid-cols-4" data-tsd-source="/src/routes/index.tsx:660:11"><div class="md:col-span-2" data-tsd-source="/src/routes/index.tsx:661:13"><div class="flex items-center gap-2 font-mono-tech text-sm uppercase tracking-widest" data-tsd-source="/src/routes/index.tsx:662:15"><span class="h-2 w-2 rounded-full bg-neon-green animate-pulse-dot" data-tsd-source="/src/routes/index.tsx:663:17"></span><span class="font-display text-base" data-tsd-source="/src/routes/index.tsx:664:17">Veronica</span><span class="text-muted-foreground" data-tsd-source="/src/routes/index.tsx:665:17">·</span><span class="text-muted-foreground" data-tsd-source="/src/routes/index.tsx:666:17">Hub</span></div><p class="mt-4 max-w-sm text-sm leading-[1.65] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:668:15">Laboratório digital de execução. Cursos diretos ao ponto, do dark content à IA generativa. Sem fluff, só resultado.</p><div class="mt-6 flex items-center gap-3 text-muted-foreground" data-tsd-source="/src/routes/index.tsx:672:15"><a href="#" aria-label="YouTube" class="rounded-sm border border-border/60 p-2 transition hover:-translate-y-0.5 hover:border-neon-green/60 hover:text-neon-green" data-tsd-source="/src/routes/index.tsx:673:17"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-youtube h-4 w-4" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:673:184"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path><path d="m10 15 5-3-5-3z"></path></svg></a><a href="#" aria-label="Instagram" class="rounded-sm border border-border/60 p-2 transition hover:-translate-y-0.5 hover:border-neon-green/60 hover:text-neon-green" data-tsd-source="/src/routes/index.tsx:674:17"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram h-4 w-4" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:674:186"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg></a><a href="#" aria-label="WhatsApp" class="rounded-sm border border-border/60 p-2 transition hover:-translate-y-0.5 hover:border-neon-green/60 hover:text-neon-green" data-tsd-source="/src/routes/index.tsx:675:17"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle h-4 w-4" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:675:185"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path></svg></a></div></div><div data-tsd-source="/src/routes/index.tsx:678:13"><div class="font-mono-tech text-[10px] uppercase tracking-widest text-neon-green" data-tsd-source="/src/routes/index.tsx:679:15">Navegar</div><ul class="mt-4 space-y-2 text-sm text-muted-foreground" data-tsd-source="/src/routes/index.tsx:680:15"><li data-tsd-source="/src/routes/index.tsx:681:17"><a href="#cursos" class="transition hover:text-neon-green" data-tsd-source="/src/routes/index.tsx:681:21">Cursos</a></li><li data-tsd-source="/src/routes/index.tsx:682:17"><a href="https://veronicahub.com" target="_blank" rel="noopener noreferrer" class="transition hover:text-neon-green" data-tsd-source="/src/routes/index.tsx:682:21">Planos</a></li><li data-tsd-source="/src/routes/index.tsx:683:17"><a href="#faq" class="transition hover:text-neon-green" data-tsd-source="/src/routes/index.tsx:683:21">FAQ</a></li><li data-tsd-source="/src/routes/index.tsx:684:17"><a href="#sobre" class="transition hover:text-neon-green" data-tsd-source="/src/routes/index.tsx:684:21">Sobre</a></li></ul></div><div data-tsd-source="/src/routes/index.tsx:687:13"><div class="font-mono-tech text-[10px] uppercase tracking-widest text-neon-green" data-tsd-source="/src/routes/index.tsx:688:15">Drops da Veronica</div><p class="mt-4 text-sm text-muted-foreground" data-tsd-source="/src/routes/index.tsx:689:15">Receba táticas, prompts e cases direto no seu email.</p><form class="mt-4 flex overflow-hidden rounded-sm border border-border/60 focus-within:border-neon-green/60" data-tsd-source="/src/routes/index.tsx:692:15"><input type="email" required="" placeholder="seu@email.com" class="flex-1 bg-transparent px-3 py-2.5 font-mono-tech text-xs text-foreground placeholder:text-muted-foreground/60 focus:outline-none" data-tsd-source="/src/routes/index.tsx:693:17"/><button class="bg-neon-green px-4 font-mono-tech text-[10px] uppercase tracking-widest text-primary-foreground transition hover:brightness-110" data-tsd-source="/src/routes/index.tsx:699:17">OK</button></form></div></div><div class="mt-12 flex flex-col items-start justify-between gap-4 border-t border-border/40 pt-6 font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground md:flex-row md:items-center" data-tsd-source="/src/routes/index.tsx:705:11"><div data-tsd-source="/src/routes/index.tsx:706:13">© 2026 Veronica Hub · CNPJ 00.000.000/0001-00</div><div class="flex items-center gap-6" data-tsd-source="/src/routes/index.tsx:707:13"><a href="#" class="transition hover:text-neon-green" data-tsd-source="/src/routes/index.tsx:708:15">Termos</a><a href="#" class="transition hover:text-neon-green" data-tsd-source="/src/routes/index.tsx:709:15">Privacidade</a><a href="#" class="transition hover:text-neon-green" data-tsd-source="/src/routes/index.tsx:710:15">Contato</a></div></div></div></footer></div><script>(function(a,f){let l;try{l=JSON.parse(sessionStorage.getItem(a)||"{}")}catch{return}const n=l?.[f||history.state?.__TSR_key];let c=!1;for(const t in n){const e=n[t],o=e?.scrollX,s=e?.scrollY;if(Number.isFinite(o)&&Number.isFinite(s)){if(t==="window")scrollTo(o,s),c=!0;else if(t)try{const r=document.querySelector(t);r&&(r.scrollLeft=o,r.scrollTop=s)}catch{}}}if(c)return;const i=location.hash.slice(1);if(i){const t=history.state?.__hashScrollIntoViewOptions??!0;if(t){const e=document.getElementById(i);e&&e.scrollIntoView(t)}return}scrollTo(0,0)})("tsr-scroll-restoration-v1_3");document.currentScript.remove()</script><!--/$--><script class="$tsr" id="$tsr-stream-barrier">(self.$R=self.$R||{})["tsr"]=[];self.$_TSR={h(){this.hydrated=!0,this.c()},e(){this.streamEnded=!0,this.c()},c(){this.hydrated&&this.streamEnded&&(delete self.$_TSR,delete self.$R.tsr)},p(e){this.initialized?e():this.buffer.push(e)},buffer:[]};$_TSR.router=($R=>$R[0]={manifest:$R[1]={routes:$R[2]={__root__:$R[3]={preloads:$R[4]=["/assets/index-ChETRlvg.js"],scripts:$R[5]=[$R[6]={attrs:$R[7]={type:"module",async:!0,src:"/assets/index-ChETRlvg.js"}}]},"/":$R[8]={preloads:$R[9]=["/assets/routes-DaQu6dzD.js","/assets/youtube-S4TloOeE.js","/assets/zap-B5k7ZYXy.js"]}}},matches:$R[10]=[$R[11]={i:"__root__",u:1784874019581,s:"success",ssr:!0},$R[12]={i:"",u:1784874019581,s:"success",ssr:!0}],lastMatchId:""})($R["tsr"]);$_TSR.e();document.currentScript.remove()</script><script type="module" async="" src="/assets/index-ChETRlvg.js"></script><script src="https://cdn.gpteng.co/lovable.js" type="module"></script>
+<aside
+	id="lovable-badge"
+	role="complementary"
+	dir="ltr"
+	lang="en"
+	aria-label="Edit with Lovable">
+	<a
+		id="lovable-badge-cta" 
+		target="_blank" 
+		href="https://lovable.dev/projects/f97ee1b7-4eb7-4836-9497-26f44c9efb3e?utm_source=lovable-badge"
+		rel="noopener nofollow"
+		aria-label="Edit with Lovable">
+		<span id="lovable-badge-text">Edit with</span>
+		<svg xmlns="http://www.w3.org/2000/svg" width="52" height="16" fill="none" viewBox="0 0 52 16">
+  <path fill="#FCFBF8" fill-rule="evenodd" d="M20.318 5.25c.643 0 1.206.14 1.69.418a2.81 2.81 0 0 1 1.118 1.191c.266.513.4 1.115.4 1.807s-.134 1.296-.4 1.812a2.81 2.81 0 0 1-1.118 1.193c-.484.278-1.047.418-1.69.418s-1.208-.14-1.695-.418a2.85 2.85 0 0 1-1.125-1.193c-.262-.516-.393-1.12-.393-1.812s.131-1.294.393-1.807a2.848 2.848 0 0 1 1.125-1.191c.487-.279 1.052-.418 1.695-.418Zm0 1.425c-.27 0-.504.076-.7.228-.193.147-.34.37-.443.67-.102.295-.153.66-.153 1.093 0 .435.05.801.153 1.1.102.3.25.524.443.676.196.147.43.22.7.22.27 0 .502-.073.694-.22.193-.152.341-.375.443-.67.103-.299.153-.667.153-1.106 0-.65-.112-1.145-.337-1.481a1.08 1.08 0 0 0-.953-.51ZM32.7 5.25c.61 0 1.127.1 1.549.3.422.197.74.48.953.849.217.368.325.809.325 1.32v2.704c0 .29.02.562.062.812.044.245.108.4.19.466V12h-1.935a5.895 5.895 0 0 1-.105-.684 7.745 7.745 0 0 1-.02-.228 2.293 2.293 0 0 1-.151.203c-.205.242-.47.437-.793.584-.32.143-.685.215-1.094.215-.406 0-.77-.08-1.094-.24a1.845 1.845 0 0 1-.756-.682 1.984 1.984 0 0 1-.27-1.045c0-.606.178-1.069.535-1.388.356-.324.87-.534 1.542-.633l1.125-.16c.225-.032.403-.074.534-.123a.622.622 0 0 0 .288-.196.549.549 0 0 0 .093-.327.65.65 0 0 0-.11-.367.702.702 0 0 0-.32-.27c-.14-.07-.31-.105-.51-.105-.32 0-.576.083-.768.251-.193.164-.298.39-.314.676h-1.923c.016-.434.147-.82.393-1.155.25-.34.596-.604 1.039-.792.442-.189.954-.283 1.535-.283Zm.99 3.498a.98.98 0 0 1-.215.14 2.49 2.49 0 0 1-.584.178l-.473.092c-.315.061-.553.156-.713.283-.155.127-.233.305-.233.534 0 .23.084.412.252.547.168.135.383.203.645.203s.494-.058.694-.173c.201-.118.355-.282.461-.49.11-.21.166-.448.166-.714v-.6Zm4.526-2.375c.065-.125.138-.243.221-.349.197-.25.437-.44.719-.571.282-.135.6-.203.952-.203.528 0 .988.138 1.377.412.389.275.688.67.896 1.186.21.512.314 1.12.314 1.824 0 .7-.107 1.309-.32 1.825-.213.512-.518.906-.915 1.18-.393.275-.854.412-1.383.412-.352 0-.667-.062-.946-.184a1.832 1.832 0 0 1-.7-.554 2.2 2.2 0 0 1-.234-.383V12h-1.843V3h1.862v3.373Zm1.284.296c-.274 0-.51.085-.707.253-.192.163-.338.397-.436.7a3.376 3.376 0 0 0-.148 1.05c0 .406.05.759.148 1.058.098.299.243.53.436.694.197.164.433.246.707.246.279 0 .512-.082.7-.246.193-.164.336-.395.43-.694.099-.3.148-.652.148-1.058 0-.405-.05-.757-.147-1.056-.095-.299-.238-.53-.43-.694a1.015 1.015 0 0 0-.7-.253Zm9.416-1.419c.602 0 1.136.131 1.604.393.466.262.829.643 1.086 1.143.263.5.394 1.097.394 1.794 0 .25-.002.449-.006.596H47.51c.018.288.071.538.164.75a1.3 1.3 0 0 0 .491.596c.214.13.465.196.757.196.319 0 .583-.082.792-.246.209-.167.34-.403.393-.706h1.862a2.48 2.48 0 0 1-.485 1.235 2.54 2.54 0 0 1-1.051.805c-.439.188-.949.283-1.53.283-.655 0-1.225-.125-1.708-.375a2.672 2.672 0 0 1-1.13-1.143c-.267-.508-.4-1.137-.4-1.887 0-.712.14-1.327.418-1.843a2.86 2.86 0 0 1 1.155-1.186c.491-.27 1.051-.405 1.678-.405Zm-.044 1.345c-.274 0-.516.068-.725.203a1.29 1.29 0 0 0-.479.59 2.045 2.045 0 0 0-.132.498h2.562a1.873 1.873 0 0 0-.138-.602 1.061 1.061 0 0 0-.418-.516 1.243 1.243 0 0 0-.67-.173Z" clip-rule="evenodd"/>
+  <path fill="#FCFBF8" d="m26.605 9.995 1.342-4.566h1.924L27.628 12h-2.07l-2.33-6.57h1.98l1.397 4.565Zm-13.013.143h2.256c1.632 0 1.421 1.837 1.418 1.861h-5.603V3h1.93v7.138Zm31.516 1.861h-1.862V3h1.862v8.999Z"/>
+  <path fill="url(#a)" fill-rule="evenodd" d="M2.7 3c1.492 0 2.7 1.192 2.7 2.663v1.012h.9c1.49 0 2.7 1.192 2.7 2.662S7.791 12 6.3 12H0V5.663C0 4.193 1.209 3 2.7 3Z" clip-rule="evenodd"/>
+  <defs>
+    <radialGradient id="a" cx="0" cy="0" r="1" gradientTransform="matrix(-1.54236 7.07838 -10.231 -2.15602 4.627 5.022)" gradientUnits="userSpaceOnUse">
+      <stop offset=".106" stop-color="#FE7B02"/>
+      <stop offset=".394" stop-color="#FE3F21"/>
+      <stop offset=".608" stop-color="#F858BC"/>
+      <stop offset=".929" stop-color="#575ECF"/>
+    </radialGradient>
+  </defs>
+</svg>
 
-<!-- AMBIENT -->
-<div class="amb">
-  <div class="amb-blob a1"></div>
-  <div class="amb-blob a2"></div>
-  <div class="amb-blob a3"></div>
-  <div class="amb-blob a4"></div>
-  <div class="amb-blob a5"></div>
-</div>
-<div class="grid-bg"></div>
-<canvas id="particleCanvas"></canvas>
-<div class="scanlines-fx"></div>
 
-<!-- NAV -->
-<nav class="nav" id="nav">
-  <div class="nav-left">
-    <div class="logo"><div class="logo-pulse"></div>Veronica<span style="color:var(--text3);margin:0 1px">·</span>Hub</div>
-    <div class="nav-links">
-      <a href="#cursos">Cursos</a><a href="#precos">Planos</a><a href="#faq">FAQ</a><a href="/video/">Video AI</a>
-    </div>
-  </div>
-  <div class="nav-right">
-    <div class="nav-social">
-      <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg></a>
-      <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2 .25 2.5.42.6.24 1 .5 1.5 1 .5.5.75.9 1 1.5.17.5.36 1.3.42 2.5.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 2-.42 2.5-.24.6-.5 1-1 1.5-.5.5-.9.75-1.5 1-.5.17-1.3.36-2.5.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-2-.25-2.5-.42-.6-.24-1-.5-1.5-1-.5-.5-.75-.9-1-1.5-.17-.5-.36-1.3-.42-2.5C2.21 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.25-2 .42-2.5.24-.6.5-1 1-1.5.5-.5.9-.75 1.5-1 .5-.17 1.3-.36 2.5-.42C8.4 2.21 8.8 2.2 12 2.2zm0 4.5a5.3 5.3 0 1 0 0 10.6 5.3 5.3 0 0 0 0-10.6zm0 1.8a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7zm5.5-2a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/></svg></a>
-      <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.4 20.4h-3.6v-5.6c0-1.3 0-3-1.8-3-1.9 0-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1c.5-.9 1.6-1.8 3.3-1.8 3.5 0 4.2 2.3 4.2 5.4v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.4H3.5V9h3.6v11.4zM22.2 0H1.8A1.8 1.8 0 0 0 0 1.8v20.4A1.8 1.8 0 0 0 1.8 24h20.4A1.8 1.8 0 0 0 24 22.2V1.8A1.8 1.8 0 0 0 22.2 0z"/></svg></a>
-      <a href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.2 2h3.4L13.8 10 23 22h-7L10.2 14 3.5 22H.1l8.4-9.6L0 2h7.2l5.4 7.1L18.2 2zm-1.2 18h1.9L7.1 4H5.1l11.9 16z"/></svg></a>
-    </div>
-    <button class="btn-nav" onclick="document.getElementById('cursos').scrollIntoView({behavior:'smooth'})">Ver cursos</button>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="hero" id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-cyborg" role="img" aria-label="Veronica, guardiã cyborg da Veronica Hub"></div>
-  <div class="hero-cyborg-fade"></div>
-  <div class="hero-scanlines"></div>
-  <div class="hero-scanline"></div>
-  <div class="hc tl"></div><div class="hc tr"></div><div class="hc bl"></div><div class="hc br"></div>
-  <div class="hero-inner">
-    <a href="/video/" class="hero-badge reveal" style="cursor:pointer">
-      <div class="badge-dot"></div>
-      Novo: Veronica Video AI já está no ar →
-    </a>
-    <h1 class="hero-h1">
-      <span class="w1 reveal reveal-delay-1">O Segredo</span>
-      <span class="w2 reveal reveal-delay-2">Tá no</span>
-      <span class="w3 reveal reveal-delay-3" id="glitchText">Prompt.</span>
-    </h1>
-    <p class="hero-sub reveal reveal-delay-4">O hub de conhecimento e ferramentas de IA da Veronica. Cursos diretos ao ponto, sem enrolação — do dark content à geração de vídeo, do tráfego pago ao hacking ético.</p>
-    <div class="hero-actions reveal reveal-delay-4">
-      <a href="#cursos" class="btn-primary">
-        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        Explorar cursos
-      </a>
-      <a href="#lab" class="btn-ghost">Sobre o Hub →</a>
-    </div>
-    <div class="hero-stats reveal">
-      <div class="hero-stat"><div class="stat-n">11<em>+</em></div><div class="stat-l">Cursos</div></div>
-      <div class="hero-stat"><div class="stat-n">100<em>%</em></div><div class="stat-l">Online</div></div>
-      <div class="hero-stat"><div class="stat-n">∞</div><div class="stat-l">Acesso</div></div>
-      <div class="hero-stat"><div class="stat-n">R$<em>19</em></div><div class="stat-l">A partir de</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- MARQUEE -->
-<div class="marquee-wrap">
-  <div class="marquee-track">
-    <div class="marquee-item"><span class="mi-dot">·</span>Vídeo IA</div>
-    <div class="marquee-item"><span class="mi-dot">·</span>Canais Dark</div>
-    <div class="marquee-item"><span class="mi-dot">·</span>VSL Cinematográfico</div>
-    <div class="marquee-item"><span class="mi-dot">·</span>Avatar Digital IA</div>
-    <div class="marquee-item"><span class="mi-dot">·</span>Afiliado</div>
-    <div class="marquee-item"><span class="mi-dot">·</span>iFood</div>
-    <div class="marquee-item"><span class="mi-dot">·</span>Meta Ads</div>
-    <div class="marquee-item"><span class="mi-dot">·</span>VFX com IA</div>
-    <div class="marquee-item"><span class="mi-dot">·</span>Copywriting</div>
-    <div class="marquee-item"><span class="mi-dot">·</span>App no-code</div>
-    <div class="marquee-item"><span class="mi-dot">·</span>Criar Site</div>
-    <div class="marquee-item"><span class="mi-dot">·</span>Hacking Ético</div>
-    <div class="marquee-item"><span class="mi-dot">·</span>Vídeo IA</div>
-    <div class="marquee-item"><span class="mi-dot">·</span>Canais Dark</div>
-    <div class="marquee-item"><span class="mi-dot">·</span>VSL Cinematográfico</div>
-    <div class="marquee-item"><span class="mi-dot">·</span>Avatar Digital IA</div>
-    <div class="marquee-item"><span class="mi-dot">·</span>Afiliado</div>
-    <div class="marquee-item"><span class="mi-dot">·</span>iFood</div>
-    <div class="marquee-item"><span class="mi-dot">·</span>Meta Ads</div>
-    <div class="marquee-item"><span class="mi-dot">·</span>VFX com IA</div>
-    <div class="marquee-item"><span class="mi-dot">·</span>Copywriting</div>
-    <div class="marquee-item"><span class="mi-dot">·</span>App no-code</div>
-    <div class="marquee-item"><span class="mi-dot">·</span>Criar Site</div>
-    <div class="marquee-item"><span class="mi-dot">·</span>Hacking Ético</div>
-  </div>
-</div>
-
-<!-- PROVA SOCIAL -->
-<section class="section" style="padding-bottom:60px">
-  <div class="wrap">
-    <div class="proof-head">
-      <div>
-        <div class="section-label reveal">Prova Real</div>
-        <h2 class="section-h2 reveal" style="margin-bottom:0">Quem já entrou no hub<br>colhe resultado.</h2>
-      </div>
-      <div class="proof-rating reveal">
-        <div class="proof-stars">
-          <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>
-        </div>
-        <div class="proof-rating-text"><b>4.9</b> · 2.4k avaliações</div>
-      </div>
-    </div>
-    <div class="testi-grid reveal">
-      <div class="testi-card">
-        <div class="testi-top"><span class="testi-course">Canais Dark</span><span class="testi-result">R$ 12k/mês em 90 dias</span></div>
-        <p class="testi-quote">"Larguei a CLT. O método é execução pura, sem enrolação. Em 3 meses tinha 2 canais rodando no automático."</p>
-        <div class="testi-foot">
-          <div class="testi-avatar">M</div>
-          <div><div class="testi-name">Marina R.</div><div class="testi-handle">@marinacria</div></div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-top"><span class="testi-course">VSL + Meta Ads</span><span class="testi-result">+340% ROAS</span></div>
-        <p class="testi-quote">"Nunca vi uma didática tão direta. A Veronica corta o fluff e vai pro que faz vender. Aplicável no dia 1."</p>
-        <div class="testi-foot">
-          <div class="testi-avatar">D</div>
-          <div><div class="testi-name">Diego F.</div><div class="testi-handle">@diegoflow</div></div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-top"><span class="testi-course">Avatar Digital IA</span><span class="testi-result">8 clientes em 30 dias</span></div>
-        <p class="testi-quote">"Comecei do zero em IA. Hoje entrego avatar digital pra advogados e nutricionistas. Case real, resultado real."</p>
-        <div class="testi-foot">
-          <div class="testi-avatar">C</div>
-          <div><div class="testi-name">Camila S.</div><div class="testi-handle">@camilaia</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TRUST -->
-<div class="trust-section">
-  <div class="trust-inner">
-    <div class="trust-grid reveal">
-      <div class="trust-item">
-        <div class="trust-icon"><svg viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7l-9-5zm-2 13l-3-3 1.41-1.41L10 12.17l5.59-5.58L17 8l-7 7z"/></svg></div>
-        <div class="trust-title">Acesso Vitalício</div>
-        <div class="trust-desc">Pague uma vez, acesse para sempre. Atualizações incluídas.</div>
-      </div>
-      <div class="trust-item">
-        <div class="trust-icon"><svg viewBox="0 0 24 24"><path d="M13 2.05V4.07C16.94 4.56 20 7.93 20 12s-3.06 7.44-7 7.93v2.02c4.95-.5 9-4.76 9-9.95 0-5.19-4.05-9.45-9-9.95zM11 2.05C6.05 2.55 2 6.81 2 12c0 5.19 4.05 9.45 9 9.95V19.93C7.06 19.44 4 16.07 4 12s3.06-7.44 7-7.93V2.05zM12 6l-4 6h3v4l4-6h-3V6z"/></svg></div>
-        <div class="trust-title">100% Online</div>
-        <div class="trust-desc">No seu ritmo, no seu horário, em qualquer dispositivo.</div>
-      </div>
-      <div class="trust-item">
-        <div class="trust-icon"><svg viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg></div>
-        <div class="trust-title">Foco em Execução</div>
-        <div class="trust-desc">Sem fluff. Cada aula é construída sobre resultado real.</div>
-      </div>
-      <div class="trust-item">
-        <div class="trust-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></div>
-        <div class="trust-title">Certificado</div>
-        <div class="trust-desc">Certificado de conclusão em cada curso finalizado.</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="glow-divider"></div>
-
-<!-- CURSOS -->
-<section class="section" id="cursos">
-  <div class="wrap">
-    <div class="section-label reveal">Catálogo</div>
-    <h2 class="section-h2 reveal">Escolha sua<br>próxima aula.</h2>
-    <div class="filter-bar reveal" id="filterBar">
-      <button class="filter-btn active" data-filter="all">Todos (11)</button>
-      <button class="filter-btn" data-filter="Iniciante">Iniciante</button>
-      <button class="filter-btn" data-filter="Intermediário">Intermediário</button>
-      <button class="filter-btn" data-filter="Avançado">Avançado</button>
-    </div>
-    <div class="courses-grid reveal" id="coursesGrid"></div>
-  </div>
-</section>
-
-<div class="glow-divider"></div>
-
-<!-- PLANOS -->
-<section class="section" id="precos">
-  <div class="wrap" style="text-align:center">
-    <div class="section-label reveal" style="justify-content:center">Planos · Escolha o seu</div>
-    <h2 class="section-h2 reveal">Pague uma vez.<br>Acesse pra sempre.</h2>
-    <p class="section-sub reveal" style="margin-left:auto;margin-right:auto">Sem mensalidade escondida. Comece com um curso avulso ou entre no hub completo.</p>
-    <div class="plans-grid reveal" style="text-align:left">
-      <div class="plan-card">
-        <div class="plan-tag">A partir de</div>
-        <div class="plan-name">Curso Avulso</div>
-        <div class="plan-price"><span class="cur">R$</span><span class="num">19</span><span class="cur">,90</span></div>
-        <div class="plan-note">Pagamento único · por curso</div>
-        <ul class="plan-feats">
-          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Acesso vitalício ao curso</li>
-          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Atualizações incluídas</li>
-          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Certificado de conclusão</li>
-          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Comunidade no Telegram</li>
-        </ul>
-        <button class="btn-plan" onclick="document.getElementById('cursos').scrollIntoView({behavior:'smooth'})">Escolher curso</button>
-      </div>
-      <div class="plan-card feat">
-        <div class="plan-badge">Mais vendido</div>
-        <div class="plan-tag">Hub Completo</div>
-        <div class="plan-name">Hub Completo</div>
-        <div class="plan-price"><span class="cur">R$</span><span class="num">197</span><span class="cur">,00</span></div>
-        <div class="plan-note">Pagamento único · sem mensalidade</div>
-        <ul class="plan-feats">
-          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Todos os 11 cursos</li>
-          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Acesso vitalício a tudo</li>
-          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Cursos novos incluídos</li>
-          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Certificados de todos os cursos</li>
-          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Comunidade VIP</li>
-          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Suporte direto</li>
-        </ul>
-        <button class="btn-plan" onclick="document.getElementById('cursos').scrollIntoView({behavior:'smooth'})">Quero o Hub</button>
-      </div>
-      <div class="plan-card">
-        <div class="plan-tag">Aceleração</div>
-        <div class="plan-name">Hub + Mentoria</div>
-        <div class="plan-price"><span class="cur">R$</span><span class="num">497</span><span class="cur">,00</span></div>
-        <div class="plan-note">Pagamento único · vagas limitadas</div>
-        <ul class="plan-feats">
-          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Tudo do Hub Completo</li>
-          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>4 mentorias em grupo/mês</li>
-          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Revisão de projeto</li>
-          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Grupo fechado</li>
-          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Prioridade no suporte</li>
-        </ul>
-        <button class="btn-plan" onclick="document.getElementById('cursos').scrollIntoView({behavior:'smooth'})">Aplicar agora</button>
-      </div>
-    </div>
-    <div class="plans-trust reveal">
-      <span><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Garantia 7 dias</span>
-      <span><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Emite NF</span>
-      <span><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Cartão · Pix · Boleto</span>
-    </div>
-  </div>
-</section>
-
-<div class="glow-divider"></div>
-
-<!-- ABOUT -->
-<section class="section" id="lab" style="padding-top:60px">
-  <div class="wrap">
-    <div class="about-grid">
-      <div>
-        <div class="about-label reveal">Veronica Hub</div>
-        <h2 class="about-h2 reveal">Um hub de<br>conhecimento<br>e IA aplicada.</h2>
-        <p class="about-p reveal">Criamos cursos diretos ao ponto para quem quer entrar no digital com seriedade e velocidade. Cada aula é desenvolvida com foco em resultado real.</p>
-        <p class="about-p reveal">Do criador de conteúdo solo ao empreendedor que quer escalar — aqui você aprende fazendo, com as ferramentas de IA do hub ao seu lado.</p>
-      </div>
-      <div class="about-terminal reveal">
-        <div class="terminal-bar">
-          <div class="t-dot red"></div><div class="t-dot yellow"></div><div class="t-dot green"></div>
-          <div class="t-title">veronica-hub — terminal</div>
-        </div>
-        <div class="terminal-body">
-          <div class="t-line"><span class="t-prompt">›</span><span class="t-cmd">cursos<span class="t-val"> --total</span></span></div>
-          <div class="t-line"><span class="t-prompt" style="color:var(--text3)">  </span><span class="t-comment">11 módulos disponíveis</span></div>
-          <div class="t-sep"></div>
-          <div class="t-line"><span class="t-prompt">›</span><span class="t-cmd">acesso<span class="t-val"> --tipo</span></span></div>
-          <div class="t-line"><span class="t-prompt" style="color:var(--text3)">  </span><span class="t-comment">vitalício · async · online</span></div>
-          <div class="t-sep"></div>
-          <div class="t-line"><span class="t-prompt">›</span><span class="t-cmd">certificado<span class="t-val"> --status</span></span></div>
-          <div class="t-line"><span class="t-prompt" style="color:var(--text3)">  </span><span class="t-comment" style="color:var(--accent)">✓ incluso em todos os cursos</span></div>
-          <div class="t-sep"></div>
-          <div class="t-line"><span class="t-prompt">›</span><span class="t-cmd">investimento<span class="t-val"> --min</span></span></div>
-          <div class="t-line"><span class="t-prompt" style="color:var(--text3)">  </span><span class="t-comment" style="color:var(--accent)">R$ 19,90</span></div>
-          <div class="t-sep"></div>
-          <div class="t-line"><span class="t-prompt" style="color:var(--accent)">›</span><span class="t-cmd" style="color:var(--accent)"> _<span id="terminalCursor">█</span></span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="glow-divider"></div>
-
-<!-- FAQ -->
-<section class="section" id="faq">
-  <div class="wrap">
-    <div class="section-label reveal">Dúvidas Frequentes</div>
-    <h2 class="section-h2 reveal">Antes de entrar,<br>se liga.</h2>
-    <div class="faq-list reveal">
-      <details class="faq-item" open>
-        <summary>Como funciona o acesso?<div class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div></summary>
-        <p class="faq-answer">Após a compra você recebe login imediato na plataforma. É 100% online, no seu ritmo, em qualquer dispositivo — e o acesso é vitalício.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Serve pra quem tá começando do zero?<div class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div></summary>
-        <p class="faq-answer">Sim. Cada curso tem trilha do básico ao avançado. A gente parte do princípio que você nunca fez nada disso — e te leva ao resultado.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Tem suporte?<div class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div></summary>
-        <p class="faq-answer">Sim. Comunidade ativa no Telegram, tira-dúvidas com a equipe, e no plano de mentoria você tem contato direto com a Veronica.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Emite nota fiscal?<div class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div></summary>
-        <p class="faq-answer">Sim, emitimos NF-e automaticamente após a compra. Serve pra CNPJ MEI, ME e pessoa física.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Posso pedir reembolso?<div class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div></summary>
-        <p class="faq-answer">Garantia incondicional de 7 dias. Não gostou? A gente devolve 100% do valor, sem perguntas.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Como recebo os cursos novos?<div class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div></summary>
-        <p class="faq-answer">Todo curso lançado dentro do Hub Completo já entra na sua conta automaticamente, sem custo adicional.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Preciso de equipamento caro?<div class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div></summary>
-        <p class="faq-answer">Não. Todos os cursos são pensados pra funcionar com celular + notebook básico. As ferramentas de IA usadas têm plano free.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Quanto tempo leva pra ter resultado?<div class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div></summary>
-        <p class="faq-answer">Depende de execução. Alunos aplicando 1h/dia costumam ter primeiros resultados entre 30 e 90 dias.</p>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-top">
-    <div class="footer-brand">
-      <div class="footer-logo"><div class="logo-pulse"></div>Veronica Hub</div>
-      <p>Hub de conhecimento e ferramentas de IA. Cursos práticos e produtos para quem quer entrar no digital com seriedade e velocidade.</p>
-      <div class="footer-social">
-        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg></a>
-        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2 .25 2.5.42.6.24 1 .5 1.5 1 .5.5.75.9 1 1.5.17.5.36 1.3.42 2.5.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 2-.42 2.5-.24.6-.5 1-1 1.5-.5.5-.9.75-1.5 1-.5.17-1.3.36-2.5.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-2-.25-2.5-.42-.6-.24-1-.5-1.5-1-.5-.5-.75-.9-1-1.5-.17-.5-.36-1.3-.42-2.5C2.21 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.25-2 .42-2.5.24-.6.5-1 1-1.5.5-.5.9-.75 1.5-1 .5-.17 1.3-.36 2.5-.42C8.4 2.21 8.8 2.2 12 2.2zm0 4.5a5.3 5.3 0 1 0 0 10.6 5.3 5.3 0 0 0 0-10.6zm0 1.8a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7zm5.5-2a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/></svg></a>
-        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.4 20.4h-3.6v-5.6c0-1.3 0-3-1.8-3-1.9 0-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1c.5-.9 1.6-1.8 3.3-1.8 3.5 0 4.2 2.3 4.2 5.4v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.4H3.5V9h3.6v11.4zM22.2 0H1.8A1.8 1.8 0 0 0 0 1.8v20.4A1.8 1.8 0 0 0 1.8 24h20.4A1.8 1.8 0 0 0 24 22.2V1.8A1.8 1.8 0 0 0 22.2 0z"/></svg></a>
-        <a href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.2 2h3.4L13.8 10 23 22h-7L10.2 14 3.5 22H.1l8.4-9.6L0 2h7.2l5.4 7.1L18.2 2zm-1.2 18h1.9L7.1 4H5.1l11.9 16z"/></svg></a>
-      </div>
-    </div>
-    <div class="footer-col"><h4>Cursos</h4><ul>
-      <li><a href="#cursos">Canais Dark</a></li><li><a href="#cursos">VSL Cinematográfico</a></li>
-      <li><a href="#cursos">Avatar Digital</a></li><li><a href="#cursos">Meta Ads</a></li><li><a href="#cursos">Hacking Ético</a></li>
-    </ul></div>
-    <div class="footer-col"><h4>Produtos</h4><ul>
-      <li><a href="/video/">Veronica Video AI</a></li><li><a href="#lab">Sobre o Hub</a></li>
-      <li><a href="#cursos">Todos os cursos</a></li><li><a href="#">Afiliados</a></li>
-    </ul></div>
-    <div class="footer-col"><h4>Suporte</h4><ul>
-      <li><a href="#">FAQ</a></li><li><a href="#">Contato</a></li>
-      <li><a href="#">Privacidade</a></li><li><a href="#">Termos</a></li>
-    </ul></div>
-  </div>
-  <div class="footer-bottom">
-    <div class="footer-copy">© 2026 Veronica Hub. Todos os direitos reservados.</div>
-    <div class="footer-mono">v6.0 · build 2026</div>
-  </div>
-</footer>
-
-<!-- MODAL -->
-<div class="modal-overlay" id="modalOverlay">
-  <div class="modal" id="modal">
-    <button class="modal-close" onclick="closeModal()">✕</button>
-    <div id="modalContent"></div>
-  </div>
-</div>
-
+	</a>
+	
+	<span id="lovable-badge-divider" aria-hidden="true"></span>
+	
+	<button 
+		id="lovable-badge-close"
+		aria-label="Dismiss"
+		title="Dismiss"
+		type="button">
+		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16" aria-hidden="true">
+			<path d="M10.646 4.646a.5.5 0 1 1 .707.708L8.707 8l2.646 2.646a.5.5 0 1 1-.707.707L8 8.707l-2.646 2.646a.5.5 0 1 1-.708-.707L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708L8 7.293l2.646-2.647Z"/>
+		</svg>
+	</button>
+</aside>
 <script>
-const courses=[
-  {id:1,tag:"Content Creation",title:"Canais Dark: Do Zero ao Viral",level:"Iniciante",shortDesc:"Conteúdo anônimo que alcança milhões sem mostrar o rosto.",longDesc:"Descubra a arquitetura por trás dos canais dark que dominam o YouTube sem expor identidade. Escolha de nicho, roteiros que viciam, edição cinematográfica e escala sem aparecer.",price:"R$ 29,90",img:"https://images.unsplash.com/photo-1536240478700-b869ad10ed34?w=900&q=80",emoji:"🎬",duration:"4h",modules:["O que é canal dark e por que funciona","Escolha de nicho: onde o dinheiro está","Roteiro magnético — estrutura que prende","Edição com CapCut/DaVinci sem aparecer","Monetização e SEO para crescimento orgânico"]},
-  {id:2,tag:"Video Production",title:"VSLs Cinematográficos",level:"Intermediário",shortDesc:"Vídeos de venda que parecem filmes e convertem como máquinas.",longDesc:"Um VSL bem feito é o ativo mais poderoso do marketing digital. Estrutura psicológica de alta conversão com produção cinematográfica.",price:"R$ 49,90",img:"https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=900&q=80",emoji:"🎥",duration:"6h",modules:["Anatomia de uma VSL que vende","Script: gancho, dor, promessa, prova, CTA","Setup de câmera e iluminação cinematográfica","Edição dramática no Premiere/CapCut Pro","Sound design e trilha que emociona","Teste A/B e otimização de conversão"]},
-  {id:3,tag:"AI & Identity",title:"Crie Seu Avatar Digital",level:"Intermediário",shortDesc:"Sua identidade na IA — apareça sem aparecer, em qualquer lugar.",longDesc:"Avatares digitais estão redefinindo como criadores distribuem conteúdo. Crie, treine e faça deploy de um avatar hiper-realista com IA.",price:"R$ 49,90",img:"https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=900&q=80",emoji:"🤖",duration:"5h",modules:["Ferramentas: HeyGen, D-ID, Synthesia","Criação de identidade visual consistente","Treinamento de voz e clone vocal","Avatar em VSLs e vídeos de conteúdo","Automação: avatar + n8n + redes sociais"]},
-  {id:4,tag:"Monetização",title:"Seja Afiliado de Verdade",level:"Iniciante",shortDesc:"Comissão todo dia sem ter produto, estoque ou suporte.",longDesc:"Marketing de afiliados sem fórmula mágica. Escolha produtos com alta comissão, crie conteúdo que converte e monte um sistema que gera renda passiva real.",price:"R$ 19,90",img:"https://images.unsplash.com/photo-1553484771-371a605b060b?w=900&q=80",emoji:"💸",duration:"3h",modules:["Como escolher o produto certo","Plataformas: Hotmart, Kiwify, Monetizze","Estratégia de conteúdo para afiliados","Links rastreados e análise de conversão","Escala: do primeiro R$ ao sistema automático"]},
-  {id:5,tag:"Food Tech",title:"Sua Loja no iFood",level:"Iniciante",shortDesc:"Do cardápio ao pedido — lucre no maior app de delivery do Brasil.",longDesc:"O iFood movimenta bilhões por mês. Monte sua loja do zero, otimize o cardápio para o algoritmo, crie fotos que vendem e escale com campanhas internas.",price:"R$ 39,90",img:"https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=900&q=80",emoji:"🍔",duration:"4h",modules:["Cadastro, documentação e abertura da loja","Cardápio otimizado para conversão","Fotografia de produto que aumenta cliques","Gestão de avaliações e reputação","Campanhas de desconto e anúncios internos"]},
-  {id:6,tag:"Tráfego Pago",title:"Meta Ads: Tráfego que Converte",level:"Intermediário",shortDesc:"Facebook + Instagram Ads do jeito que gera resultado — não gasto.",longDesc:"Meta Ads é a ferramenta de escala mais acessível do mercado. Estruture campanhas, crie criativos que param o scroll, segmente com precisão.",price:"R$ 79,90",img:"https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=900&q=80",emoji:"📡",duration:"8h",modules:["Estrutura de conta e Business Manager","Objetivo de campanha certo para cada meta","Criativo que para o scroll nos primeiros 3s","Segmentação e públicos lookalike","Leitura de métricas: CPL, CPA, ROAS","Escala horizontal e vertical"]},
-  {id:7,tag:"VFX & Motion",title:"VFX Cinematográfico com IA",level:"Avançado",shortDesc:"Efeitos visuais nível Hollywood — no seu celular ou PC.",longDesc:"After Effects, RunwayML e Kling AI para criar VFX cinematográficos. Partículas, portais, transformações.",price:"R$ 119,90",img:"https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&q=80",emoji:"✨",duration:"10h",modules:["Fundamentos de composição e layers","After Effects: efeitos base e motion","RunwayML e Kling AI para VFX generativo","Integração de efeitos em vídeo real","Color grading cinematográfico","Exportação para redes e projetos"]},
-  {id:8,tag:"Copywriting",title:"Copy que Vende",level:"Iniciante",shortDesc:"Palavras que movem pessoas — o ativo invisível de qualquer negócio.",longDesc:"AIDA, PAS, StoryBrand aplicadas a páginas de vendas, e-mails, anúncios e redes sociais. Escreva para converter, não para impressionar.",price:"R$ 39,90",img:"https://images.unsplash.com/photo-1455390582262-044cdead277a?w=900&q=80",emoji:"✍️",duration:"5h",modules:["Psicologia da persuasão aplicada","Estruturas: AIDA, PAS, Before/After/Bridge","Headlines que param o scroll","Copy para páginas de vendas e VSLs","E-mails, anúncios e bio de redes sociais","Revisão e teste de copy"]},
-  {id:9,tag:"Dev sem código",title:"Crie Seu Aplicativo",level:"Intermediário",shortDesc:"Da ideia ao app publicado — sem precisar saber programar.",longDesc:"FlutterFlow, Adalo e Bubble para criar apps reais com banco de dados, autenticação e lógica de negócio.",price:"R$ 59,90",img:"https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=900&q=80",emoji:"📱",duration:"7h",modules:["Ferramentas: FlutterFlow, Bubble, Adalo","Prototipagem e UI/UX básico","Banco de dados e lógica no-code","Autenticação, pagamentos e notificações","Publicação na Play Store e App Store","Monetização do seu app"]},
-  {id:10,tag:"Web Dev",title:"Crie Seu Site",level:"Intermediário",shortDesc:"Presença digital profissional — do zero ao ar em dias.",longDesc:"HTML, CSS, JavaScript e Webflow para criar sites modernos, rápidos e responsivos. Do portfólio à landing page de alta conversão.",price:"R$ 119,90",img:"https://images.unsplash.com/photo-1547658719-da2b51169166?w=900&q=80",emoji:"🌐",duration:"12h",modules:["HTML semântico e estrutura sólida","CSS moderno: flexbox, grid, animações","JavaScript para interatividade","Webflow para sites sem código","SEO técnico e performance","Deploy: domínio próprio, HTTPS, hospedagem"]},
-  {id:11,tag:"Segurança",title:"Hacking Ético: Acesso Autorizado",level:"Avançado",shortDesc:"Pense como um atacante para defender como um profissional.",longDesc:"Pentest, análise de vulnerabilidades, Kali Linux e lógica de ataque/defesa.",price:"R$ 390,00",img:"https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=900&q=80",emoji:"🔐",duration:"20h",modules:["Fundamentos de redes e protocolos","Linux e terminal para segurança","Kali Linux: ferramentas essenciais","Reconhecimento e análise de alvos","Exploração de vulnerabilidades web (OWASP)","Engenharia social e phishing ético","Relatório de pentest profissional","Carreira: certificações e mercado global"]}
-];
+	// Don't show the lovable-badge if the page is in an iframe or if it's being rendered by puppeteer (screenshot service)
+	if (window.self !== window.top || navigator.userAgent.includes('puppeteer')) {
+		var badge = document.getElementById('lovable-badge');
+		if (badge) {
+			badge.style.display = 'none';
+		}
+	}
 
-// Particles
-(function(){
-  const c=document.getElementById('particleCanvas'),ctx=c.getContext('2d');
-  let W,H,pts=[];
-  function init(){
-    W=c.width=window.innerWidth;H=c.height=window.innerHeight;
-    pts=Array.from({length:55},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,r:Math.random()*1.4+.4}));
-  }
-  function draw(){
-    ctx.clearRect(0,0,W,H);
-    pts.forEach(p=>{
-      p.x+=p.vx;p.y+=p.vy;
-      if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
-      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      ctx.fillStyle='oklch(0.85 0.22 155 / 0.55)';ctx.fill();
-    });
-    pts.forEach((a,i)=>pts.slice(i+1).forEach(b=>{
-      const d=Math.hypot(a.x-b.x,a.y-b.y);
-      if(d<110){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);
-        ctx.strokeStyle=`oklch(0.85 0.22 155 / ${.09*(1-d/110)})`;ctx.lineWidth=.5;ctx.stroke()}
-    }));
-  }
-  init();setInterval(draw,1000/30);window.addEventListener('resize',init);
-})();
-
-// Reveal
-const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});
-document.querySelectorAll('.hero .reveal').forEach(el=>setTimeout(()=>el.classList.add('visible'),100));
-document.querySelectorAll('.reveal:not(.hero .reveal)').forEach(el=>obs.observe(el));
-
-window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>60));
-
-setInterval(()=>{const c=document.getElementById('terminalCursor');if(c)c.style.opacity=c.style.opacity==='0'?'1':'0'},530);
-
-// Glitch
-const glitchEl=document.getElementById('glitchText');
-const gc='!@#$%^&*<>?/\\|{}[]~';
-const orig='Prompt.';
-function glitch(){
-  let it=0;
-  const iv=setInterval(()=>{
-    glitchEl.textContent=orig.split('').map((ch,i)=>i<it?orig[i]:gc[Math.floor(Math.random()*gc.length)]).join('');
-    it+=.4;if(it>=orig.length){clearInterval(iv);glitchEl.textContent=orig}
-  },40);
-}
-setTimeout(glitch,800);setInterval(glitch,6000);
-
-// Cards
-function lvl(l){return l==='Iniciante'?'lvl-init':l==='Intermediário'?'lvl-inter':'lvl-av'}
-function renderCards(f='all'){
-  const g=document.getElementById('coursesGrid');
-  const list=f==='all'?courses:courses.filter(c=>c.level===f);
-  g.innerHTML=list.map(c=>`
-    <div class="course-card" onclick="openModal(${c.id})">
-      <div class="card-thumb">
-        <img class="card-img" src="${c.img}" alt="${c.title}" loading="lazy"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="card-img-placeholder" style="display:none">${c.emoji}</div>
-        <div class="card-overlay"></div>
-        <div class="cf-tl"></div><div class="cf-br"></div>
-        <div class="card-level-badge ${lvl(c.level)}">${c.level}</div>
-      </div>
-      <div class="card-body">
-        <div class="card-tag">${c.tag}</div>
-        <div class="card-title">${c.title}</div>
-        <div class="card-desc">${c.shortDesc}</div>
-        <div class="card-footer">
-          <div class="card-price">${c.price}</div>
-          <div class="card-meta-right">
-            <div class="card-duration">⏱ ${c.duration}</div>
-            <div class="card-cta">Ver curso →</div>
-          </div>
-        </div>
-      </div>
-    </div>`).join('');
-}
-document.getElementById('filterBar').addEventListener('click',e=>{
-  const b=e.target.closest('.filter-btn');if(!b)return;
-  document.querySelectorAll('.filter-btn').forEach(x=>x.classList.remove('active'));
-  b.classList.add('active');renderCards(b.dataset.filter);
-});
-
-function openModal(id){
-  const c=courses.find(x=>x.id===id);if(!c)return;
-  document.getElementById('modalContent').innerHTML=`
-    <div class="modal-hero">
-      <img class="modal-hero-img" src="${c.img}" alt="${c.title}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="modal-hero-placeholder" style="display:none">${c.emoji}</div>
-      <div class="modal-hero-overlay"></div>
-      <div class="modal-hero-badge"><span class="card-level-badge ${lvl(c.level)}">${c.level}</span></div>
-    </div>
-    <div class="modal-body">
-      <div class="modal-label">${c.tag}</div>
-      <h2 class="modal-title">${c.title}</h2>
-      <p class="modal-desc">${c.longDesc}</p>
-      <div class="modal-meta-row">
-        <div class="modal-meta-item"><div class="meta-label">Duração</div><div class="meta-val">${c.duration}</div></div>
-        <div class="modal-meta-item"><div class="meta-label">Nível</div><div class="meta-val">${c.level}</div></div>
-        <div class="modal-meta-item"><div class="meta-label">Formato</div><div class="meta-val">Online</div></div>
-        <div class="modal-meta-item"><div class="meta-label">Acesso</div><div class="meta-val">Vitalício</div></div>
-      </div>
-      <div class="modal-modules-title">Conteúdo · ${c.modules.length} módulos</div>
-      ${c.modules.map((m,i)=>`<div class="module-item"><div class="module-num">${String(i+1).padStart(2,'0')}</div><div class="module-text">${m}</div></div>`).join('')}
-      <div class="modal-cta">
-        <div class="modal-price">${c.price}</div>
-        <button class="btn-buy" onclick="alert('Redirecionando para o checkout...')">
-          Comprar agora
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </button>
-        <div class="modal-guarantee">
-          <svg viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7l-9-5zm-2 13l-3-3 1.41-1.41L10 12.17l5.59-5.58L17 8l-7 7z"/></svg>
-          Acesso imediato após pagamento
-        </div>
-      </div>
-    </div>`;
-  document.getElementById('modalOverlay').classList.add('active');
-  document.body.style.overflow='hidden';
-}
-function closeModal(){document.getElementById('modalOverlay').classList.remove('active');document.body.style.overflow=''}
-document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===this)closeModal()});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
-
-renderCards();
+	// Add click event listener to close button with animation
+	var closeButton = document.getElementById('lovable-badge-close');
+	if (closeButton) {
+		closeButton.addEventListener('click', function(event) {
+			event.preventDefault();
+			event.stopPropagation();
+			var badge = document.getElementById('lovable-badge');
+			if (badge) {
+				badge.classList.add('closing');
+				setTimeout(function() {
+					if (badge) {
+						badge.style.display = 'none';
+					}
+				}, 240);
+			}
+		});
+	}
 </script>
-</body>
-</html>
+</body></html>
