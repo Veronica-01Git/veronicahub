@@ -2,54 +2,56 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yo Lab&Co. — O Segredo Tá no Prompt</title>
+<title>Veronica Hub — O Segredo Tá no Prompt</title>
+<meta name="description" content="Veronica Hub — ecossistema de cursos e ferramentas de IA para criadores digitais. Geração de vídeo, automação e conhecimento direto ao ponto.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#020408;
-  --bg1:#05080f;
-  --bg2:#070b14;
-  --bg3:#0a0f1c;
-  --surface:#0e1525;
+  --bg:oklch(0.14 0.015 200);
+  --bg1:oklch(0.155 0.017 200);
+  --bg2:oklch(0.17 0.019 200);
+  --bg3:oklch(0.20 0.022 200);
+  --surface:oklch(0.19 0.02 200);
   --border:rgba(255,255,255,0.05);
   --border2:rgba(255,255,255,0.09);
-  --accent:#00FFB2;
-  --accent2:#00D4FF;
-  --purple:#8B7CF8;
-  --text:#F0F4FF;
-  --text2:#7A8BA8;
-  --text3:#2E3E5A;
-  --red:#FF4B6E;
-  --yellow:#FFD166;
+  --accent:oklch(0.85 0.22 155);
+  --accent2:oklch(0.88 0.15 195);
+  --purple:oklch(0.65 0.2 250);
+  --text:oklch(0.97 0.01 180);
+  --text2:oklch(0.65 0.03 190);
+  --text3:oklch(0.42 0.025 195);
+  --red:oklch(0.68 0.24 25);
+  --yellow:oklch(0.8 0.18 60);
   --r:10px;
 }
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--text);font-family:'Space Grotesk',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 a{text-decoration:none;color:inherit}
-button{cursor:pointer;font-family:'Inter',sans-serif}
+button{cursor:pointer;font-family:'Space Grotesk',sans-serif}
 img{display:block}
 ::-webkit-scrollbar{width:3px}
 ::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:rgba(0,255,178,0.3);border-radius:2px}
+::-webkit-scrollbar-thumb{background:oklch(0.85 0.22 155 / 0.3);border-radius:2px}
 
 /* ═══ CANVASES ═══ */
-#matrixCanvas{position:fixed;inset:0;z-index:0;opacity:0.08;pointer-events:none}
 #particleCanvas{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0.4}
+.scanlines-fx{position:fixed;inset:0;z-index:1;pointer-events:none;mix-blend-mode:overlay;
+  background:repeating-linear-gradient(0deg,transparent 0px,transparent 3px,oklch(0.85 0.22 155 / 0.025) 3px,oklch(0.85 0.22 155 / 0.025) 4px)}
 
 /* ═══ AMBIENT — MUITO MAIS AGRESSIVO ═══ */
 .amb{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
 .amb-blob{position:absolute;border-radius:50%;filter:blur(80px)}
-.a1{width:900px;height:900px;top:-300px;left:-200px;background:radial-gradient(circle,rgba(0,255,178,0.12) 0%,transparent 60%)}
-.a2{width:700px;height:700px;top:5%;right:-150px;background:radial-gradient(circle,rgba(139,124,248,0.16) 0%,transparent 60%)}
-.a3{width:600px;height:400px;bottom:5%;left:25%;background:radial-gradient(circle,rgba(0,212,255,0.1) 0%,transparent 60%)}
-.a4{width:400px;height:400px;top:45%;right:15%;background:radial-gradient(circle,rgba(0,255,178,0.08) 0%,transparent 60%)}
-.a5{width:300px;height:300px;bottom:20%;left:5%;background:radial-gradient(circle,rgba(139,124,248,0.1) 0%,transparent 60%)}
+.a1{width:900px;height:900px;top:-300px;left:-200px;background:radial-gradient(circle,oklch(0.85 0.22 155 / 0.12) 0%,transparent 60%)}
+.a2{width:700px;height:700px;top:5%;right:-150px;background:radial-gradient(circle,oklch(0.65 0.2 250 / 0.16) 0%,transparent 60%)}
+.a3{width:600px;height:400px;bottom:5%;left:25%;background:radial-gradient(circle,oklch(0.88 0.15 195 / 0.1) 0%,transparent 60%)}
+.a4{width:400px;height:400px;top:45%;right:15%;background:radial-gradient(circle,oklch(0.85 0.22 155 / 0.08) 0%,transparent 60%)}
+.a5{width:300px;height:300px;bottom:20%;left:5%;background:radial-gradient(circle,oklch(0.65 0.2 250 / 0.1) 0%,transparent 60%)}
 
 /* Grid */
 .grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;
-  background-image:linear-gradient(rgba(0,255,178,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,178,0.03) 1px,transparent 1px);
+  background-image:linear-gradient(oklch(0.85 0.22 155 / 0.03) 1px,transparent 1px),linear-gradient(90deg,oklch(0.85 0.22 155 / 0.03) 1px,transparent 1px);
   background-size:50px 50px}
 
 /* ═══ NAV ═══ */
@@ -59,14 +61,14 @@ img{display:block}
   padding:0 48px;
   background:rgba(2,4,8,0.4);
   backdrop-filter:blur(32px) saturate(2);
-  border-bottom:1px solid rgba(0,255,178,0.08);
+  border-bottom:1px solid oklch(0.85 0.22 155 / 0.08);
   transition:all 0.3s;
 }
 .nav::before{
   content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(0,255,178,0.5),rgba(0,212,255,0.3),transparent);
+  background:linear-gradient(90deg,transparent,oklch(0.85 0.22 155 / 0.5),oklch(0.88 0.15 195 / 0.3),transparent);
 }
-.nav.scrolled{background:rgba(2,4,8,0.9);border-color:rgba(0,255,178,0.12)}
+.nav.scrolled{background:rgba(2,4,8,0.9);border-color:oklch(0.85 0.22 155 / 0.12)}
 .nav-left{display:flex;align-items:center;gap:44px}
 .logo{
   font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;
@@ -74,7 +76,7 @@ img{display:block}
   display:flex;align-items:center;gap:10px;
 }
 .logo-pulse{width:7px;height:7px;border-radius:50%;background:var(--accent);
-  box-shadow:0 0 12px var(--accent),0 0 24px rgba(0,255,178,0.5);
+  box-shadow:0 0 12px var(--accent),0 0 24px oklch(0.85 0.22 155 / 0.5);
   animation:pulse 2.4s infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.2;transform:scale(0.5)}}
 .nav-links{display:flex;gap:32px}
@@ -85,18 +87,18 @@ img{display:block}
 .nav-right{display:flex;align-items:center;gap:14px}
 .nav-social{display:flex;gap:8px}
 .nav-social a{width:34px;height:34px;border-radius:var(--r);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;color:var(--text3);transition:all 0.22s;position:relative;overflow:hidden}
-.nav-social a:hover{border-color:rgba(0,255,178,0.5);color:var(--accent);box-shadow:0 0 16px rgba(0,255,178,0.15),inset 0 0 16px rgba(0,255,178,0.05)}
+.nav-social a:hover{border-color:oklch(0.85 0.22 155 / 0.5);color:var(--accent);box-shadow:0 0 16px oklch(0.85 0.22 155 / 0.15),inset 0 0 16px oklch(0.85 0.22 155 / 0.05)}
 .nav-social svg{width:14px;height:14px;fill:currentColor}
 .btn-nav{
   height:36px;padding:0 20px;background:transparent;
-  border:1px solid rgba(0,255,178,0.4);border-radius:var(--r);
+  border:1px solid oklch(0.85 0.22 155 / 0.4);border-radius:var(--r);
   color:var(--accent);font-size:12px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;
-  box-shadow:0 0 20px rgba(0,255,178,0.1),inset 0 0 20px rgba(0,255,178,0.03);
+  box-shadow:0 0 20px oklch(0.85 0.22 155 / 0.1),inset 0 0 20px oklch(0.85 0.22 155 / 0.03);
   transition:all 0.2s;position:relative;overflow:hidden;
 }
-.btn-nav::before{content:'';position:absolute;inset:0;background:rgba(0,255,178,0);transition:background 0.2s}
-.btn-nav:hover{border-color:var(--accent);box-shadow:0 0 30px rgba(0,255,178,0.3),inset 0 0 30px rgba(0,255,178,0.08)}
-.btn-nav:hover::before{background:rgba(0,255,178,0.06)}
+.btn-nav::before{content:'';position:absolute;inset:0;background:oklch(0.85 0.22 155 / 0);transition:background 0.2s}
+.btn-nav:hover{border-color:var(--accent);box-shadow:0 0 30px oklch(0.85 0.22 155 / 0.3),inset 0 0 30px oklch(0.85 0.22 155 / 0.08)}
+.btn-nav:hover::before{background:oklch(0.85 0.22 155 / 0.06)}
 
 /* ═══ HERO — COMPLETAMENTE REDESENHADO ═══ */
 .hero{
@@ -104,30 +106,53 @@ img{display:block}
   display:flex;flex-direction:column;justify-content:center;
   padding:120px 48px 80px;overflow:hidden;z-index:2;
 }
-.hero-video-wrap{position:absolute;inset:0;z-index:0;overflow:hidden}
-.hero-video-wrap video{width:100%;height:100%;object-fit:cover;filter:brightness(0.15) saturate(2) hue-rotate(200deg)}
-.hero-video-fallback{position:absolute;inset:0;
-  background:radial-gradient(ellipse 80% 70% at 65% 35%,rgba(139,124,248,0.25) 0%,transparent 60%),
-             radial-gradient(ellipse 60% 60% at 15% 75%,rgba(0,255,178,0.12) 0%,transparent 55%),
-             linear-gradient(160deg,#020408 0%,#06091a 50%,#020408 100%)}
-.hero-overlay{position:absolute;inset:0;z-index:1;
-  background:linear-gradient(to right,rgba(2,4,8,0.97) 30%,rgba(2,4,8,0.2) 100%),
-             linear-gradient(to top,rgba(2,4,8,1) 0%,transparent 35%)}
+.hero-bg{position:absolute;inset:0;z-index:0;
+  background:radial-gradient(ellipse 75% 65% at 72% 30%,oklch(0.65 0.2 250 / 0.22) 0%,transparent 58%),
+             radial-gradient(ellipse 60% 60% at 12% 78%,oklch(0.85 0.22 155 / 0.14) 0%,transparent 55%),
+             radial-gradient(ellipse 50% 45% at 90% 85%,oklch(0.88 0.15 195 / 0.1) 0%,transparent 55%),
+             linear-gradient(160deg,var(--bg) 0%,oklch(0.17 0.024 205) 50%,var(--bg) 100%)}
+.hero-bg::before{content:'';position:absolute;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,oklch(0.85 0.22 155 / 0.55),oklch(0.88 0.15 195 / 0.4),transparent);
+  filter:blur(1px);animation:holosweep 6s cubic-bezier(0.4,0,0.2,1) infinite}
+@keyframes holosweep{0%{top:-5%;opacity:0}12%{opacity:0.7}88%{opacity:0.7}100%{top:105%;opacity:0}}
+
+/* Veronica — retrato cyborg holográfico de fundo */
+.hero-cyborg{position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:url('assets/veronica-cyborg.webp');
+  background-size:cover;background-repeat:no-repeat;
+  background-position:38% 18%;
+  opacity:0.5;filter:contrast(1.08) saturate(0.82) brightness(0.82);
+  mix-blend-mode:screen;
+  animation:cyborgshimmer 5.5s ease-in-out infinite}
+@keyframes cyborgshimmer{0%,100%{opacity:0.42}50%{opacity:0.58}}
+.hero-cyborg-fade{position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    linear-gradient(90deg,var(--bg) 0%,oklch(0.14 0.015 200 / 0.7) 34%,transparent 68%,oklch(0.14 0.015 200 / 0.92) 100%),
+    linear-gradient(180deg,transparent 0%,transparent 58%,var(--bg) 100%)}
+@media(min-width:768px){
+  .hero-cyborg{background-position:44% 22%;opacity:0.44}
+}
+@media(min-width:1180px){
+  .hero-cyborg{background-position:68% center;opacity:0.4}
+  .hero-cyborg-fade{background:
+    linear-gradient(90deg,var(--bg) 0%,oklch(0.14 0.015 200 / 0.85) 32%,transparent 60%,oklch(0.14 0.015 200 / 0.3) 100%),
+    linear-gradient(180deg,transparent 0%,transparent 58%,var(--bg) 100%)}
+}
 .hero-scanlines{position:absolute;inset:0;z-index:2;pointer-events:none;
   background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.05) 2px,rgba(0,0,0,0.05) 4px)}
 
 /* Corner brackets — maior e mais visível */
 .hc{position:absolute;z-index:3;width:80px;height:80px}
 .hc.tl{top:72px;left:40px;border-top:2px solid var(--accent);border-left:2px solid var(--accent);
-  box-shadow:-4px -4px 20px rgba(0,255,178,0.3),inset 4px 4px 20px rgba(0,255,178,0.05)}
-.hc.tr{top:72px;right:40px;border-top:1px solid rgba(0,255,178,0.35);border-right:1px solid rgba(0,255,178,0.35)}
-.hc.bl{bottom:60px;left:40px;border-bottom:1px solid rgba(0,255,178,0.25);border-left:1px solid rgba(0,255,178,0.25)}
-.hc.br{bottom:60px;right:40px;border-bottom:1px solid rgba(0,255,178,0.12);border-right:1px solid rgba(0,255,178,0.12)}
+  box-shadow:-4px -4px 20px oklch(0.85 0.22 155 / 0.3),inset 4px 4px 20px oklch(0.85 0.22 155 / 0.05)}
+.hc.tr{top:72px;right:40px;border-top:1px solid oklch(0.85 0.22 155 / 0.35);border-right:1px solid oklch(0.85 0.22 155 / 0.35)}
+.hc.bl{bottom:60px;left:40px;border-bottom:1px solid oklch(0.85 0.22 155 / 0.25);border-left:1px solid oklch(0.85 0.22 155 / 0.25)}
+.hc.br{bottom:60px;right:40px;border-bottom:1px solid oklch(0.85 0.22 155 / 0.12);border-right:1px solid oklch(0.85 0.22 155 / 0.12)}
 
 /* Scan line horizontal que desce */
 .hero-scanline{
   position:absolute;left:0;right:0;height:1px;z-index:3;
-  background:linear-gradient(90deg,transparent,rgba(0,255,178,0.6),transparent);
+  background:linear-gradient(90deg,transparent,oklch(0.85 0.22 155 / 0.6),transparent);
   animation:scandown 8s linear infinite;pointer-events:none;
 }
 @keyframes scandown{0%{top:-1px;opacity:0}5%{opacity:1}95%{opacity:1}100%{top:100%;opacity:0}}
@@ -137,22 +162,23 @@ img{display:block}
 /* Badge — mais chamativo */
 .hero-badge{
   display:inline-flex;align-items:center;gap:10px;margin-bottom:40px;
-  border:1px solid rgba(0,255,178,0.25);background:rgba(0,255,178,0.05);
+  border:1px solid oklch(0.85 0.22 155 / 0.25);background:oklch(0.85 0.22 155 / 0.05);
   border-radius:100px;padding:7px 18px 7px 8px;
   font-size:11px;font-weight:600;letter-spacing:0.12em;color:var(--accent);text-transform:uppercase;
   backdrop-filter:blur(12px);
-  box-shadow:0 0 30px rgba(0,255,178,0.1),inset 0 1px 0 rgba(0,255,178,0.15);
+  box-shadow:0 0 30px oklch(0.85 0.22 155 / 0.1),inset 0 1px 0 oklch(0.85 0.22 155 / 0.15);
 }
 .badge-dot{width:24px;height:24px;border-radius:50%;
-  background:rgba(0,255,178,0.1);border:1px solid rgba(0,255,178,0.4);
+  background:oklch(0.85 0.22 155 / 0.1);border:1px solid oklch(0.85 0.22 155 / 0.4);
   display:flex;align-items:center;justify-content:center}
 .badge-dot::after{content:'';width:9px;height:9px;border-radius:50%;background:var(--accent);
-  box-shadow:0 0 10px var(--accent),0 0 20px rgba(0,255,178,0.5)}
+  box-shadow:0 0 10px var(--accent),0 0 20px oklch(0.85 0.22 155 / 0.5)}
 
 /* H1 — maior, mais impactante */
 .hero-h1{
-  font-size:clamp(64px,9vw,130px);font-weight:900;line-height:0.9;
-  letter-spacing:-0.05em;margin-bottom:32px;
+  font-family:'Bricolage Grotesque',system-ui,sans-serif;
+  font-size:clamp(64px,9vw,130px);font-weight:800;line-height:0.9;
+  letter-spacing:-0.05em;margin-bottom:32px;text-wrap:balance;
 }
 .hero-h1 .w1{
   display:block;
@@ -161,13 +187,13 @@ img{display:block}
 }
 .hero-h1 .w2{
   display:block;
-  -webkit-text-stroke:1.5px rgba(0,255,178,0.4);color:transparent;
+  -webkit-text-stroke:1.5px oklch(0.85 0.22 155 / 0.4);color:transparent;
 }
 .hero-h1 .w3{
   display:block;
-  background:linear-gradient(90deg,#00FFB2 0%,#00D4FF 50%,#8B7CF8 100%);
+  background:linear-gradient(90deg,oklch(0.85 0.22 155) 0%,oklch(0.88 0.15 195) 50%,oklch(0.65 0.2 250) 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  filter:drop-shadow(0 0 40px rgba(0,255,178,0.5));
+  filter:drop-shadow(0 0 40px oklch(0.85 0.22 155 / 0.5));
 }
 
 .hero-sub{font-size:18px;font-weight:400;line-height:1.75;color:var(--text2);max-width:500px;margin-bottom:48px}
@@ -178,20 +204,20 @@ img{display:block}
 .btn-primary{
   display:inline-flex;align-items:center;gap:10px;
   height:56px;padding:0 36px;
-  background:linear-gradient(135deg,rgba(0,255,178,0.15) 0%,rgba(0,212,255,0.08) 100%);
+  background:linear-gradient(135deg,oklch(0.85 0.22 155 / 0.15) 0%,oklch(0.88 0.15 195 / 0.08) 100%);
   color:var(--accent);
-  border:1px solid rgba(0,255,178,0.5);border-radius:var(--r);
+  border:1px solid oklch(0.85 0.22 155 / 0.5);border-radius:var(--r);
   font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
-  box-shadow:0 0 30px rgba(0,255,178,0.2),0 0 80px rgba(0,255,178,0.08),inset 0 1px 0 rgba(0,255,178,0.2);
+  box-shadow:0 0 30px oklch(0.85 0.22 155 / 0.2),0 0 80px oklch(0.85 0.22 155 / 0.08),inset 0 1px 0 oklch(0.85 0.22 155 / 0.2);
   transition:all 0.25s;position:relative;overflow:hidden;
 }
 .btn-primary::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
-  background:linear-gradient(90deg,transparent,rgba(0,255,178,0.15),transparent);transition:left 0.5s}
+  background:linear-gradient(90deg,transparent,oklch(0.85 0.22 155 / 0.15),transparent);transition:left 0.5s}
 .btn-primary:hover::before{left:100%}
 .btn-primary:hover{
-  box-shadow:0 0 50px rgba(0,255,178,0.35),0 0 120px rgba(0,255,178,0.12),inset 0 1px 0 rgba(0,255,178,0.3);
-  border-color:rgba(0,255,178,0.8);transform:translateY(-2px);
-  background:linear-gradient(135deg,rgba(0,255,178,0.2) 0%,rgba(0,212,255,0.12) 100%);
+  box-shadow:0 0 50px oklch(0.85 0.22 155 / 0.35),0 0 120px oklch(0.85 0.22 155 / 0.12),inset 0 1px 0 oklch(0.85 0.22 155 / 0.3);
+  border-color:oklch(0.85 0.22 155 / 0.8);transform:translateY(-2px);
+  background:linear-gradient(135deg,oklch(0.85 0.22 155 / 0.2) 0%,oklch(0.88 0.15 195 / 0.12) 100%);
 }
 .btn-ghost{
   display:inline-flex;align-items:center;gap:8px;
@@ -216,11 +242,11 @@ img{display:block}
 }
 .hero-stat::before{
   content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(0,255,178,0.6),transparent);
+  background:linear-gradient(90deg,transparent,oklch(0.85 0.22 155 / 0.6),transparent);
   opacity:0;transition:opacity 0.3s;
 }
-.hero-stat:hover{border-color:rgba(0,255,178,0.2);background:rgba(0,255,178,0.03);
-  box-shadow:0 0 30px rgba(0,255,178,0.08)}
+.hero-stat:hover{border-color:oklch(0.85 0.22 155 / 0.2);background:oklch(0.85 0.22 155 / 0.03);
+  box-shadow:0 0 30px oklch(0.85 0.22 155 / 0.08)}
 .hero-stat:hover::before{opacity:1}
 .stat-n{font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;color:var(--text);line-height:1;margin-bottom:6px}
 .stat-n em{color:var(--accent);font-style:normal;font-size:18px}
@@ -228,7 +254,7 @@ img{display:block}
 
 /* ═══ MARQUEE ═══ */
 .marquee-wrap{
-  border-top:1px solid rgba(0,255,178,0.08);border-bottom:1px solid rgba(0,255,178,0.08);
+  border-top:1px solid oklch(0.85 0.22 155 / 0.08);border-bottom:1px solid oklch(0.85 0.22 155 / 0.08);
   overflow:hidden;background:rgba(5,8,15,0.95);position:relative;z-index:2;
 }
 .marquee-wrap::before,.marquee-wrap::after{content:'';position:absolute;top:0;bottom:0;width:160px;z-index:2;pointer-events:none}
@@ -252,16 +278,16 @@ img{display:block}
 .section-label{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.2em;
   text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:flex;align-items:center;gap:10px}
 .section-label::before{content:'';width:28px;height:1px;background:linear-gradient(90deg,var(--accent),transparent)}
-.section-h2{font-size:clamp(34px,4.5vw,60px);font-weight:800;letter-spacing:-0.03em;line-height:1.05;margin-bottom:16px}
+.section-h2{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:clamp(34px,4.5vw,60px);font-weight:800;letter-spacing:-0.03em;line-height:1.05;margin-bottom:16px;text-wrap:balance}
 .section-sub{font-size:16px;color:var(--text2);line-height:1.7;max-width:480px;margin-bottom:56px}
 
 /* ═══ FILTER ═══ */
 .filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px}
 .filter-btn{height:32px;padding:0 18px;border:1px solid var(--border2);border-radius:100px;
   background:transparent;color:var(--text3);font-size:12px;font-weight:600;letter-spacing:0.05em;transition:all 0.2s}
-.filter-btn:hover{border-color:rgba(0,255,178,0.3);color:var(--text2)}
-.filter-btn.active{background:rgba(0,255,178,0.08);border-color:rgba(0,255,178,0.5);color:var(--accent);
-  box-shadow:0 0 20px rgba(0,255,178,0.12)}
+.filter-btn:hover{border-color:oklch(0.85 0.22 155 / 0.3);color:var(--text2)}
+.filter-btn.active{background:oklch(0.85 0.22 155 / 0.08);border-color:oklch(0.85 0.22 155 / 0.5);color:var(--accent);
+  box-shadow:0 0 20px oklch(0.85 0.22 155 / 0.12)}
 
 /* ═══ CARDS — REDESENHADOS RADICALMENTE ═══ */
 .courses-grid{
@@ -279,29 +305,29 @@ img{display:block}
 /* Top light — o efeito holográfico principal */
 .course-card::before{
   content:'';position:absolute;top:0;left:0;right:0;height:1px;z-index:5;
-  background:linear-gradient(90deg,transparent,rgba(0,255,178,0.0),transparent);
+  background:linear-gradient(90deg,transparent,oklch(0.85 0.22 155 / 0.0),transparent);
   transition:all 0.4s;
 }
 /* Glow interno no hover */
 .course-card::after{
   content:'';position:absolute;inset:0;z-index:0;border-radius:16px;
-  background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(0,255,178,0.0) 0%,transparent 70%);
+  background:radial-gradient(ellipse 80% 60% at 50% 0%,oklch(0.85 0.22 155 / 0.0) 0%,transparent 70%);
   transition:background 0.4s;pointer-events:none;
 }
 .course-card:hover{
-  border-color:rgba(0,255,178,0.25);
+  border-color:oklch(0.85 0.22 155 / 0.25);
   transform:translateY(-6px);
   box-shadow:
-    0 0 0 1px rgba(0,255,178,0.1),
+    0 0 0 1px oklch(0.85 0.22 155 / 0.1),
     0 20px 60px rgba(0,0,0,0.6),
-    0 0 80px rgba(0,255,178,0.08);
+    0 0 80px oklch(0.85 0.22 155 / 0.08);
 }
 .course-card:hover::before{
-  background:linear-gradient(90deg,transparent 5%,rgba(0,255,178,0.7) 50%,transparent 95%);
-  box-shadow:0 0 20px rgba(0,255,178,0.3);
+  background:linear-gradient(90deg,transparent 5%,oklch(0.85 0.22 155 / 0.7) 50%,transparent 95%);
+  box-shadow:0 0 20px oklch(0.85 0.22 155 / 0.3);
 }
 .course-card:hover::after{
-  background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(0,255,178,0.06) 0%,transparent 70%);
+  background:radial-gradient(ellipse 80% 60% at 50% 0%,oklch(0.85 0.22 155 / 0.06) 0%,transparent 70%);
 }
 .course-card:hover .card-img{filter:brightness(0.85) saturate(1.4)}
 .course-card:hover .card-cta{opacity:1;transform:translateX(0)}
@@ -314,18 +340,18 @@ img{display:block}
   background:linear-gradient(to top,rgba(5,8,15,1) 0%,rgba(5,8,15,0.4) 50%,rgba(5,8,15,0.1) 100%)}
 /* Corner brackets nos cards */
 .cf-tl,.cf-br{position:absolute;width:18px;height:18px;z-index:2;transition:all 0.4s}
-.cf-tl{top:12px;left:12px;border-top:1.5px solid rgba(0,255,178,0.5);border-left:1.5px solid rgba(0,255,178,0.5)}
-.cf-br{bottom:12px;right:12px;border-bottom:1.5px solid rgba(0,255,178,0.25);border-right:1.5px solid rgba(0,255,178,0.25)}
-.course-card:hover .cf-tl{top:8px;left:8px;border-color:var(--accent);box-shadow:0 0 10px rgba(0,255,178,0.4)}
-.course-card:hover .cf-br{bottom:8px;right:8px;border-color:rgba(0,255,178,0.6)}
+.cf-tl{top:12px;left:12px;border-top:1.5px solid oklch(0.85 0.22 155 / 0.5);border-left:1.5px solid oklch(0.85 0.22 155 / 0.5)}
+.cf-br{bottom:12px;right:12px;border-bottom:1.5px solid oklch(0.85 0.22 155 / 0.25);border-right:1.5px solid oklch(0.85 0.22 155 / 0.25)}
+.course-card:hover .cf-tl{top:8px;left:8px;border-color:var(--accent);box-shadow:0 0 10px oklch(0.85 0.22 155 / 0.4)}
+.course-card:hover .cf-br{bottom:8px;right:8px;border-color:oklch(0.85 0.22 155 / 0.6)}
 .card-level-badge{
   position:absolute;top:12px;right:12px;z-index:3;
   font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.14em;
   text-transform:uppercase;padding:4px 12px;border-radius:100px;backdrop-filter:blur(12px);
 }
-.lvl-init{background:rgba(0,255,178,0.1);color:var(--accent);border:1px solid rgba(0,255,178,0.35)}
-.lvl-inter{background:rgba(255,209,102,0.1);color:var(--yellow);border:1px solid rgba(255,209,102,0.35)}
-.lvl-av{background:rgba(255,75,110,0.1);color:var(--red);border:1px solid rgba(255,75,110,0.35)}
+.lvl-init{background:oklch(0.85 0.22 155 / 0.1);color:var(--accent);border:1px solid oklch(0.85 0.22 155 / 0.35)}
+.lvl-inter{background:oklch(0.8 0.18 60 / 0.1);color:var(--yellow);border:1px solid oklch(0.8 0.18 60 / 0.35)}
+.lvl-av{background:oklch(0.68 0.24 25 / 0.1);color:var(--red);border:1px solid oklch(0.68 0.24 25 / 0.35)}
 
 .card-body{padding:22px 24px 24px;flex:1;display:flex;flex-direction:column;position:relative;z-index:1}
 .card-tag{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.14em;
@@ -336,7 +362,7 @@ img{display:block}
 .card-footer{display:flex;align-items:center;justify-content:space-between;
   padding-top:16px;border-top:1px solid rgba(255,255,255,0.05)}
 .card-price{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;
-  color:var(--accent);text-shadow:0 0 20px rgba(0,255,178,0.3)}
+  color:var(--accent);text-shadow:0 0 20px oklch(0.85 0.22 155 / 0.3)}
 .card-meta-right{display:flex;align-items:center;gap:12px}
 .card-duration{font-size:11px;color:var(--text3);font-weight:500}
 .card-cta{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:0.05em;
@@ -346,8 +372,8 @@ img{display:block}
 .trust-section{padding:0;position:relative;z-index:2}
 .trust-inner{
   background:rgba(5,8,15,0.6);
-  border-top:1px solid rgba(0,255,178,0.08);
-  border-bottom:1px solid rgba(0,255,178,0.08);
+  border-top:1px solid oklch(0.85 0.22 155 / 0.08);
+  border-bottom:1px solid oklch(0.85 0.22 155 / 0.08);
   padding:64px 48px;
   backdrop-filter:blur(24px);
 }
@@ -360,29 +386,29 @@ img{display:block}
 }
 .trust-item::before{
   content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(0,255,178,0.0),transparent);
+  background:linear-gradient(90deg,transparent,oklch(0.85 0.22 155 / 0.0),transparent);
   transition:all 0.4s;
 }
 .trust-item:hover{
-  border-color:rgba(0,255,178,0.2);
+  border-color:oklch(0.85 0.22 155 / 0.2);
   transform:translateY(-4px);
-  box-shadow:0 20px 50px rgba(0,0,0,0.5),0 0 50px rgba(0,255,178,0.06);
+  box-shadow:0 20px 50px rgba(0,0,0,0.5),0 0 50px oklch(0.85 0.22 155 / 0.06);
 }
 .trust-item:hover::before{
-  background:linear-gradient(90deg,transparent 5%,rgba(0,255,178,0.6) 50%,transparent 95%);
+  background:linear-gradient(90deg,transparent 5%,oklch(0.85 0.22 155 / 0.6) 50%,transparent 95%);
 }
 .trust-icon{
   width:44px;height:44px;border-radius:12px;
-  background:rgba(0,255,178,0.05);border:1px solid rgba(0,255,178,0.2);
+  background:oklch(0.85 0.22 155 / 0.05);border:1px solid oklch(0.85 0.22 155 / 0.2);
   display:flex;align-items:center;justify-content:center;
   margin-bottom:16px;
-  box-shadow:0 0 24px rgba(0,255,178,0.08);
+  box-shadow:0 0 24px oklch(0.85 0.22 155 / 0.08);
   transition:all 0.35s;
 }
 .trust-item:hover .trust-icon{
-  box-shadow:0 0 40px rgba(0,255,178,0.25);
-  border-color:rgba(0,255,178,0.4);
-  background:rgba(0,255,178,0.08);
+  box-shadow:0 0 40px oklch(0.85 0.22 155 / 0.25);
+  border-color:oklch(0.85 0.22 155 / 0.4);
+  background:oklch(0.85 0.22 155 / 0.08);
 }
 .trust-icon svg{width:20px;height:20px;fill:var(--accent)}
 .trust-title{font-size:15px;font-weight:700;margin-bottom:8px;letter-spacing:-0.01em}
@@ -390,8 +416,8 @@ img{display:block}
 
 /* ═══ DIVIDER ═══ */
 .glow-divider{position:relative;z-index:2;height:1px;margin:0;
-  background:linear-gradient(90deg,transparent 5%,rgba(0,255,178,0.2) 50%,transparent 95%);
-  box-shadow:0 0 20px rgba(0,255,178,0.1)}
+  background:linear-gradient(90deg,transparent 5%,oklch(0.85 0.22 155 / 0.2) 50%,transparent 95%);
+  box-shadow:0 0 20px oklch(0.85 0.22 155 / 0.1)}
 
 /* ═══ ABOUT ═══ */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
@@ -399,28 +425,28 @@ img{display:block}
   letter-spacing:0.2em;text-transform:uppercase;color:var(--purple);
   margin-bottom:14px;display:flex;align-items:center;gap:10px}
 .about-label::before{content:'';width:20px;height:1px;background:var(--purple)}
-.about-h2{font-size:clamp(30px,3.5vw,50px);font-weight:800;letter-spacing:-0.025em;line-height:1.08;margin-bottom:20px}
+.about-h2{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:clamp(30px,3.5vw,50px);font-weight:800;letter-spacing:-0.025em;line-height:1.08;margin-bottom:20px;text-wrap:balance}
 .about-p{font-size:15px;color:var(--text2);line-height:1.8;margin-bottom:16px}
 
 /* Terminal — glass pesado */
 .about-terminal{
   background:rgba(2,4,8,0.95);
-  border:1px solid rgba(0,255,178,0.15);
+  border:1px solid oklch(0.85 0.22 155 / 0.15);
   border-radius:16px;overflow:hidden;
   box-shadow:
-    0 0 0 1px rgba(0,255,178,0.05),
+    0 0 0 1px oklch(0.85 0.22 155 / 0.05),
     0 0 80px rgba(0,0,0,0.8),
-    0 0 120px rgba(0,255,178,0.08),
-    inset 0 0 80px rgba(0,255,178,0.02);
+    0 0 120px oklch(0.85 0.22 155 / 0.08),
+    inset 0 0 80px oklch(0.85 0.22 155 / 0.02);
   position:relative;
 }
 .about-terminal::before{
   content:'';position:absolute;top:0;left:0;right:0;height:1px;z-index:2;
-  background:linear-gradient(90deg,transparent 5%,rgba(0,255,178,0.7) 50%,transparent 95%);
-  box-shadow:0 0 16px rgba(0,255,178,0.4);
+  background:linear-gradient(90deg,transparent 5%,oklch(0.85 0.22 155 / 0.7) 50%,transparent 95%);
+  box-shadow:0 0 16px oklch(0.85 0.22 155 / 0.4);
 }
 .terminal-bar{background:rgba(8,12,24,0.95);padding:13px 20px;
-  display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(0,255,178,0.08)}
+  display:flex;align-items:center;gap:10px;border-bottom:1px solid oklch(0.85 0.22 155 / 0.08)}
 .t-dot{width:10px;height:10px;border-radius:50%}
 .t-dot.red{background:#FF5F56;box-shadow:0 0 6px rgba(255,95,86,0.4)}
 .t-dot.yellow{background:#FFBD2E;box-shadow:0 0 6px rgba(255,189,46,0.4)}
@@ -432,12 +458,94 @@ img{display:block}
 .t-cmd{color:var(--text)}
 .t-val{color:var(--purple)}
 .t-comment{color:var(--text3)}
-.t-sep{height:1px;background:rgba(0,255,178,0.06);margin:6px 0}
+.t-sep{height:1px;background:oklch(0.85 0.22 155 / 0.06);margin:6px 0}
+
+/* ═══ PROVA SOCIAL ═══ */
+.proof-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:40px}
+.proof-rating{display:flex;align-items:center;gap:12px;border:1px solid var(--border2);border-radius:10px;
+  padding:10px 18px;background:oklch(0.19 0.02 200 / 0.5);backdrop-filter:blur(12px)}
+.proof-stars{display:flex;gap:2px;color:var(--accent)}
+.proof-stars svg{width:14px;height:14px;fill:var(--accent)}
+.proof-rating-text{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text2);letter-spacing:0.04em}
+.proof-rating-text b{color:var(--text)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.testi-card{background:rgba(5,8,15,0.8);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:26px;
+  transition:all 0.3s;position:relative;overflow:hidden}
+.testi-card::before,.testi-card::after{content:'';position:absolute;width:16px;height:16px;z-index:1;transition:all 0.35s}
+.testi-card::before{top:10px;left:10px;border-top:1.5px solid oklch(0.85 0.22 155 / 0.4);border-left:1.5px solid oklch(0.85 0.22 155 / 0.4)}
+.testi-card::after{bottom:10px;right:10px;border-bottom:1.5px solid oklch(0.88 0.15 195 / 0.3);border-right:1.5px solid oklch(0.88 0.15 195 / 0.3)}
+.testi-card:hover{border-color:oklch(0.85 0.22 155 / 0.3);transform:translateY(-4px);
+  box-shadow:0 20px 50px rgba(0,0,0,0.5),0 0 40px oklch(0.85 0.22 155 / 0.08)}
+.testi-card:hover::before{top:7px;left:7px;border-color:var(--accent);box-shadow:0 0 10px oklch(0.85 0.22 155 / 0.4)}
+.testi-card:hover::after{bottom:7px;right:7px;border-color:var(--accent2)}
+.testi-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;
+  font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase}
+.testi-course{color:var(--accent)}
+.testi-result{color:var(--accent2);border:1px solid oklch(0.88 0.15 195 / 0.35);border-radius:100px;padding:3px 10px}
+.testi-quote{font-size:14px;line-height:1.75;color:var(--text);margin-bottom:22px}
+.testi-foot{display:flex;align-items:center;gap:12px}
+.testi-avatar{width:36px;height:36px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;
+  font-weight:800;font-size:14px;color:oklch(0.14 0.015 200)}
+.testi-name{font-size:12.5px;font-weight:700;color:var(--text)}
+.testi-handle{font-size:11px;color:var(--text3)}
+@media(max-width:960px){.testi-grid{grid-template-columns:1fr}}
+
+/* ═══ PLANOS ═══ */
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.plan-card{background:rgba(5,8,15,0.8);border:1px solid rgba(255,255,255,0.06);border-radius:18px;padding:32px 28px;
+  display:flex;flex-direction:column;position:relative;transition:all 0.35s cubic-bezier(0.16,1,0.3,1)}
+.plan-card:hover{transform:translateY(-6px);border-color:oklch(0.85 0.22 155 / 0.2);
+  box-shadow:0 20px 60px rgba(0,0,0,0.6),0 0 60px oklch(0.85 0.22 155 / 0.06)}
+.plan-card.feat{border-color:oklch(0.85 0.22 155 / 0.45);background:oklch(0.85 0.22 155 / 0.04);
+  box-shadow:0 0 0 1px oklch(0.85 0.22 155 / 0.15),0 0 70px oklch(0.85 0.22 155 / 0.1)}
+.plan-card.feat::before,.plan-card.feat::after{content:'';position:absolute;width:18px;height:18px}
+.plan-card.feat::before{top:10px;left:10px;border-top:1.5px solid var(--accent);border-left:1.5px solid var(--accent);box-shadow:0 0 10px oklch(0.85 0.22 155 / 0.4)}
+.plan-card.feat::after{bottom:10px;right:10px;border-bottom:1.5px solid var(--accent2);border-right:1.5px solid var(--accent2)}
+.plan-badge{position:absolute;top:-12px;left:28px;background:var(--accent);color:oklch(0.14 0.015 200);
+  font-size:10px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;padding:5px 14px;border-radius:100px}
+.plan-tag{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--text3);margin-bottom:16px}
+.plan-name{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.02em;margin-bottom:20px}
+.plan-price{display:flex;align-items:baseline;gap:4px;margin-bottom:6px}
+.plan-price .cur{font-size:20px;color:var(--text2);font-weight:600}
+.plan-price .num{font-family:'Bricolage Grotesque',sans-serif;font-size:48px;font-weight:800;line-height:1}
+.plan-card.feat .plan-price .num{color:var(--accent);text-shadow:0 0 30px oklch(0.85 0.22 155 / 0.4)}
+.plan-note{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--text3);letter-spacing:0.05em;margin-bottom:28px}
+.plan-feats{list-style:none;display:flex;flex-direction:column;gap:13px;margin-bottom:32px;flex:1}
+.plan-feats li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--text2);line-height:1.5}
+.plan-feats li svg{width:15px;height:15px;fill:var(--accent2);flex-shrink:0;margin-top:2px}
+.plan-card.feat .plan-feats li svg{fill:var(--accent)}
+.btn-plan{height:48px;border-radius:10px;background:rgba(255,255,255,0.03);border:1px solid var(--border2);
+  color:var(--text);font-size:12.5px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;transition:all 0.2s}
+.plan-card.feat .btn-plan{background:oklch(0.85 0.22 155 / 0.15);border-color:oklch(0.85 0.22 155 / 0.55);color:var(--accent)}
+.btn-plan:hover{border-color:oklch(0.85 0.22 155 / 0.4);color:var(--accent)}
+.plans-trust{display:flex;flex-wrap:wrap;justify-content:center;gap:28px;margin-top:36px;
+  font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--text3)}
+.plans-trust span{display:flex;align-items:center;gap:7px}
+.plans-trust svg{width:13px;height:13px;fill:var(--accent)}
+@media(max-width:960px){.plans-grid{grid-template-columns:1fr}}
+
+/* ═══ FAQ ═══ */
+.faq-list{max-width:820px;border:1px solid var(--border2);border-radius:14px;overflow:hidden;background:oklch(0.19 0.02 200 / 0.5)}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-item:last-child{border-bottom:none}
+.faq-item summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:20px 24px;font-family:'Bricolage Grotesque',sans-serif;font-size:15.5px;font-weight:700;color:var(--text);
+  letter-spacing:-0.01em;transition:background 0.2s}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary:hover{background:oklch(0.85 0.22 155 / 0.04)}
+.faq-toggle{width:26px;height:26px;border-radius:8px;border:1px solid var(--border2);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;color:var(--text3);transition:all 0.25s}
+.faq-item[open] .faq-toggle{background:oklch(0.85 0.22 155 / 0.1);border-color:oklch(0.85 0.22 155 / 0.5);color:var(--accent);transform:rotate(180deg)}
+.faq-toggle svg{width:13px;height:13px}
+.faq-answer{padding:0 24px 22px;font-size:13.5px;line-height:1.75;color:var(--text2);max-width:640px}
 
 /* ═══ FOOTER ═══ */
-.footer{border-top:1px solid rgba(0,255,178,0.08);position:relative;z-index:2;background:rgba(2,4,8,0.98)}
+.footer{border-top:1px solid oklch(0.85 0.22 155 / 0.08);position:relative;z-index:2;background:rgba(2,4,8,0.98)}
 .footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent 5%,rgba(0,255,178,0.3) 50%,transparent 95%)}
+  background:linear-gradient(90deg,transparent 5%,oklch(0.85 0.22 155 / 0.3) 50%,transparent 95%)}
 .footer-top{padding:64px 48px 48px;max-width:1280px;margin:0 auto;
   display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;border-bottom:1px solid var(--border)}
 .footer-brand .footer-logo{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;
@@ -446,8 +554,8 @@ img{display:block}
 .footer-social{display:flex;gap:8px}
 .footer-social a{width:36px;height:36px;border-radius:var(--r);border:1px solid var(--border2);
   display:flex;align-items:center;justify-content:center;color:var(--text3);transition:all 0.22s}
-.footer-social a:hover{border-color:rgba(0,255,178,0.4);color:var(--accent);
-  background:rgba(0,255,178,0.05);box-shadow:0 0 20px rgba(0,255,178,0.12)}
+.footer-social a:hover{border-color:oklch(0.85 0.22 155 / 0.4);color:var(--accent);
+  background:oklch(0.85 0.22 155 / 0.05);box-shadow:0 0 20px oklch(0.85 0.22 155 / 0.12)}
 .footer-social svg{width:14px;height:14px;fill:currentColor}
 .footer-col h4{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;
   color:var(--text3);margin-bottom:18px}
@@ -467,20 +575,20 @@ img{display:block}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 .modal{
   background:rgba(5,8,15,0.98);
-  border:1px solid rgba(0,255,178,0.15);
+  border:1px solid oklch(0.85 0.22 155 / 0.15);
   border-radius:18px;max-width:960px;width:100%;
   position:relative;overflow:hidden;
   animation:slideUp 0.3s cubic-bezier(0.16,1,0.3,1);
-  box-shadow:0 0 0 1px rgba(0,255,178,0.05),0 0 100px rgba(0,0,0,0.9),0 0 200px rgba(0,255,178,0.08);
+  box-shadow:0 0 0 1px oklch(0.85 0.22 155 / 0.05),0 0 100px rgba(0,0,0,0.9),0 0 200px oklch(0.85 0.22 155 / 0.08);
 }
 .modal::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;z-index:10;
   background:linear-gradient(90deg,transparent 5%,var(--accent) 50%,transparent 95%);
-  box-shadow:0 0 20px rgba(0,255,178,0.5)}
+  box-shadow:0 0 20px oklch(0.85 0.22 155 / 0.5)}
 @keyframes slideUp{from{opacity:0;transform:translateY(40px) scale(0.96)}to{opacity:1;transform:translateY(0) scale(1)}}
 .modal-close{position:absolute;top:16px;right:16px;z-index:20;width:36px;height:36px;border-radius:8px;
   background:rgba(255,255,255,0.04);border:1px solid var(--border2);color:var(--text3);font-size:18px;
   display:flex;align-items:center;justify-content:center;transition:all 0.2s}
-.modal-close:hover{color:var(--text);border-color:rgba(0,255,178,0.4);box-shadow:0 0 16px rgba(0,255,178,0.1)}
+.modal-close:hover{color:var(--text);border-color:oklch(0.85 0.22 155 / 0.4);box-shadow:0 0 16px oklch(0.85 0.22 155 / 0.1)}
 .modal-hero{position:relative;height:280px;overflow:hidden}
 .modal-hero-img{width:100%;height:100%;object-fit:cover;filter:brightness(0.5) saturate(1.3)}
 .modal-hero-placeholder{width:100%;height:100%;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:80px}
@@ -490,7 +598,7 @@ img{display:block}
 .modal-label{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.18em;
   text-transform:uppercase;color:var(--purple);margin-bottom:10px;display:flex;align-items:center;gap:8px}
 .modal-label::before{content:'';width:16px;height:1px;background:var(--purple)}
-.modal-title{font-size:clamp(26px,3.5vw,40px);font-weight:800;letter-spacing:-0.025em;line-height:1.05;margin-bottom:14px}
+.modal-title{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:clamp(26px,3.5vw,40px);font-weight:800;letter-spacing:-0.025em;line-height:1.05;margin-bottom:14px;text-wrap:balance}
 .modal-desc{font-size:15px;color:var(--text2);line-height:1.8;margin-bottom:36px;max-width:680px}
 .modal-meta-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
   background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.07);border-radius:10px;
@@ -507,19 +615,19 @@ img{display:block}
 .module-text{font-size:14px;color:var(--text);line-height:1.5}
 .modal-cta{margin-top:36px;padding-top:28px;border-top:1px solid var(--border);display:flex;align-items:center;gap:20px;flex-wrap:wrap}
 .modal-price{font-family:'JetBrains Mono',monospace;font-size:38px;font-weight:700;
-  color:var(--accent);text-shadow:0 0 30px rgba(0,255,178,0.4);line-height:1}
+  color:var(--accent);text-shadow:0 0 30px oklch(0.85 0.22 155 / 0.4);line-height:1}
 .btn-buy{height:52px;padding:0 36px;
-  background:rgba(0,255,178,0.08);color:var(--accent);
-  border:1px solid rgba(0,255,178,0.4);border-radius:var(--r);
+  background:oklch(0.85 0.22 155 / 0.08);color:var(--accent);
+  border:1px solid oklch(0.85 0.22 155 / 0.4);border-radius:var(--r);
   font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
   display:flex;align-items:center;gap:8px;
-  box-shadow:0 0 30px rgba(0,255,178,0.15),inset 0 1px 0 rgba(0,255,178,0.15);
+  box-shadow:0 0 30px oklch(0.85 0.22 155 / 0.15),inset 0 1px 0 oklch(0.85 0.22 155 / 0.15);
   transition:all 0.25s;position:relative;overflow:hidden}
 .btn-buy::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
-  background:linear-gradient(90deg,transparent,rgba(0,255,178,0.12),transparent);transition:left 0.5s}
+  background:linear-gradient(90deg,transparent,oklch(0.85 0.22 155 / 0.12),transparent);transition:left 0.5s}
 .btn-buy:hover::before{left:100%}
-.btn-buy:hover{box-shadow:0 0 50px rgba(0,255,178,0.3),inset 0 1px 0 rgba(0,255,178,0.2);
-  border-color:rgba(0,255,178,0.7);transform:translateY(-2px)}
+.btn-buy:hover{box-shadow:0 0 50px oklch(0.85 0.22 155 / 0.3),inset 0 1px 0 oklch(0.85 0.22 155 / 0.2);
+  border-color:oklch(0.85 0.22 155 / 0.7);transform:translateY(-2px)}
 .btn-buy svg{width:16px;height:16px;fill:var(--accent)}
 .modal-guarantee{font-size:12px;color:var(--text3);display:flex;align-items:center;gap:6px}
 .modal-guarantee svg{width:14px;height:14px;fill:var(--accent);flex-shrink:0}
@@ -537,6 +645,8 @@ img{display:block}
   .hero-stats{flex-direction:column;gap:8px}
   .courses-grid{grid-template-columns:1fr;gap:12px}
 }
+@media(max-width:560px){.nav-social{display:none}}
+@media(max-width:400px){.btn-nav{padding:0 14px;font-size:10.5px}.nav-left{gap:20px}}
 </style>
 </head>
 <body>
@@ -550,20 +660,21 @@ img{display:block}
   <div class="amb-blob a5"></div>
 </div>
 <div class="grid-bg"></div>
-<canvas id="matrixCanvas"></canvas>
 <canvas id="particleCanvas"></canvas>
+<div class="scanlines-fx"></div>
 
 <!-- NAV -->
 <nav class="nav" id="nav">
   <div class="nav-left">
-    <div class="logo"><div class="logo-pulse"></div>Yo Lab<span style="color:var(--text3);margin:0 1px">&</span>Co.</div>
+    <div class="logo"><div class="logo-pulse"></div>Veronica<span style="color:var(--text3);margin:0 1px">·</span>Hub</div>
     <div class="nav-links">
-      <a href="#cursos">Cursos</a><a href="#lab">Lab</a><a href="#cursos">Preços</a>
+      <a href="#cursos">Cursos</a><a href="#precos">Planos</a><a href="#faq">FAQ</a><a href="/video/">Video AI</a>
     </div>
   </div>
   <div class="nav-right">
     <div class="nav-social">
       <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg></a>
+      <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2 .25 2.5.42.6.24 1 .5 1.5 1 .5.5.75.9 1 1.5.17.5.36 1.3.42 2.5.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 2-.42 2.5-.24.6-.5 1-1 1.5-.5.5-.9.75-1.5 1-.5.17-1.3.36-2.5.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-2-.25-2.5-.42-.6-.24-1-.5-1.5-1-.5-.5-.75-.9-1-1.5-.17-.5-.36-1.3-.42-2.5C2.21 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.25-2 .42-2.5.24-.6.5-1 1-1.5.5-.5.9-.75 1.5-1 .5-.17 1.3-.36 2.5-.42C8.4 2.21 8.8 2.2 12 2.2zm0 4.5a5.3 5.3 0 1 0 0 10.6 5.3 5.3 0 0 0 0-10.6zm0 1.8a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7zm5.5-2a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/></svg></a>
       <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.4 20.4h-3.6v-5.6c0-1.3 0-3-1.8-3-1.9 0-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1c.5-.9 1.6-1.8 3.3-1.8 3.5 0 4.2 2.3 4.2 5.4v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.4H3.5V9h3.6v11.4zM22.2 0H1.8A1.8 1.8 0 0 0 0 1.8v20.4A1.8 1.8 0 0 0 1.8 24h20.4A1.8 1.8 0 0 0 24 22.2V1.8A1.8 1.8 0 0 0 22.2 0z"/></svg></a>
       <a href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.2 2h3.4L13.8 10 23 22h-7L10.2 14 3.5 22H.1l8.4-9.6L0 2h7.2l5.4 7.1L18.2 2zm-1.2 18h1.9L7.1 4H5.1l11.9 16z"/></svg></a>
     </div>
@@ -573,33 +684,29 @@ img{display:block}
 
 <!-- HERO -->
 <section class="hero" id="hero">
-  <div class="hero-video-wrap">
-    <video autoplay muted loop playsinline id="heroBgVid">
-      <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-futuristic-devices-99786-large.mp4" type="video/mp4">
-    </video>
-    <div class="hero-video-fallback" id="videoFallback" style="display:none"></div>
-  </div>
-  <div class="hero-overlay"></div>
+  <div class="hero-bg"></div>
+  <div class="hero-cyborg" role="img" aria-label="Veronica, guardiã cyborg da Veronica Hub"></div>
+  <div class="hero-cyborg-fade"></div>
   <div class="hero-scanlines"></div>
   <div class="hero-scanline"></div>
   <div class="hc tl"></div><div class="hc tr"></div><div class="hc bl"></div><div class="hc br"></div>
   <div class="hero-inner">
-    <div class="hero-badge reveal">
+    <a href="/video/" class="hero-badge reveal" style="cursor:pointer">
       <div class="badge-dot"></div>
-      Yo Lab&amp;Co. · Laboratório Digital · 2026
-    </div>
+      Novo: Veronica Video AI já está no ar →
+    </a>
     <h1 class="hero-h1">
       <span class="w1 reveal reveal-delay-1">O Segredo</span>
       <span class="w2 reveal reveal-delay-2">Tá no</span>
       <span class="w3 reveal reveal-delay-3" id="glitchText">Prompt.</span>
     </h1>
-    <p class="hero-sub reveal reveal-delay-4">Cursos diretos ao ponto para quem quer entrar no digital sem enrolação. Do dark content à IA, do tráfego pago ao hacking ético.</p>
+    <p class="hero-sub reveal reveal-delay-4">O hub de conhecimento e ferramentas de IA da Veronica. Cursos diretos ao ponto, sem enrolação — do dark content à geração de vídeo, do tráfego pago ao hacking ético.</p>
     <div class="hero-actions reveal reveal-delay-4">
       <a href="#cursos" class="btn-primary">
         <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         Explorar cursos
       </a>
-      <a href="#lab" class="btn-ghost">Sobre o Lab →</a>
+      <a href="#lab" class="btn-ghost">Sobre o Hub →</a>
     </div>
     <div class="hero-stats reveal">
       <div class="hero-stat"><div class="stat-n">11<em>+</em></div><div class="stat-l">Cursos</div></div>
@@ -613,6 +720,7 @@ img{display:block}
 <!-- MARQUEE -->
 <div class="marquee-wrap">
   <div class="marquee-track">
+    <div class="marquee-item"><span class="mi-dot">·</span>Vídeo IA</div>
     <div class="marquee-item"><span class="mi-dot">·</span>Canais Dark</div>
     <div class="marquee-item"><span class="mi-dot">·</span>VSL Cinematográfico</div>
     <div class="marquee-item"><span class="mi-dot">·</span>Avatar Digital IA</div>
@@ -624,6 +732,7 @@ img{display:block}
     <div class="marquee-item"><span class="mi-dot">·</span>App no-code</div>
     <div class="marquee-item"><span class="mi-dot">·</span>Criar Site</div>
     <div class="marquee-item"><span class="mi-dot">·</span>Hacking Ético</div>
+    <div class="marquee-item"><span class="mi-dot">·</span>Vídeo IA</div>
     <div class="marquee-item"><span class="mi-dot">·</span>Canais Dark</div>
     <div class="marquee-item"><span class="mi-dot">·</span>VSL Cinematográfico</div>
     <div class="marquee-item"><span class="mi-dot">·</span>Avatar Digital IA</div>
@@ -637,6 +746,54 @@ img{display:block}
     <div class="marquee-item"><span class="mi-dot">·</span>Hacking Ético</div>
   </div>
 </div>
+
+<!-- PROVA SOCIAL -->
+<section class="section" style="padding-bottom:60px">
+  <div class="wrap">
+    <div class="proof-head">
+      <div>
+        <div class="section-label reveal">Prova Real</div>
+        <h2 class="section-h2 reveal" style="margin-bottom:0">Quem já entrou no hub<br>colhe resultado.</h2>
+      </div>
+      <div class="proof-rating reveal">
+        <div class="proof-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>
+        </div>
+        <div class="proof-rating-text"><b>4.9</b> · 2.4k avaliações</div>
+      </div>
+    </div>
+    <div class="testi-grid reveal">
+      <div class="testi-card">
+        <div class="testi-top"><span class="testi-course">Canais Dark</span><span class="testi-result">R$ 12k/mês em 90 dias</span></div>
+        <p class="testi-quote">"Larguei a CLT. O método é execução pura, sem enrolação. Em 3 meses tinha 2 canais rodando no automático."</p>
+        <div class="testi-foot">
+          <div class="testi-avatar">M</div>
+          <div><div class="testi-name">Marina R.</div><div class="testi-handle">@marinacria</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-top"><span class="testi-course">VSL + Meta Ads</span><span class="testi-result">+340% ROAS</span></div>
+        <p class="testi-quote">"Nunca vi uma didática tão direta. A Veronica corta o fluff e vai pro que faz vender. Aplicável no dia 1."</p>
+        <div class="testi-foot">
+          <div class="testi-avatar">D</div>
+          <div><div class="testi-name">Diego F.</div><div class="testi-handle">@diegoflow</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-top"><span class="testi-course">Avatar Digital IA</span><span class="testi-result">8 clientes em 30 dias</span></div>
+        <p class="testi-quote">"Comecei do zero em IA. Hoje entrego avatar digital pra advogados e nutricionistas. Case real, resultado real."</p>
+        <div class="testi-foot">
+          <div class="testi-avatar">C</div>
+          <div><div class="testi-name">Camila S.</div><div class="testi-handle">@camilaia</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- TRUST -->
 <div class="trust-section">
@@ -685,20 +842,81 @@ img{display:block}
 
 <div class="glow-divider"></div>
 
+<!-- PLANOS -->
+<section class="section" id="precos">
+  <div class="wrap" style="text-align:center">
+    <div class="section-label reveal" style="justify-content:center">Planos · Escolha o seu</div>
+    <h2 class="section-h2 reveal">Pague uma vez.<br>Acesse pra sempre.</h2>
+    <p class="section-sub reveal" style="margin-left:auto;margin-right:auto">Sem mensalidade escondida. Comece com um curso avulso ou entre no hub completo.</p>
+    <div class="plans-grid reveal" style="text-align:left">
+      <div class="plan-card">
+        <div class="plan-tag">A partir de</div>
+        <div class="plan-name">Curso Avulso</div>
+        <div class="plan-price"><span class="cur">R$</span><span class="num">19</span><span class="cur">,90</span></div>
+        <div class="plan-note">Pagamento único · por curso</div>
+        <ul class="plan-feats">
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Acesso vitalício ao curso</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Atualizações incluídas</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Certificado de conclusão</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Comunidade no Telegram</li>
+        </ul>
+        <button class="btn-plan" onclick="document.getElementById('cursos').scrollIntoView({behavior:'smooth'})">Escolher curso</button>
+      </div>
+      <div class="plan-card feat">
+        <div class="plan-badge">Mais vendido</div>
+        <div class="plan-tag">Hub Completo</div>
+        <div class="plan-name">Hub Completo</div>
+        <div class="plan-price"><span class="cur">R$</span><span class="num">197</span><span class="cur">,00</span></div>
+        <div class="plan-note">Pagamento único · sem mensalidade</div>
+        <ul class="plan-feats">
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Todos os 11 cursos</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Acesso vitalício a tudo</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Cursos novos incluídos</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Certificados de todos os cursos</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Comunidade VIP</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Suporte direto</li>
+        </ul>
+        <button class="btn-plan" onclick="document.getElementById('cursos').scrollIntoView({behavior:'smooth'})">Quero o Hub</button>
+      </div>
+      <div class="plan-card">
+        <div class="plan-tag">Aceleração</div>
+        <div class="plan-name">Hub + Mentoria</div>
+        <div class="plan-price"><span class="cur">R$</span><span class="num">497</span><span class="cur">,00</span></div>
+        <div class="plan-note">Pagamento único · vagas limitadas</div>
+        <ul class="plan-feats">
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Tudo do Hub Completo</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>4 mentorias em grupo/mês</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Revisão de projeto</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Grupo fechado</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Prioridade no suporte</li>
+        </ul>
+        <button class="btn-plan" onclick="document.getElementById('cursos').scrollIntoView({behavior:'smooth'})">Aplicar agora</button>
+      </div>
+    </div>
+    <div class="plans-trust reveal">
+      <span><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Garantia 7 dias</span>
+      <span><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Emite NF</span>
+      <span><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg>Cartão · Pix · Boleto</span>
+    </div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
 <!-- ABOUT -->
 <section class="section" id="lab" style="padding-top:60px">
   <div class="wrap">
     <div class="about-grid">
       <div>
-        <div class="about-label reveal">Yo Lab&amp;Co.</div>
-        <h2 class="about-h2 reveal">Um laboratório<br>de conhecimento<br>digital.</h2>
+        <div class="about-label reveal">Veronica Hub</div>
+        <h2 class="about-h2 reveal">Um hub de<br>conhecimento<br>e IA aplicada.</h2>
         <p class="about-p reveal">Criamos cursos diretos ao ponto para quem quer entrar no digital com seriedade e velocidade. Cada aula é desenvolvida com foco em resultado real.</p>
-        <p class="about-p reveal">Do criador de conteúdo solo ao empreendedor que quer escalar — aqui você aprende fazendo.</p>
+        <p class="about-p reveal">Do criador de conteúdo solo ao empreendedor que quer escalar — aqui você aprende fazendo, com as ferramentas de IA do hub ao seu lado.</p>
       </div>
       <div class="about-terminal reveal">
         <div class="terminal-bar">
           <div class="t-dot red"></div><div class="t-dot yellow"></div><div class="t-dot green"></div>
-          <div class="t-title">yo-lab — terminal</div>
+          <div class="t-title">veronica-hub — terminal</div>
         </div>
         <div class="terminal-body">
           <div class="t-line"><span class="t-prompt">›</span><span class="t-cmd">cursos<span class="t-val"> --total</span></span></div>
@@ -720,14 +938,59 @@ img{display:block}
   </div>
 </section>
 
+<div class="glow-divider"></div>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="section-label reveal">Dúvidas Frequentes</div>
+    <h2 class="section-h2 reveal">Antes de entrar,<br>se liga.</h2>
+    <div class="faq-list reveal">
+      <details class="faq-item" open>
+        <summary>Como funciona o acesso?<div class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div></summary>
+        <p class="faq-answer">Após a compra você recebe login imediato na plataforma. É 100% online, no seu ritmo, em qualquer dispositivo — e o acesso é vitalício.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Serve pra quem tá começando do zero?<div class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div></summary>
+        <p class="faq-answer">Sim. Cada curso tem trilha do básico ao avançado. A gente parte do princípio que você nunca fez nada disso — e te leva ao resultado.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Tem suporte?<div class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div></summary>
+        <p class="faq-answer">Sim. Comunidade ativa no Telegram, tira-dúvidas com a equipe, e no plano de mentoria você tem contato direto com a Veronica.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Emite nota fiscal?<div class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div></summary>
+        <p class="faq-answer">Sim, emitimos NF-e automaticamente após a compra. Serve pra CNPJ MEI, ME e pessoa física.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Posso pedir reembolso?<div class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div></summary>
+        <p class="faq-answer">Garantia incondicional de 7 dias. Não gostou? A gente devolve 100% do valor, sem perguntas.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Como recebo os cursos novos?<div class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div></summary>
+        <p class="faq-answer">Todo curso lançado dentro do Hub Completo já entra na sua conta automaticamente, sem custo adicional.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Preciso de equipamento caro?<div class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div></summary>
+        <p class="faq-answer">Não. Todos os cursos são pensados pra funcionar com celular + notebook básico. As ferramentas de IA usadas têm plano free.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Quanto tempo leva pra ter resultado?<div class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div></summary>
+        <p class="faq-answer">Depende de execução. Alunos aplicando 1h/dia costumam ter primeiros resultados entre 30 e 90 dias.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-top">
     <div class="footer-brand">
-      <div class="footer-logo"><div class="logo-pulse"></div>Yo Lab&amp;Co.</div>
-      <p>Laboratório de conhecimento digital. Cursos práticos para quem quer entrar no digital com seriedade e velocidade.</p>
+      <div class="footer-logo"><div class="logo-pulse"></div>Veronica Hub</div>
+      <p>Hub de conhecimento e ferramentas de IA. Cursos práticos e produtos para quem quer entrar no digital com seriedade e velocidade.</p>
       <div class="footer-social">
         <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2 .25 2.5.42.6.24 1 .5 1.5 1 .5.5.75.9 1 1.5.17.5.36 1.3.42 2.5.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 2-.42 2.5-.24.6-.5 1-1 1.5-.5.5-.9.75-1.5 1-.5.17-1.3.36-2.5.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-2-.25-2.5-.42-.6-.24-1-.5-1.5-1-.5-.5-.75-.9-1-1.5-.17-.5-.36-1.3-.42-2.5C2.21 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.25-2 .42-2.5.24-.6.5-1 1-1.5.5-.5.9-.75 1.5-1 .5-.17 1.3-.36 2.5-.42C8.4 2.21 8.8 2.2 12 2.2zm0 4.5a5.3 5.3 0 1 0 0 10.6 5.3 5.3 0 0 0 0-10.6zm0 1.8a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7zm5.5-2a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/></svg></a>
         <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.4 20.4h-3.6v-5.6c0-1.3 0-3-1.8-3-1.9 0-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1c.5-.9 1.6-1.8 3.3-1.8 3.5 0 4.2 2.3 4.2 5.4v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.4H3.5V9h3.6v11.4zM22.2 0H1.8A1.8 1.8 0 0 0 0 1.8v20.4A1.8 1.8 0 0 0 1.8 24h20.4A1.8 1.8 0 0 0 24 22.2V1.8A1.8 1.8 0 0 0 22.2 0z"/></svg></a>
         <a href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.2 2h3.4L13.8 10 23 22h-7L10.2 14 3.5 22H.1l8.4-9.6L0 2h7.2l5.4 7.1L18.2 2zm-1.2 18h1.9L7.1 4H5.1l11.9 16z"/></svg></a>
       </div>
@@ -736,9 +999,9 @@ img{display:block}
       <li><a href="#cursos">Canais Dark</a></li><li><a href="#cursos">VSL Cinematográfico</a></li>
       <li><a href="#cursos">Avatar Digital</a></li><li><a href="#cursos">Meta Ads</a></li><li><a href="#cursos">Hacking Ético</a></li>
     </ul></div>
-    <div class="footer-col"><h4>Lab</h4><ul>
-      <li><a href="#lab">Sobre</a></li><li><a href="#cursos">Todos os cursos</a></li>
-      <li><a href="#">Comunidade</a></li><li><a href="#">Afiliados</a></li>
+    <div class="footer-col"><h4>Produtos</h4><ul>
+      <li><a href="/video/">Veronica Video AI</a></li><li><a href="#lab">Sobre o Hub</a></li>
+      <li><a href="#cursos">Todos os cursos</a></li><li><a href="#">Afiliados</a></li>
     </ul></div>
     <div class="footer-col"><h4>Suporte</h4><ul>
       <li><a href="#">FAQ</a></li><li><a href="#">Contato</a></li>
@@ -746,8 +1009,8 @@ img{display:block}
     </ul></div>
   </div>
   <div class="footer-bottom">
-    <div class="footer-copy">© 2026 Yo Lab&amp;Co. Todos os direitos reservados.</div>
-    <div class="footer-mono">v5.0 · build 2026</div>
+    <div class="footer-copy">© 2026 Veronica Hub. Todos os direitos reservados.</div>
+    <div class="footer-mono">v6.0 · build 2026</div>
   </div>
 </footer>
 
@@ -774,25 +1037,6 @@ const courses=[
   {id:11,tag:"Segurança",title:"Hacking Ético: Acesso Autorizado",level:"Avançado",shortDesc:"Pense como um atacante para defender como um profissional.",longDesc:"Pentest, análise de vulnerabilidades, Kali Linux e lógica de ataque/defesa.",price:"R$ 390,00",img:"https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=900&q=80",emoji:"🔐",duration:"20h",modules:["Fundamentos de redes e protocolos","Linux e terminal para segurança","Kali Linux: ferramentas essenciais","Reconhecimento e análise de alvos","Exploração de vulnerabilidades web (OWASP)","Engenharia social e phishing ético","Relatório de pentest profissional","Carreira: certificações e mercado global"]}
 ];
 
-// Matrix
-(function(){
-  const c=document.getElementById('matrixCanvas'),ctx=c.getContext('2d');
-  let W,H,cols,drops;
-  const chars='アイウエオカキクケコ01アBCDEFGHIJKLMNOP0123456789@#$%';
-  function init(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;cols=Math.floor(W/20);drops=Array(cols).fill(1)}
-  function draw(){
-    ctx.fillStyle='rgba(2,4,8,0.05)';ctx.fillRect(0,0,W,H);
-    ctx.fillStyle='#00FFB2';ctx.font='12px JetBrains Mono,monospace';
-    drops.forEach((y,i)=>{
-      ctx.globalAlpha=Math.random()*0.4+0.05;
-      ctx.fillText(chars[Math.floor(Math.random()*chars.length)],i*20,y*20);
-      if(y*20>H&&Math.random()>0.975)drops[i]=0;
-      drops[i]++;
-    });ctx.globalAlpha=1;
-  }
-  init();setInterval(draw,65);window.addEventListener('resize',init);
-})();
-
 // Particles
 (function(){
   const c=document.getElementById('particleCanvas'),ctx=c.getContext('2d');
@@ -807,20 +1051,16 @@ const courses=[
       p.x+=p.vx;p.y+=p.vy;
       if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
       ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      ctx.fillStyle='rgba(0,255,178,0.55)';ctx.fill();
+      ctx.fillStyle='oklch(0.85 0.22 155 / 0.55)';ctx.fill();
     });
     pts.forEach((a,i)=>pts.slice(i+1).forEach(b=>{
       const d=Math.hypot(a.x-b.x,a.y-b.y);
       if(d<110){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);
-        ctx.strokeStyle=`rgba(0,255,178,${.09*(1-d/110)})`;ctx.lineWidth=.5;ctx.stroke()}
+        ctx.strokeStyle=`oklch(0.85 0.22 155 / ${.09*(1-d/110)})`;ctx.lineWidth=.5;ctx.stroke()}
     }));
   }
   init();setInterval(draw,1000/30);window.addEventListener('resize',init);
 })();
-
-document.getElementById('heroBgVid').addEventListener('error',function(){
-  this.style.display='none';document.getElementById('videoFallback').style.display='block';
-});
 
 // Reveal
 const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});
